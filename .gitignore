@@ -1,0 +1,22 @@
+# Local credentials and runtime artifacts
+.env.local
+.env.*.local
+**/node_modules/
+**/target/
+**/dist/
+**/unpackage/
+**/.DS_Store
+**/*.log
+**/logs/
+**/dump.rdb
+**/appendonly.aof
+**/mysql-data/
+**/redis-data/
+*.pem
+*.p12
+*.pfx
+*.jks
+
+# Import tooling and private verification checkpoints
+/checkpoints/
+/tools/

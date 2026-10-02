@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "imported_at": "2026-10-02",
+  "repositories": [
+    {
+      "directory": "upstream/backend",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "license": "MIT",
+      "license_file": "upstream/backend/LICENSE",
+      "license_sha256": "772daf1f82a50025a74e4066050490d875feba62a49cf0ecefa1b4cc824e9a07"
+    },
+    {
+      "directory": "upstream/admin",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "license": "MIT",
+      "license_file": "upstream/admin/LICENSE",
+      "license_sha256": "3f101f5e0207524af727e58ca8abf241b754665ee1eb90b45388ff0263d3640d"
+    },
+    {
+      "directory": "upstream/miniapp",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "license": "MIT",
+      "license_file": "upstream/miniapp/LICENSE",
+      "license_sha256": "94ba843e4c0a72090f6dd0ca885c91dd777ae135003141c94f0145f644b79929"
+    }
+  ]
+}

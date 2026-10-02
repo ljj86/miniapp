@@ -1,0 +1,2052 @@
+{
+  "scope": "development source and runtime/build resources; omit optional upstream promotional/documentation artwork",
+  "requested_at_utc": "2026-10-02",
+  "omitted_file_count": 227,
+  "omitted_bytes": 25190533,
+  "full_source_archive_unchanged": true,
+  "files": [
+    {
+      "import_path": "upstream/backend/.image/Java监控.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/Java监控.jpg",
+      "blob_sha": "6ad522ab058e02cdffa9c770e846df2514d1a29b",
+      "bytes": 115185,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/MySQL.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/MySQL.jpg",
+      "blob_sha": "64a1940c2236f7aa41eba6aae5f7c6e69ff44453",
+      "bytes": 145623,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/OA请假-列表.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/OA请假-列表.jpg",
+      "blob_sha": "787bb73fadc943777a33af6aa4690160b3ab70c8",
+      "bytes": 156000,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/OA请假-发起.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/OA请假-发起.jpg",
+      "blob_sha": "1a7342d7a7662d301e8a84ea3dd699858a133609",
+      "bytes": 69719,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/OA请假-详情.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/OA请假-详情.jpg",
+      "blob_sha": "a83e7c148f42a300775d6f0d9e84a12db470c798",
+      "bytes": 66212,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/Redis.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/Redis.jpg",
+      "blob_sha": "956935264ab4ba383547fbc6af50b4a961d3d091",
+      "bytes": 97707,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/admin-uniapp/01.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/admin-uniapp/01.png",
+      "blob_sha": "0f65d99e35efcfbad8b4801886eb0ad445305426",
+      "bytes": 15405,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/admin-uniapp/02.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/admin-uniapp/02.png",
+      "blob_sha": "05ec781c7d9b128a53208f71f613f3e440a4f13d",
+      "bytes": 33367,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/admin-uniapp/03.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/admin-uniapp/03.png",
+      "blob_sha": "f400c68840f8f7436b30270e5b23c77e1652131b",
+      "bytes": 14902,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/admin-uniapp/04.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/admin-uniapp/04.png",
+      "blob_sha": "d5d5ea072ae594ef57f3749b2bf4f1be9284d86c",
+      "bytes": 9908,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/admin-uniapp/05.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/admin-uniapp/05.png",
+      "blob_sha": "1de6d8ae146a3195f5a7709e4e5637b951727083",
+      "bytes": 57697,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/admin-uniapp/06.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/admin-uniapp/06.png",
+      "blob_sha": "400ae90b1f317c29e5b3dce3fde1e8d2cfd830ed",
+      "bytes": 8780,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/admin-uniapp/07.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/admin-uniapp/07.png",
+      "blob_sha": "2ed8c0ff6e16b1bbc887058b3f6a71e6334db105",
+      "bytes": 26306,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/admin-uniapp/08.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/admin-uniapp/08.png",
+      "blob_sha": "090e64a67838e036b06c03f9c0f9325ac5298461",
+      "bytes": 26380,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/admin-uniapp/09.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/admin-uniapp/09.png",
+      "blob_sha": "f2032c8a862330a9319417c6bc6a66901eff6f28",
+      "bytes": 7171,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/ai-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/ai-feature.png",
+      "blob_sha": "1c22dbe4ee576cd2a58b134d4ad158afd2de5ff8",
+      "bytes": 41435,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/ai-preview.gif",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/ai-preview.gif",
+      "blob_sha": "5f13ac4ff9281a683d216f47c257f19e4e968f3f",
+      "bytes": 356191,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/bpm-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/bpm-feature.png",
+      "blob_sha": "23787fb4f090154f2d914100ca91174c1e60cafc",
+      "bytes": 16260,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/crm-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/crm-feature.png",
+      "blob_sha": "e1c9670c6f75efea1fbd265dea410a60ad672cf9",
+      "bytes": 15610,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/erp-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/erp-feature.png",
+      "blob_sha": "d30b30eed9d4e072c61ebf3bb63809b2b5593078",
+      "bytes": 47016,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/fms-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/fms-feature.png",
+      "blob_sha": "484f16cc02b55812b068a0b76335b9255b3a2781",
+      "bytes": 374818,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/fms-preview.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/fms-preview.png",
+      "blob_sha": "9d384f0468b9aababa5cc05d1a5682ed6dabc2df",
+      "bytes": 412772,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/hrm-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/hrm-feature.png",
+      "blob_sha": "10207a08cb729d903a1dd91912862f6962f0fbe6",
+      "bytes": 495166,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/hrm-preview.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/hrm-preview.png",
+      "blob_sha": "dfa65ad841008177779266e6a90d0c9015aeea1a",
+      "bytes": 78479,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/im-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/im-feature.png",
+      "blob_sha": "da3f01280145b644ef4b2846b31da61d069378a6",
+      "bytes": 173140,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/im-preview-home.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/im-preview-home.png",
+      "blob_sha": "c4790a3246b88030998ad464813d1dd1c7658764",
+      "bytes": 73196,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/im-preview-manager.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/im-preview-manager.png",
+      "blob_sha": "b8bb057dcf3a75f76e074852061d4d5ce82aef47",
+      "bytes": 63753,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/infra-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/infra-feature.png",
+      "blob_sha": "f5cef50c56ff3a4acccbfbb4f5f3e453dda5e12b",
+      "bytes": 16920,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/iot-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/iot-feature.png",
+      "blob_sha": "357781c53e7b82d60d8314492cbc2748cbca8a14",
+      "bytes": 59728,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/iot-preview.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/iot-preview.png",
+      "blob_sha": "58e8940eb1f7bd8541864cd54e15a89ef922f7fc",
+      "bytes": 167233,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/mall-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/mall-feature.png",
+      "blob_sha": "cca05c0e69f38bdc7f80f1d23c34b31df4e7bf1b",
+      "bytes": 27721,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/mall-preview.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/mall-preview.png",
+      "blob_sha": "e164cd2a15c12bdc90b3656d776612cfc9ccc0f8",
+      "bytes": 209292,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/mes-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/mes-feature.png",
+      "blob_sha": "33196fd065cf4d7714d1bf6c221cfea0353d30de",
+      "bytes": 80762,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/mes-preview.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/mes-preview.png",
+      "blob_sha": "a140979e7007b0a6e001da16d3d7deec52784e21",
+      "bytes": 75789,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/oa-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/oa-feature.png",
+      "blob_sha": "e276412c00b50f9d22f0fb6caf3a668ac99bcb29",
+      "bytes": 314138,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/oa-preview.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/oa-preview.png",
+      "blob_sha": "cec427328d8b8856abb1d962870d2a371f5777ba",
+      "bytes": 93454,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/pms-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/pms-feature.png",
+      "blob_sha": "25e12776bf1d85819f90627ab4f07eb61b9f92fe",
+      "bytes": 399245,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/pms-preview.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/pms-preview.png",
+      "blob_sha": "c7a85aa765ad884e8b70fc3483d582d72602fa1b",
+      "bytes": 138929,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/project-vs.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/project-vs.png",
+      "blob_sha": "561e092f4ad9c4907e7af0769ef8fae54c29c049",
+      "bytes": 142512,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/ruoyi-vue-pro-architecture.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/ruoyi-vue-pro-architecture.png",
+      "blob_sha": "7bd7d59ab6507684788633037e4874e097da5790",
+      "bytes": 70208,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/ruoyi-vue-pro-biz.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/ruoyi-vue-pro-biz.png",
+      "blob_sha": "355491963f6ac7958a528475fb0d7fe61eaef9fd",
+      "bytes": 42017,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/system-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/system-feature.png",
+      "blob_sha": "366087ce0c9061c34e60feaa30af099f99694cdd",
+      "bytes": 13584,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/wms-feature.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/wms-feature.png",
+      "blob_sha": "0d7790b18567142f2070b98c071d6503d6e66cc9",
+      "bytes": 221167,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/wms-preview.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/wms-preview.png",
+      "blob_sha": "31c5187d926dc12db6e0d10cff924117bbbcd98c",
+      "bytes": 55711,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/yudao-cloud-architecture.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/yudao-cloud-architecture.png",
+      "blob_sha": "59416d8068149b31b7ac24bc4833301504fadc82",
+      "bytes": 206171,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/common/yudao-roadmap.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/common/yudao-roadmap.png",
+      "blob_sha": "f4becc98cf0ab865c9a6ba7782ce4c676c5aef8b",
+      "bytes": 61359,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/个人中心.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/个人中心.jpg",
+      "blob_sha": "ce57f6e1e374cc7f7284876a2c3e9b9d351fa06a",
+      "bytes": 38162,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/代码生成.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/代码生成.jpg",
+      "blob_sha": "751603efbdceb0e6a318781cc64f0327672c2738",
+      "bytes": 132874,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/令牌管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/令牌管理.jpg",
+      "blob_sha": "04abf4d21ec75f2a4c521329c16c007058c55e6b",
+      "bytes": 91169,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/任务列表-审批.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/任务列表-审批.jpg",
+      "blob_sha": "cba312a0eb6373df1f62ad48a20c092b456938d6",
+      "bytes": 91095,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/任务列表-已办.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/任务列表-已办.jpg",
+      "blob_sha": "7a8d0fb172876aa1450448aa635dfaf3bfff2b16",
+      "bytes": 163712,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/任务列表-待办.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/任务列表-待办.jpg",
+      "blob_sha": "a90323fb109b32fdb907ede708a6f4df9c370705",
+      "bytes": 153465,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/任务日志.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/任务日志.jpg",
+      "blob_sha": "599e50a9c08e49a8ac8115eb12fa9ce2f302a1db",
+      "bytes": 126637,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/商户信息.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/商户信息.jpg",
+      "blob_sha": "483eace148288de75d33c60e4fd10f7df3792df0",
+      "bytes": 84643,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/在线用户.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/在线用户.jpg",
+      "blob_sha": "b183009b6f497df04f680bd21fc685d33f13b0f0",
+      "bytes": 74629,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/大屏设计器-列表.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/大屏设计器-列表.jpg",
+      "blob_sha": "9a45c3bd1c7e3a333994b85a97ff2bda605378dd",
+      "bytes": 54718,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/大屏设计器-编辑.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/大屏设计器-编辑.jpg",
+      "blob_sha": "63298a0c14690f698dc3d93bb92fb668e1ade8c0",
+      "bytes": 111729,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/大屏设计器-预览.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/大屏设计器-预览.jpg",
+      "blob_sha": "501d9ea2cdd3e98ea72a49f8d126910b0d09fa5f",
+      "bytes": 70694,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/字典数据.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/字典数据.jpg",
+      "blob_sha": "8298c893f7294bf47b0b4ceb9f32bd732a09a509",
+      "bytes": 79736,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/字典类型.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/字典类型.jpg",
+      "blob_sha": "6613392f6271d21f75b98a9e955cfa8492157680",
+      "bytes": 129528,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/定时任务.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/定时任务.jpg",
+      "blob_sha": "d5bbd8510648bf6d9c85530e441fb6e86f2f6a43",
+      "bytes": 75691,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/岗位管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/岗位管理.jpg",
+      "blob_sha": "42b64d2c62075bff5457738f7450f860ab098c58",
+      "bytes": 82156,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/工作流设计器-bpmn.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/工作流设计器-bpmn.jpg",
+      "blob_sha": "2a61f60f869b28dce151f0964a1aaad8c0b333cd",
+      "bytes": 181405,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/工作流设计器-simple.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/工作流设计器-simple.jpg",
+      "blob_sha": "9ef2c9e293b2eb91f0e0b19c63bdbda263f3254b",
+      "bytes": 129583,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/应用信息-列表.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/应用信息-列表.jpg",
+      "blob_sha": "da419a24a43ae7813d5aac6ef8d23286fe9bf015",
+      "bytes": 95662,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/应用信息-编辑.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/应用信息-编辑.jpg",
+      "blob_sha": "913cfbc810581453510119d5b20d43294af89551",
+      "bytes": 95215,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/应用管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/应用管理.jpg",
+      "blob_sha": "6e7789fca613011aaed85a14a6df35b3b140b887",
+      "bytes": 56424,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/我的流程-列表.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/我的流程-列表.jpg",
+      "blob_sha": "223d17afac065c5282dc96e4b7052c03f02260aa",
+      "bytes": 180098,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/我的流程-发起.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/我的流程-发起.jpg",
+      "blob_sha": "7a833062bee21cef8bd776618f4fc94014646104",
+      "bytes": 93105,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/我的流程-详情.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/我的流程-详情.jpg",
+      "blob_sha": "6a01541823c492d9a1be0f39b83d2434446484ca",
+      "bytes": 89150,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/报表设计器-图形报表.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/报表设计器-图形报表.jpg",
+      "blob_sha": "681b3185289d600a06876cbf91aa7b2bdf9aac38",
+      "bytes": 33448,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/报表设计器-打印设计.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/报表设计器-打印设计.jpg",
+      "blob_sha": "bb86da64ef9e4cc5a822a9859710b4bdca8d026b",
+      "bytes": 37781,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/报表设计器-数据报表.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/报表设计器-数据报表.jpg",
+      "blob_sha": "9ca5b9b646db07ee9da67a2524071bd3e0ef2746",
+      "bytes": 42204,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/操作日志.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/操作日志.jpg",
+      "blob_sha": "4a0611a34dc8f3c5be90275ea679ef91f11f144a",
+      "bytes": 100911,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/支付订单.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/支付订单.jpg",
+      "blob_sha": "0a56dd74d0ec1172045b1322f058e6e7ea3873fe",
+      "bytes": 212798,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/敏感词.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/敏感词.jpg",
+      "blob_sha": "92a539747bd7754521defe1b61c05b5749eec7fe",
+      "bytes": 48020,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/数据库文档.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/数据库文档.jpg",
+      "blob_sha": "a4339d96001a76e59d8315b97c176f835d00ad97",
+      "bytes": 99417,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/文件管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/文件管理.jpg",
+      "blob_sha": "054b19f1e4c6eccbb8f52fdb6aeb5b95c18506f0",
+      "bytes": 75214,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/文件管理2.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/文件管理2.jpg",
+      "blob_sha": "b12e5c3cca55d4b5566ea70f208188113b0bb0bb",
+      "bytes": 117005,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/文件配置.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/文件配置.jpg",
+      "blob_sha": "e618049aeced471af6beb47b2d599408981e086e",
+      "bytes": 118462,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/日志中心.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/日志中心.jpg",
+      "blob_sha": "27c1c6cb55c8880703cd3880aa5ec669aeb7bbb1",
+      "bytes": 85863,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/流程模型-列表.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/流程模型-列表.jpg",
+      "blob_sha": "ffdc58405791ecb5fa568f5b735ac85d61c7d4af",
+      "bytes": 176724,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/流程模型-定义.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/流程模型-定义.jpg",
+      "blob_sha": "18b316c7cc34ac307b47d45fb9b1c96c9f9064b4",
+      "bytes": 127838,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/流程模型-设计.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/流程模型-设计.jpg",
+      "blob_sha": "961496905ee6a46814a47f3e203a9244d9ac71da",
+      "bytes": 128095,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/流程表单.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/流程表单.jpg",
+      "blob_sha": "60669c148bc32e7a544daedfde464a267e9b2c0a",
+      "bytes": 151328,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/生成效果.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/生成效果.jpg",
+      "blob_sha": "98ff2cca592c991167ca494130a77067e70cd31b",
+      "bytes": 131324,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/用户分组.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/用户分组.jpg",
+      "blob_sha": "39af1cd19e0a876e5abf1e5f0de5d435f2939b7b",
+      "bytes": 84261,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/用户管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/用户管理.jpg",
+      "blob_sha": "844604a6465a4e933324decac220d52e737509d9",
+      "bytes": 114780,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/登录.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/登录.jpg",
+      "blob_sha": "b782b988c20126c370b010f872b96c46494a1ff9",
+      "bytes": 95521,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/登录日志.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/登录日志.jpg",
+      "blob_sha": "25662d97bb5e32f554344a497215f596241271c2",
+      "bytes": 79281,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/短信日志.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/短信日志.jpg",
+      "blob_sha": "ada8e56db368cdd12742bb9d6ad1ce5f48553af0",
+      "bytes": 41611,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/短信模板.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/短信模板.jpg",
+      "blob_sha": "09381cc51096a52f6ceb450c4f13f8fbf7750a38",
+      "bytes": 253765,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/短信渠道.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/短信渠道.jpg",
+      "blob_sha": "df3a5c39b528212206ac4018d444841ab88a9754",
+      "bytes": 82323,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/租户套餐.png",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/租户套餐.png",
+      "blob_sha": "966316798cf0dd19b8286893364b07762fd39859",
+      "bytes": 98375,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/租户管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/租户管理.jpg",
+      "blob_sha": "647416a9fec1db5fd452f64d42319faa691f2e35",
+      "bytes": 117448,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/系统接口.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/系统接口.jpg",
+      "blob_sha": "6d39d42113cbc6cc53bd75148969d2ef09227d2d",
+      "bytes": 92922,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/菜单管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/菜单管理.jpg",
+      "blob_sha": "ad3b7979c005e228391b9e13862ce50fdd57c2ff",
+      "bytes": 132511,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/表单构建.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/表单构建.jpg",
+      "blob_sha": "81f03746604f05046da91b3508737bc9a6d508d1",
+      "bytes": 104178,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/角色管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/角色管理.jpg",
+      "blob_sha": "eed776e86707be8f7267e027b5af5fa10950a3d4",
+      "bytes": 86970,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/访问日志.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/访问日志.jpg",
+      "blob_sha": "ef301aad4ab4ae0331f9687140651af45afeb11a",
+      "bytes": 74777,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/退款订单.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/退款订单.jpg",
+      "blob_sha": "2c6c6c9eead03fcd1ca407338f2a45b1c52bcdaa",
+      "bytes": 94456,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/通知公告.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/通知公告.jpg",
+      "blob_sha": "97bb42fe41da44237cc541af4701efbecd23ea97",
+      "bytes": 78637,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/部门管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/部门管理.jpg",
+      "blob_sha": "6eab2330c23e4e9367b956ac0a2eb01707a2aaae",
+      "bytes": 111242,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/配置管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/配置管理.jpg",
+      "blob_sha": "0abaec932e653c3316bd01b10832f02ed79cb653",
+      "bytes": 90883,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/链路追踪.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/链路追踪.jpg",
+      "blob_sha": "12f7aa8efcb23a75153f321c128f4f1274e69579",
+      "bytes": 82434,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/错误日志.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/错误日志.jpg",
+      "blob_sha": "eb615ea3f88a92ea71b1239ff06bdfbbfa7be375",
+      "bytes": 112243,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/错误码管理.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/错误码管理.jpg",
+      "blob_sha": "ea91dde14b3c038d06eadd0c863384187f1ddaca",
+      "bytes": 134270,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/backend/.image/首页.jpg",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "upstream_commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "source_relative_path": ".image/首页.jpg",
+      "blob_sha": "10a7fde7611d7fcaf43bcc4ee79a5f4d12e7cd69",
+      "bytes": 63389,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/Java监控.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/Java监控.jpg",
+      "blob_sha": "6ad522ab058e02cdffa9c770e846df2514d1a29b",
+      "bytes": 115185,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/MySQL.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/MySQL.jpg",
+      "blob_sha": "64a1940c2236f7aa41eba6aae5f7c6e69ff44453",
+      "bytes": 145623,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/OA请假-列表.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/OA请假-列表.jpg",
+      "blob_sha": "787bb73fadc943777a33af6aa4690160b3ab70c8",
+      "bytes": 156000,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/OA请假-发起.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/OA请假-发起.jpg",
+      "blob_sha": "1a7342d7a7662d301e8a84ea3dd699858a133609",
+      "bytes": 69719,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/OA请假-详情.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/OA请假-详情.jpg",
+      "blob_sha": "a83e7c148f42a300775d6f0d9e84a12db470c798",
+      "bytes": 66212,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/Redis.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/Redis.jpg",
+      "blob_sha": "956935264ab4ba383547fbc6af50b4a961d3d091",
+      "bytes": 97707,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/admin-uniapp/01.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/admin-uniapp/01.png",
+      "blob_sha": "0f65d99e35efcfbad8b4801886eb0ad445305426",
+      "bytes": 15405,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/admin-uniapp/02.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/admin-uniapp/02.png",
+      "blob_sha": "05ec781c7d9b128a53208f71f613f3e440a4f13d",
+      "bytes": 33367,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/admin-uniapp/03.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/admin-uniapp/03.png",
+      "blob_sha": "f400c68840f8f7436b30270e5b23c77e1652131b",
+      "bytes": 14902,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/admin-uniapp/04.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/admin-uniapp/04.png",
+      "blob_sha": "d5d5ea072ae594ef57f3749b2bf4f1be9284d86c",
+      "bytes": 9908,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/admin-uniapp/05.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/admin-uniapp/05.png",
+      "blob_sha": "1de6d8ae146a3195f5a7709e4e5637b951727083",
+      "bytes": 57697,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/admin-uniapp/06.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/admin-uniapp/06.png",
+      "blob_sha": "400ae90b1f317c29e5b3dce3fde1e8d2cfd830ed",
+      "bytes": 8780,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/admin-uniapp/07.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/admin-uniapp/07.png",
+      "blob_sha": "2ed8c0ff6e16b1bbc887058b3f6a71e6334db105",
+      "bytes": 26306,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/admin-uniapp/08.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/admin-uniapp/08.png",
+      "blob_sha": "090e64a67838e036b06c03f9c0f9325ac5298461",
+      "bytes": 26380,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/admin-uniapp/09.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/admin-uniapp/09.png",
+      "blob_sha": "f2032c8a862330a9319417c6bc6a66901eff6f28",
+      "bytes": 7171,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/ai-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/ai-feature.png",
+      "blob_sha": "1c22dbe4ee576cd2a58b134d4ad158afd2de5ff8",
+      "bytes": 41435,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/ai-preview.gif",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/ai-preview.gif",
+      "blob_sha": "5f13ac4ff9281a683d216f47c257f19e4e968f3f",
+      "bytes": 356191,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/bpm-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/bpm-feature.png",
+      "blob_sha": "23787fb4f090154f2d914100ca91174c1e60cafc",
+      "bytes": 16260,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/crm-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/crm-feature.png",
+      "blob_sha": "e1c9670c6f75efea1fbd265dea410a60ad672cf9",
+      "bytes": 15610,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/erp-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/erp-feature.png",
+      "blob_sha": "d30b30eed9d4e072c61ebf3bb63809b2b5593078",
+      "bytes": 47016,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/fms-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/fms-feature.png",
+      "blob_sha": "484f16cc02b55812b068a0b76335b9255b3a2781",
+      "bytes": 374818,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/fms-preview.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/fms-preview.png",
+      "blob_sha": "9d384f0468b9aababa5cc05d1a5682ed6dabc2df",
+      "bytes": 412772,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/hrm-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/hrm-feature.png",
+      "blob_sha": "10207a08cb729d903a1dd91912862f6962f0fbe6",
+      "bytes": 495166,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/hrm-preview.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/hrm-preview.png",
+      "blob_sha": "dfa65ad841008177779266e6a90d0c9015aeea1a",
+      "bytes": 78479,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/im-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/im-feature.png",
+      "blob_sha": "da3f01280145b644ef4b2846b31da61d069378a6",
+      "bytes": 173140,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/im-preview-home.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/im-preview-home.png",
+      "blob_sha": "c4790a3246b88030998ad464813d1dd1c7658764",
+      "bytes": 73196,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/im-preview-manager.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/im-preview-manager.png",
+      "blob_sha": "b8bb057dcf3a75f76e074852061d4d5ce82aef47",
+      "bytes": 63753,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/infra-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/infra-feature.png",
+      "blob_sha": "f5cef50c56ff3a4acccbfbb4f5f3e453dda5e12b",
+      "bytes": 16920,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/iot-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/iot-feature.png",
+      "blob_sha": "357781c53e7b82d60d8314492cbc2748cbca8a14",
+      "bytes": 59728,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/iot-preview.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/iot-preview.png",
+      "blob_sha": "58e8940eb1f7bd8541864cd54e15a89ef922f7fc",
+      "bytes": 167233,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/mall-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/mall-feature.png",
+      "blob_sha": "cca05c0e69f38bdc7f80f1d23c34b31df4e7bf1b",
+      "bytes": 27721,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/mall-preview.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/mall-preview.png",
+      "blob_sha": "f939214bf86d062edff626aef5c10d0d0f525676",
+      "bytes": 243328,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/mes-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/mes-feature.png",
+      "blob_sha": "33196fd065cf4d7714d1bf6c221cfea0353d30de",
+      "bytes": 80762,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/mes-preview.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/mes-preview.png",
+      "blob_sha": "a140979e7007b0a6e001da16d3d7deec52784e21",
+      "bytes": 75789,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/pms-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/pms-feature.png",
+      "blob_sha": "25e12776bf1d85819f90627ab4f07eb61b9f92fe",
+      "bytes": 399245,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/pms-preview.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/pms-preview.png",
+      "blob_sha": "c7a85aa765ad884e8b70fc3483d582d72602fa1b",
+      "bytes": 138929,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/project-vs.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/project-vs.png",
+      "blob_sha": "561e092f4ad9c4907e7af0769ef8fae54c29c049",
+      "bytes": 142512,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/ruoyi-vue-pro-architecture.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/ruoyi-vue-pro-architecture.png",
+      "blob_sha": "7bd7d59ab6507684788633037e4874e097da5790",
+      "bytes": 70208,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/ruoyi-vue-pro-biz.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/ruoyi-vue-pro-biz.png",
+      "blob_sha": "355491963f6ac7958a528475fb0d7fe61eaef9fd",
+      "bytes": 42017,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/system-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/system-feature.png",
+      "blob_sha": "366087ce0c9061c34e60feaa30af099f99694cdd",
+      "bytes": 13584,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/wms-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/wms-feature.png",
+      "blob_sha": "0d7790b18567142f2070b98c071d6503d6e66cc9",
+      "bytes": 221167,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/wms-preview.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/wms-preview.png",
+      "blob_sha": "31c5187d926dc12db6e0d10cff924117bbbcd98c",
+      "bytes": 55711,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/yudao-cloud-architecture.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/yudao-cloud-architecture.png",
+      "blob_sha": "59416d8068149b31b7ac24bc4833301504fadc82",
+      "bytes": 206171,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/common/yudao-roadmap.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/common/yudao-roadmap.png",
+      "blob_sha": "f4becc98cf0ab865c9a6ba7782ce4c676c5aef8b",
+      "bytes": 61359,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/demo/vue3-ep.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/demo/vue3-ep.png",
+      "blob_sha": "1bf6e8c3296e96c40e55d69cd1df26d170d77b17",
+      "bytes": 247556,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/个人中心.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/个人中心.jpg",
+      "blob_sha": "ce57f6e1e374cc7f7284876a2c3e9b9d351fa06a",
+      "bytes": 38162,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/代码生成.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/代码生成.jpg",
+      "blob_sha": "751603efbdceb0e6a318781cc64f0327672c2738",
+      "bytes": 132874,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/令牌管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/令牌管理.jpg",
+      "blob_sha": "04abf4d21ec75f2a4c521329c16c007058c55e6b",
+      "bytes": 91169,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/任务列表-审批.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/任务列表-审批.jpg",
+      "blob_sha": "cba312a0eb6373df1f62ad48a20c092b456938d6",
+      "bytes": 91095,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/任务列表-已办.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/任务列表-已办.jpg",
+      "blob_sha": "7a8d0fb172876aa1450448aa635dfaf3bfff2b16",
+      "bytes": 163712,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/任务列表-待办.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/任务列表-待办.jpg",
+      "blob_sha": "a90323fb109b32fdb907ede708a6f4df9c370705",
+      "bytes": 153465,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/任务日志.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/任务日志.jpg",
+      "blob_sha": "599e50a9c08e49a8ac8115eb12fa9ce2f302a1db",
+      "bytes": 126637,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/商户信息.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/商户信息.jpg",
+      "blob_sha": "483eace148288de75d33c60e4fd10f7df3792df0",
+      "bytes": 84643,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/在线用户.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/在线用户.jpg",
+      "blob_sha": "b183009b6f497df04f680bd21fc685d33f13b0f0",
+      "bytes": 74629,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/大屏设计器-列表.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/大屏设计器-列表.jpg",
+      "blob_sha": "9a45c3bd1c7e3a333994b85a97ff2bda605378dd",
+      "bytes": 54718,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/大屏设计器-编辑.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/大屏设计器-编辑.jpg",
+      "blob_sha": "63298a0c14690f698dc3d93bb92fb668e1ade8c0",
+      "bytes": 111729,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/大屏设计器-预览.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/大屏设计器-预览.jpg",
+      "blob_sha": "501d9ea2cdd3e98ea72a49f8d126910b0d09fa5f",
+      "bytes": 70694,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/字典数据.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/字典数据.jpg",
+      "blob_sha": "8298c893f7294bf47b0b4ceb9f32bd732a09a509",
+      "bytes": 79736,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/字典类型.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/字典类型.jpg",
+      "blob_sha": "6613392f6271d21f75b98a9e955cfa8492157680",
+      "bytes": 129528,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/定时任务.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/定时任务.jpg",
+      "blob_sha": "d5bbd8510648bf6d9c85530e441fb6e86f2f6a43",
+      "bytes": 75691,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/岗位管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/岗位管理.jpg",
+      "blob_sha": "42b64d2c62075bff5457738f7450f860ab098c58",
+      "bytes": 82156,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/工作流设计器-bpmn.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/工作流设计器-bpmn.jpg",
+      "blob_sha": "2a61f60f869b28dce151f0964a1aaad8c0b333cd",
+      "bytes": 181405,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/工作流设计器-simple.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/工作流设计器-simple.jpg",
+      "blob_sha": "9ef2c9e293b2eb91f0e0b19c63bdbda263f3254b",
+      "bytes": 129583,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/应用信息-列表.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/应用信息-列表.jpg",
+      "blob_sha": "da419a24a43ae7813d5aac6ef8d23286fe9bf015",
+      "bytes": 95662,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/应用信息-编辑.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/应用信息-编辑.jpg",
+      "blob_sha": "913cfbc810581453510119d5b20d43294af89551",
+      "bytes": 95215,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/应用管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/应用管理.jpg",
+      "blob_sha": "6e7789fca613011aaed85a14a6df35b3b140b887",
+      "bytes": 56424,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/我的流程-列表.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/我的流程-列表.jpg",
+      "blob_sha": "223d17afac065c5282dc96e4b7052c03f02260aa",
+      "bytes": 180098,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/我的流程-发起.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/我的流程-发起.jpg",
+      "blob_sha": "7a833062bee21cef8bd776618f4fc94014646104",
+      "bytes": 93105,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/我的流程-详情.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/我的流程-详情.jpg",
+      "blob_sha": "6a01541823c492d9a1be0f39b83d2434446484ca",
+      "bytes": 89150,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/报表设计器-图形报表.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/报表设计器-图形报表.jpg",
+      "blob_sha": "681b3185289d600a06876cbf91aa7b2bdf9aac38",
+      "bytes": 33448,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/报表设计器-打印设计.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/报表设计器-打印设计.jpg",
+      "blob_sha": "bb86da64ef9e4cc5a822a9859710b4bdca8d026b",
+      "bytes": 37781,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/报表设计器-数据报表.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/报表设计器-数据报表.jpg",
+      "blob_sha": "9ca5b9b646db07ee9da67a2524071bd3e0ef2746",
+      "bytes": 42204,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/操作日志.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/操作日志.jpg",
+      "blob_sha": "4a0611a34dc8f3c5be90275ea679ef91f11f144a",
+      "bytes": 100911,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/支付订单.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/支付订单.jpg",
+      "blob_sha": "0a56dd74d0ec1172045b1322f058e6e7ea3873fe",
+      "bytes": 212798,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/敏感词.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/敏感词.jpg",
+      "blob_sha": "92a539747bd7754521defe1b61c05b5749eec7fe",
+      "bytes": 48020,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/数据库文档.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/数据库文档.jpg",
+      "blob_sha": "a4339d96001a76e59d8315b97c176f835d00ad97",
+      "bytes": 99417,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/文件管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/文件管理.jpg",
+      "blob_sha": "054b19f1e4c6eccbb8f52fdb6aeb5b95c18506f0",
+      "bytes": 75214,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/文件管理2.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/文件管理2.jpg",
+      "blob_sha": "b12e5c3cca55d4b5566ea70f208188113b0bb0bb",
+      "bytes": 117005,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/文件配置.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/文件配置.jpg",
+      "blob_sha": "e618049aeced471af6beb47b2d599408981e086e",
+      "bytes": 118462,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/日志中心.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/日志中心.jpg",
+      "blob_sha": "27c1c6cb55c8880703cd3880aa5ec669aeb7bbb1",
+      "bytes": 85863,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/流程模型-列表.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/流程模型-列表.jpg",
+      "blob_sha": "ffdc58405791ecb5fa568f5b735ac85d61c7d4af",
+      "bytes": 176724,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/流程模型-定义.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/流程模型-定义.jpg",
+      "blob_sha": "18b316c7cc34ac307b47d45fb9b1c96c9f9064b4",
+      "bytes": 127838,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/流程模型-设计.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/流程模型-设计.jpg",
+      "blob_sha": "961496905ee6a46814a47f3e203a9244d9ac71da",
+      "bytes": 128095,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/流程表单.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/流程表单.jpg",
+      "blob_sha": "60669c148bc32e7a544daedfde464a267e9b2c0a",
+      "bytes": 151328,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/生成效果.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/生成效果.jpg",
+      "blob_sha": "98ff2cca592c991167ca494130a77067e70cd31b",
+      "bytes": 131324,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/用户分组.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/用户分组.jpg",
+      "blob_sha": "39af1cd19e0a876e5abf1e5f0de5d435f2939b7b",
+      "bytes": 84261,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/用户管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/用户管理.jpg",
+      "blob_sha": "844604a6465a4e933324decac220d52e737509d9",
+      "bytes": 114780,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/登录.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/登录.jpg",
+      "blob_sha": "b782b988c20126c370b010f872b96c46494a1ff9",
+      "bytes": 95521,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/登录日志.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/登录日志.jpg",
+      "blob_sha": "25662d97bb5e32f554344a497215f596241271c2",
+      "bytes": 79281,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/短信日志.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/短信日志.jpg",
+      "blob_sha": "ada8e56db368cdd12742bb9d6ad1ce5f48553af0",
+      "bytes": 41611,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/短信模板.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/短信模板.jpg",
+      "blob_sha": "09381cc51096a52f6ceb450c4f13f8fbf7750a38",
+      "bytes": 253765,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/短信渠道.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/短信渠道.jpg",
+      "blob_sha": "df3a5c39b528212206ac4018d444841ab88a9754",
+      "bytes": 82323,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/租户套餐.png",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/租户套餐.png",
+      "blob_sha": "966316798cf0dd19b8286893364b07762fd39859",
+      "bytes": 98375,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/租户管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/租户管理.jpg",
+      "blob_sha": "647416a9fec1db5fd452f64d42319faa691f2e35",
+      "bytes": 117448,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/系统接口.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/系统接口.jpg",
+      "blob_sha": "6d39d42113cbc6cc53bd75148969d2ef09227d2d",
+      "bytes": 92922,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/菜单管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/菜单管理.jpg",
+      "blob_sha": "ad3b7979c005e228391b9e13862ce50fdd57c2ff",
+      "bytes": 132511,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/表单构建.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/表单构建.jpg",
+      "blob_sha": "81f03746604f05046da91b3508737bc9a6d508d1",
+      "bytes": 104178,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/角色管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/角色管理.jpg",
+      "blob_sha": "eed776e86707be8f7267e027b5af5fa10950a3d4",
+      "bytes": 86970,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/访问日志.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/访问日志.jpg",
+      "blob_sha": "ef301aad4ab4ae0331f9687140651af45afeb11a",
+      "bytes": 74777,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/退款订单.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/退款订单.jpg",
+      "blob_sha": "2c6c6c9eead03fcd1ca407338f2a45b1c52bcdaa",
+      "bytes": 94456,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/通知公告.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/通知公告.jpg",
+      "blob_sha": "97bb42fe41da44237cc541af4701efbecd23ea97",
+      "bytes": 78637,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/部门管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/部门管理.jpg",
+      "blob_sha": "6eab2330c23e4e9367b956ac0a2eb01707a2aaae",
+      "bytes": 111242,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/配置管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/配置管理.jpg",
+      "blob_sha": "0abaec932e653c3316bd01b10832f02ed79cb653",
+      "bytes": 90883,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/链路追踪.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/链路追踪.jpg",
+      "blob_sha": "12f7aa8efcb23a75153f321c128f4f1274e69579",
+      "bytes": 82434,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/错误日志.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/错误日志.jpg",
+      "blob_sha": "eb615ea3f88a92ea71b1239ff06bdfbbfa7be375",
+      "bytes": 112243,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/错误码管理.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/错误码管理.jpg",
+      "blob_sha": "ea91dde14b3c038d06eadd0c863384187f1ddaca",
+      "bytes": 134270,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/admin/.image/首页.jpg",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "upstream_commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "source_relative_path": ".image/首页.jpg",
+      "blob_sha": "10a7fde7611d7fcaf43bcc4ee79a5f4d12e7cd69",
+      "bytes": 63389,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/common/mall-feature.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/common/mall-feature.png",
+      "blob_sha": "25b8d11caa91e22a72d8825e82ad67dec56b23ef",
+      "bytes": 39215,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/common/mall-preview.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/common/mall-preview.png",
+      "blob_sha": "e164cd2a15c12bdc90b3656d776612cfc9ccc0f8",
+      "bytes": 209292,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/common/project-vs.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/common/project-vs.png",
+      "blob_sha": "561e092f4ad9c4907e7af0769ef8fae54c29c049",
+      "bytes": 142512,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/common/ruoyi-vue-pro-architecture.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/common/ruoyi-vue-pro-architecture.png",
+      "blob_sha": "7bd7d59ab6507684788633037e4874e097da5790",
+      "bytes": 70208,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/common/ruoyi-vue-pro-biz.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/common/ruoyi-vue-pro-biz.png",
+      "blob_sha": "24a385abe2ad0a8e9546ce8f90ec1383089fd867",
+      "bytes": 32992,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/common/yudao-cloud-architecture.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/common/yudao-cloud-architecture.png",
+      "blob_sha": "59416d8068149b31b7ac24bc4833301504fadc82",
+      "bytes": 206171,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/common/yudao-roadmap.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/common/yudao-roadmap.png",
+      "blob_sha": "f4becc98cf0ab865c9a6ba7782ce4c676c5aef8b",
+      "bytes": 61359,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/mall/会员详情.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/mall/会员详情.png",
+      "blob_sha": "108c59b7d824af7f571a510eb601c9b4fefabd97",
+      "bytes": 169044,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/mall/商品详情.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/mall/商品详情.png",
+      "blob_sha": "1236b0b5e53e119d3fc64c411c9284aaec2f5804",
+      "bytes": 172321,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/mall/店铺装修.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/mall/店铺装修.png",
+      "blob_sha": "d583c6b27c46fba3bb8b224ac04ae3df74ebf923",
+      "bytes": 155377,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/mall/营销中心.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/mall/营销中心.png",
+      "blob_sha": "4007a0aa7acf359cf5fde7abc668abc4c0551041",
+      "bytes": 300596,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    },
+    {
+      "import_path": "upstream/miniapp/.image/mall/订单详情.png",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "upstream_commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "source_relative_path": ".image/mall/订单详情.png",
+      "blob_sha": "ede20465ed7f5ab940a8bfe61280bc9920204663",
+      "bytes": 181192,
+      "reason": "Optional upstream promotional/documentation image under .image; not a runtime or build resource"
+    }
+  ]
+}

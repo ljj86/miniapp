@@ -1,0 +1,575 @@
+{
+  "format_version": 1,
+  "date": "2026-10-02",
+  "scanner": "gitleaks 8.30.1",
+  "modified_files": 63,
+  "files": [
+    {
+      "path": "upstream/backend/script/docker/docker.env",
+      "upstream_sha256": "62714a072ea3b714d53e7303f6460bac0f941e7294da7625ad4e8c068452bc2e",
+      "sanitized_sha256": "f7f75dadfbfcf629f61237767e32863e8135cc9aca80c1275e50b34b309fc67b",
+      "reasons": {
+        "environment_credential": 3
+      }
+    },
+    {
+      "path": "upstream/backend/script/idea/http-client.env.json",
+      "upstream_sha256": "9f7295fed877be8b0e9ecc99a87e3912c95bfe0c5fed4d61cc83f2b7cf138e59",
+      "sanitized_sha256": "ddf90aa0de40ba7482f454f309b1639d159d67299d653971ec010cf2645b0794",
+      "reasons": {
+        "example_json_credential": 4
+      }
+    },
+    {
+      "path": "upstream/backend/script/livekit-poc/livekit.yaml",
+      "upstream_sha256": "3204413d4c057205369790dda370464d9ead19470e03d9b2880b9e300b79b690",
+      "sanitized_sha256": "70809c7104f6d0e353d313bb0761504004f62fd15d22081e6e86ef2c79518af9",
+      "reasons": {
+        "configuration_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/sql/dm/ruoyi-vue-pro-dm8.sql",
+      "upstream_sha256": "3f11d77387bef16a9ea298c0eb6972614bf892b396fdfa1aa83f478f16cbb1c0",
+      "sanitized_sha256": "b83c2062512fb35616804d3387365ac74433fdcdf0ec64cf0c8f87b5b9c4e0dd",
+      "reasons": {
+        "scanner_detected_credential": 12,
+        "example_json_credential": 9,
+        "seed_password_hash_disabled": 21
+      }
+    },
+    {
+      "path": "upstream/backend/sql/highgo/ruoyi-vue-pro.sql",
+      "upstream_sha256": "f6d184dcf7316b22cf83afe8402e4fdcced6d108909224beb8dd3506139589bd",
+      "sanitized_sha256": "962d600c64eaf3326073e1137f6d6219550c8a76b6007912dc4bf144e5f21698",
+      "reasons": {
+        "scanner_detected_credential": 12,
+        "example_json_credential": 9,
+        "seed_password_hash_disabled": 21
+      }
+    },
+    {
+      "path": "upstream/backend/sql/kingbase/ruoyi-vue-pro.sql",
+      "upstream_sha256": "c401f5387844729df01bfd19768013e5baf0009bd2416403c2dbe9661a2bae25",
+      "sanitized_sha256": "d5fe9794eebc5eb2071ca9d14951909aaf0f5901f816a44a238d79f7400b8f50",
+      "reasons": {
+        "scanner_detected_credential": 12,
+        "example_json_credential": 9,
+        "seed_password_hash_disabled": 21
+      }
+    },
+    {
+      "path": "upstream/backend/sql/mysql/ruoyi-vue-pro.sql",
+      "upstream_sha256": "b9ece76fe65f4885d892a9948927eec92b3421c9eec007628a994d0701f7aa0b",
+      "sanitized_sha256": "d3e982727e24c4e133c0219a6b53a1295d1385c2105c1e6eda0aac469ab6d60c",
+      "reasons": {
+        "scanner_detected_credential": 12,
+        "seed_password_hash_disabled": 21
+      }
+    },
+    {
+      "path": "upstream/backend/sql/oceanbase/ruoyi-vue-pro.sql",
+      "upstream_sha256": "1feb3acfb724d9794570c2a79b7267823bd63a45f7184ee3d2738c3faafaf178",
+      "sanitized_sha256": "2c3443cde1cb438a4e9a14ffef3b6a1d6b0bf2654f8bf38e15fe3d6a11395aae",
+      "reasons": {
+        "scanner_detected_credential": 12,
+        "seed_password_hash_disabled": 21
+      }
+    },
+    {
+      "path": "upstream/backend/sql/opengauss/ruoyi-vue-pro.sql",
+      "upstream_sha256": "4a7404e797b9859dd5d15d0a6203a051667aad37d2de020e6dc209f090b66cfe",
+      "sanitized_sha256": "a4f95b80274170b701978c93d0a076a0c2970001b60bd714d95ed1df71b3a96d",
+      "reasons": {
+        "scanner_detected_credential": 12,
+        "example_json_credential": 9,
+        "seed_password_hash_disabled": 21
+      }
+    },
+    {
+      "path": "upstream/backend/sql/oracle/ruoyi-vue-pro.sql",
+      "upstream_sha256": "04be601e04ad6efe3a28d551302877d4d01c307095d4fd1e8ff56265683ffd80",
+      "sanitized_sha256": "c0fc0f7739462142767c661ac4b1df24f5ab45715ff2cd91a1e9939b7433e2d1",
+      "reasons": {
+        "scanner_detected_credential": 12,
+        "example_json_credential": 9,
+        "seed_password_hash_disabled": 21
+      }
+    },
+    {
+      "path": "upstream/backend/sql/postgresql/ruoyi-vue-pro.sql",
+      "upstream_sha256": "dabd6daab533ae672848e8fd1aa26dcdb7fbbec0becfc1e99e1c3dbf6c4d5129",
+      "sanitized_sha256": "23d1c47555caac53db4d4cdba3d45011be90dad80faebe94e9b077363b5927c0",
+      "reasons": {
+        "scanner_detected_credential": 12,
+        "example_json_credential": 9,
+        "seed_password_hash_disabled": 21
+      }
+    },
+    {
+      "path": "upstream/backend/sql/sqlserver/ruoyi-vue-pro.sql",
+      "upstream_sha256": "8dcd45263f624b45166734276ac6c19e64d7634bf6836bce59bda851bc1fd241",
+      "sanitized_sha256": "1c4bcac6db85b52fc9fadf8328016709d16783e8e932ca07b9cf4e66a9f37a1a",
+      "reasons": {
+        "scanner_detected_credential": 12,
+        "example_json_credential": 9,
+        "seed_password_hash_disabled": 21
+      }
+    },
+    {
+      "path": "upstream/backend/sql/tools/docker-compose.yaml",
+      "upstream_sha256": "dda30e97f7b6e15fa0da519a456d7b48e9b0670a90914f5fb64724ca420d0582",
+      "sanitized_sha256": "9642cddc8ae8ad53e0536a7e97d64aa069a353a50f2ceb23b7c4fcea99777e58",
+      "reasons": {
+        "configuration_credential": 8
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-framework/yudao-spring-boot-starter-protection/src/test/java/cn/iocoder/yudao/framework/signature/core/ApiSignatureTest.java",
+      "upstream_sha256": "2870684f4ac23c76c85de8ac979caae11b35a5a32a214468eea32de6afc46bcb",
+      "sanitized_sha256": "f795000eaaa76d2699a5edec5bd43058976f24577545113e4381fc478488cc10",
+      "reasons": {
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-framework/yudao-spring-boot-starter-web/src/test/java/cn/iocoder/yudao/framework/encrypt/ApiEncryptTest.java",
+      "upstream_sha256": "b5d34d0d11eb99f7608ba3b96d8a801526fce5cde982b6f6685505702e15390f",
+      "sanitized_sha256": "6061d39c9fab26ff3fe7c8080e521cef48280f8e27e4e9d9bd4972025fc78e39",
+      "reasons": {
+        "scanner_detected_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-ai/src/test/java/cn/iocoder/yudao/module/ai/framework/ai/core/model/chat/GeminiChatModelTests.java",
+      "upstream_sha256": "247dd5091b9ee30008c900252467b656b53f4bc92f1254b73fb5a78d102fd642",
+      "sanitized_sha256": "97b8075e4afedd54a30b71de398629ef8ab58185c223b81e0446e395361c06de",
+      "reasons": {
+        "scanner_detected_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-ai/src/test/java/cn/iocoder/yudao/module/ai/framework/ai/core/model/ppt/xunfei/XunFeiPptApiTests.java",
+      "upstream_sha256": "6950aeb0457b11e2a652c16e0c09c5401af6821c8028b9a9b8acb9df0d65ac3c",
+      "sanitized_sha256": "71ac0ca39fdba9122c3d4c44544c08ebaca694f39ff72a92b265c1e04489b4c1",
+      "reasons": {
+        "scanner_detected_credential": 1,
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/controller/admin/file/FileConfigController.http",
+      "upstream_sha256": "07c0f54712044c9aa01d131bccde2addf4b472a3f6d6d2ee675d9ecc16c75113",
+      "sanitized_sha256": "710a8503bf22a8c19e04d2ada19840394e07bcc4a691b8ba57e59e49555d2fb8",
+      "reasons": {
+        "scanner_detected_credential": 4,
+        "example_json_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-infra/src/main/java/cn/iocoder/yudao/module/infra/controller/admin/file/vo/file/FilePresignedUrlRespVO.java",
+      "upstream_sha256": "2aa0e8d0729fd1c268ea8fe3e9a463fa3ef4a9d8757e9b50e1ed098b1002a19a",
+      "sanitized_sha256": "2e3b27c331274173fc099c63e4d0cd9e9a78ba59556b03c2132bd7bace241183",
+      "reasons": {
+        "scanner_detected_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-infra/src/test/java/cn/iocoder/yudao/module/infra/framework/file/core/s3/S3FileClientTest.java",
+      "upstream_sha256": "4cc8d1bdf31296600194a252f5dac0b0739fd320a8bdc543e9a486aff3f7138b",
+      "sanitized_sha256": "10b1ee5ad506394d91adf943c3f7a3d874cf13bd265a3ca70d2b6b1980df29d7",
+      "reasons": {
+        "scanner_detected_credential": 4
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-biz/src/main/java/cn/iocoder/yudao/module/iot/controller/admin/thingmodel/IotThingModelController.http",
+      "upstream_sha256": "77506e192dab405e37edbc3ba487f9e11194bbfdc654e69bdea42318ea364726",
+      "sanitized_sha256": "d0a8677c3994ba69c768bde3c4d486a6a28f1e977e6e03d437e3fba1991130bd",
+      "reasons": {
+        "scanner_detected_credential": 4
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/main/resources/application.yaml",
+      "upstream_sha256": "d9130ee70bfed2bfedc4f8f34cecd0db092fb3bb31ebc1bf74d7e7e52bfcdb6b",
+      "sanitized_sha256": "f60910cb419674b7bc0dabf4848fca97c9d68c0b84de6b97ee36700ff0a3e18c",
+      "reasons": {
+        "configuration_credential": 4
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/coap/IotDirectDeviceCoapProtocolIntegrationTest.java",
+      "upstream_sha256": "c5fbe6e0bde3052e6ae2da44196e97962fb715e1abb08cd1fe0723fbda798932",
+      "sanitized_sha256": "3bd191bedf9fcd5845955d072309f5a2b90aeb22562a641a09cad9d4c7d20fe8",
+      "reasons": {
+        "scanner_detected_credential": 3,
+        "test_credential": 3
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/coap/IotGatewayDeviceCoapProtocolIntegrationTest.java",
+      "upstream_sha256": "53343a954868c67696919a18df9787684ad7405f540dcd8a516ff118daf36502",
+      "sanitized_sha256": "2d4dd0b85050df6ab38b0b2913cb1f433cb47d0a8861f981c9ced04d16404450",
+      "reasons": {
+        "scanner_detected_credential": 5,
+        "test_credential": 3
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/coap/IotGatewaySubDeviceCoapProtocolIntegrationTest.java",
+      "upstream_sha256": "d06b2ad5ae5725db4b4bee657c832708ff438dd7ce23319d1d6d4a5bacf97382",
+      "sanitized_sha256": "baa625a56d0771f9cf4df95c1a7768218f6dcaa9495d3f0a1bb9ebe97cb02ec0",
+      "reasons": {
+        "scanner_detected_credential": 3,
+        "test_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/http/IotDirectDeviceHttpProtocolIntegrationTest.java",
+      "upstream_sha256": "68b0e63dd059d8c6a02b67fb74a32c2b81f8da9675bde447940e4222258a4bfd",
+      "sanitized_sha256": "53a06b532e52427c7eec8934f452692084947c308b5375e3f14b11156bd47157",
+      "reasons": {
+        "scanner_detected_credential": 3,
+        "test_credential": 3
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/http/IotGatewayDeviceHttpProtocolIntegrationTest.java",
+      "upstream_sha256": "89912a5e94ffb02708b73df6e869e406e58f038b42f86a34dcaf38237f2e3484",
+      "sanitized_sha256": "fe346a262376399f94134bd9becd38eb671f7cda68c4ea13c0f38b0b32a39250",
+      "reasons": {
+        "scanner_detected_credential": 5,
+        "test_credential": 3
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/http/IotGatewaySubDeviceHttpProtocolIntegrationTest.java",
+      "upstream_sha256": "75d5f50f9f265877a90161a075e217b5033ccfe9322eed415f19169850205e01",
+      "sanitized_sha256": "532868f0fee4e2f340a496ce8b9beaabec3977c43037204781bcd09cfe36ef02",
+      "reasons": {
+        "scanner_detected_credential": 3,
+        "test_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/modbus/tcpserver/IotModbusTcpServerRtuIntegrationTest.java",
+      "upstream_sha256": "ef7c2475b98f562aa7f56ae98bdf4d374408b51aa78e87cda830bfbb320fbfae",
+      "sanitized_sha256": "01535d742f075723a9d7d0d93655462d31d2f10dc82c52c909bc5c54deb2faf4",
+      "reasons": {
+        "scanner_detected_credential": 1,
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/modbus/tcpserver/IotModbusTcpServerTcpIntegrationTest.java",
+      "upstream_sha256": "84b24710ceeafa1980810be44af23076ecda1c88a02e9d3939c11f417a6e4e23",
+      "sanitized_sha256": "1a17933a1dda1da7f1ca01f8053a805be0053060dc3fb6dce7a967cb14940a46",
+      "reasons": {
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/mqtt/IotDirectDeviceMqttProtocolIntegrationTest.java",
+      "upstream_sha256": "b5534b810abb92ca7d757f3a805ee478289978a017dd32edfb67680267a4be76",
+      "sanitized_sha256": "bf4df1e50e1e92483c4b8cea68d5681f0930e324bb8d92add4c7444fb24ca3c3",
+      "reasons": {
+        "scanner_detected_credential": 2,
+        "test_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/mqtt/IotGatewayDeviceMqttProtocolIntegrationTest.java",
+      "upstream_sha256": "65dd93c24cf6ee8ab8630e60ddad7576703c9ee1de7866d3105400723f7ad94b",
+      "sanitized_sha256": "c15a8382279d37c682a4df7a6d12f21228192e843cfd742fb7911f5d17ae2637",
+      "reasons": {
+        "scanner_detected_credential": 4,
+        "test_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/mqtt/IotGatewaySubDeviceMqttProtocolIntegrationTest.java",
+      "upstream_sha256": "bfd7e42538b3e80bf11abc64efc694c474b764352f6987aa9d45d604610dc52a",
+      "sanitized_sha256": "5fa30b98a742e9db75cca123296c96b4e096d9939f9efb3fda636a88a6ca380d",
+      "reasons": {
+        "scanner_detected_credential": 2,
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/tcp/IotDirectDeviceTcpProtocolIntegrationTest.java",
+      "upstream_sha256": "7b52c6147fceed376043f0ad679d5f4c6f1f4648afa88c1a27b0f9cb26fcf19e",
+      "sanitized_sha256": "bfa10510548cd3187e09a786de5e577bd542faa206e612c6b6128cbf71ae5486",
+      "reasons": {
+        "scanner_detected_credential": 2,
+        "test_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/tcp/IotGatewayDeviceTcpProtocolIntegrationTest.java",
+      "upstream_sha256": "bdd58301ba12109bfe00f4152a5bcf48d186cd837443d4daae14e2edc195c20d",
+      "sanitized_sha256": "1bfb2c1ee0cff48edb4513e920299cf83237588d697aaa49e8cd080ff8212e99",
+      "reasons": {
+        "scanner_detected_credential": 4,
+        "test_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/tcp/IotGatewaySubDeviceTcpProtocolIntegrationTest.java",
+      "upstream_sha256": "8681f3cc66dcadc50fab390a10cdac9ab9cf36436681751f82087a28ae62aad1",
+      "sanitized_sha256": "a668a2027b8470afd82aecbfb48d2726d643784837b57b8857b189fca97ecac4",
+      "reasons": {
+        "scanner_detected_credential": 2,
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/udp/IotDirectDeviceUdpProtocolIntegrationTest.java",
+      "upstream_sha256": "03065eb1db6da7daed572d559fcb22722b5ebf6448647f4ea8d0089a9384d95c",
+      "sanitized_sha256": "29276c76947bdd8f817ae9c68532163c85e712c6983d00aa370d7e1eec04b9b9",
+      "reasons": {
+        "scanner_detected_credential": 3,
+        "test_credential": 3
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/udp/IotGatewayDeviceUdpProtocolIntegrationTest.java",
+      "upstream_sha256": "2757e1a6db303a21b09086cfc15a41145901db77f8396b264969f71876b07fe1",
+      "sanitized_sha256": "5815bf313dfbed51ee81dd13d025294bb4924ed7b7a46ebfd692f95be83ccc01",
+      "reasons": {
+        "scanner_detected_credential": 5,
+        "test_credential": 3
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/udp/IotGatewaySubDeviceUdpProtocolIntegrationTest.java",
+      "upstream_sha256": "1870ba9effc10ce50212952d2d25192a9c2c5c546584ed127a1e269e7755505f",
+      "sanitized_sha256": "737d4215c4b44f40f1e5aed8426b27a2db3905cb32ac35d3e9835a335a95f335",
+      "reasons": {
+        "scanner_detected_credential": 3,
+        "test_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/websocket/IotDirectDeviceWebSocketProtocolIntegrationTest.java",
+      "upstream_sha256": "3fa4aebd5d591cc3948ab87ead7dec388ddb35f9adeef3ec65bf206c1f9c2a0d",
+      "sanitized_sha256": "0483abcc706709b3c7523d91dc850d694a2e0cb6627dc2a56d42aff7f4337834",
+      "reasons": {
+        "scanner_detected_credential": 2,
+        "test_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/websocket/IotGatewayDeviceWebSocketProtocolIntegrationTest.java",
+      "upstream_sha256": "ca4f356eb6cccf0b7a09fdf862eee276c0a912ecaddf391c2733f8dc5a4a55b5",
+      "sanitized_sha256": "7e020ea5c9fa838c642105bd1e6f548125ccdd0e2738256377597268e94250c5",
+      "reasons": {
+        "scanner_detected_credential": 4,
+        "test_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-iot/yudao-module-iot-gateway/src/test/java/cn/iocoder/yudao/module/iot/gateway/protocol/websocket/IotGatewaySubDeviceWebSocketProtocolIntegrationTest.java",
+      "upstream_sha256": "c3741aa7f616de0872c3882b61077a84e1c91e3608507049bc6ed4cb88bccfb7",
+      "sanitized_sha256": "2657518e038328487210f75dedd3b2453d20c903913109854cc2bbe14bc0015b",
+      "reasons": {
+        "scanner_detected_credential": 2,
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-mall/yudao-module-promotion/src/main/java/cn/iocoder/yudao/module/promotion/controller/app/bargain/AppBargainHelpController.http",
+      "upstream_sha256": "4fb65439a554cf63156681500219835871ddae50acad1663df5fdb0abc643537",
+      "sanitized_sha256": "9930c1629388f20cd25e1e9866d1b55433feea886876bb448037c6e23e76752c",
+      "reasons": {
+        "http_authorization_example": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-mall/yudao-module-trade/src/test/java/cn/iocoder/yudao/module/trade/framework/delivery/core/client/impl/KdNiaoExpressClientIntegrationTest.java",
+      "upstream_sha256": "9dffafb80482b83f217383e1ce7d0dd244befef5de6a233fe2a08359b6194952",
+      "sanitized_sha256": "ae4a78cbe3722f5af24a3306943ac32610f2f4804ecb9106f62c8c829320c58a",
+      "reasons": {
+        "scanner_detected_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-mall/yudao-module-trade/src/test/resources/application-unit-test.yaml",
+      "upstream_sha256": "26c7f1ccef25809efb880e1dd386b5ba7e261b98ad2fbc413abba485b8f52464",
+      "sanitized_sha256": "a1822e0e860352d0de1527cca8ec9095fc0d156aaad1d7f8a77c0541fa8532fe",
+      "reasons": {
+        "configuration_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-member/src/main/java/cn/iocoder/yudao/module/member/controller/app/auth/AppAuthController.http",
+      "upstream_sha256": "a687d83eda03621a8b3347d1f8d6ff3448759544fe347c757cb5cf1ab1c37b67",
+      "sanitized_sha256": "c1986eaf307221e52f4379c55f1aa5e7c67fd7471096452030e5dfe14affae30",
+      "reasons": {
+        "scanner_detected_credential": 1,
+        "example_json_credential": 1,
+        "http_authorization_example": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-member/src/main/java/cn/iocoder/yudao/module/member/controller/app/user/AppMemberUserController.http",
+      "upstream_sha256": "17de62054295cc8a5971ae11757aa1b4d9a9cce5caebc71bb9bfe3607e4bee57",
+      "sanitized_sha256": "647759b6c1c3ade86b49c1083b067cfbea0fd3b2594725543f5eeb16e4ddfcae",
+      "reasons": {
+        "http_authorization_example": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-oa/src/test/java/cn/iocoder/yudao/module/oa/service/OaBpmModelInitTest.java",
+      "upstream_sha256": "459c2932dd4688be2adcbe6feff5715e6f739067ea7cfe4dc48de6ac6f1e1287",
+      "sanitized_sha256": "cca0e02a548d5c4d4c2252efe5f0f63f1bbe80982b77e0a245afb084c7a2dcab",
+      "reasons": {
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-pms/src/test/java/cn/iocoder/yudao/module/pms/controller/admin/kb/interaction/PmsKnowledgeDocumentShareControllerTest.java",
+      "upstream_sha256": "ea2df84ddd9e80bb9585d59ae3589a433f5fb1311e31b689eaa56274efe78031",
+      "sanitized_sha256": "82dd5b15af883b20012a6439485f45c329b2bd7e8c6ebaf4982edb82aaf2e62f",
+      "reasons": {
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/auth/AuthController.http",
+      "upstream_sha256": "2fab82f9ec6b8559e78c993d598928d3e49397b98b8eb7f2939b2b83b8dec557",
+      "sanitized_sha256": "c3f434cd936a5da8fd55992bea47c3a6d88a36b0f4e8c0024c1028a162844e1f",
+      "reasons": {
+        "example_json_credential": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/oauth2/OAuth2ClientController.http",
+      "upstream_sha256": "dc8680e471036467e4cc995cc2f7ba36bb19d47ad97b1c565c774e27a8ef5520",
+      "sanitized_sha256": "cca1bb88017b4f71bfa977e78f81a4be856e9a5a5c68cb761a4221e3935cd0aa",
+      "reasons": {
+        "example_json_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/oauth2/OAuth2OpenController.http",
+      "upstream_sha256": "f460f34cd2e39c24c57833ffcebd7f7dd75a289a9d96c26ddedec68164da53c1",
+      "sanitized_sha256": "c0b827dbb642b05188301e108bceae042accd09ac6e548c55c423afa43a32ecb",
+      "reasons": {
+        "scanner_detected_credential": 3,
+        "http_authorization_example": 6,
+        "http_query_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/oauth2/OAuth2UserController.http",
+      "upstream_sha256": "ef4e5275057eac4b4de138e0343f0708a109d3ae676db2d4caae13096173e704",
+      "sanitized_sha256": "e5b55663e3e373378b038cc5a487bdf78f6db2a9b4c12824b0f6516a6b493dfd",
+      "reasons": {
+        "http_authorization_example": 2
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-system/src/main/java/cn/iocoder/yudao/module/system/controller/admin/tenant/TenantController.http",
+      "upstream_sha256": "ac692ea978f5b38f5b8d5fe9ad23eba90de788a7c2ec70042e9f37d17a50a07e",
+      "sanitized_sha256": "f3ea704cc0cf389536812366226726335a9f949e6779a007886067e91545c3a8",
+      "reasons": {
+        "example_json_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-system/src/test/java/cn/iocoder/yudao/module/system/framework/sms/core/client/impl/SmsClientTests.java",
+      "upstream_sha256": "db1924b68ed9448b3a9611d5590bc3f34979c61cd5d05309d77161a436c2983c",
+      "sanitized_sha256": "e2f06b32669be5dc878d93734cc51242c43331a128d7f519cb007dd4020bbf90",
+      "reasons": {
+        "scanner_detected_credential": 3
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-module-system/src/test/java/cn/iocoder/yudao/module/system/service/user/AdminUserServiceImplTest.java",
+      "upstream_sha256": "2bf83bb4d4ef78e507eab379a24bbb764ff1816d297038571ae16a8123037af4",
+      "sanitized_sha256": "248f37217b6f24dca5f2fe253505f404caa110d23f8d4bb0f0dcc97771f13194",
+      "reasons": {
+        "test_credential": 1
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/application-dev.yaml",
+      "upstream_sha256": "a85e42e6f8f4bfde089dfcff5191eda026688a863cd007829bc186589c133d7d",
+      "sanitized_sha256": "5c3b0f13463f5464d9d6e6a91d35101bcb618bb25d4579afa9ee1e050c20e8ac",
+      "reasons": {
+        "scanner_detected_credential": 5,
+        "configuration_credential": 11
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/application-local.yaml",
+      "upstream_sha256": "a71e86c932c3aef00400a5125cfcdd56d287cb8959d5db4382b275f371cd989b",
+      "sanitized_sha256": "0258ba61181bdf2bb9be1b8cebaca33200ed30dc60b549afa2fd7a7174d2b6cb",
+      "reasons": {
+        "scanner_detected_credential": 8,
+        "configuration_credential": 21
+      }
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/application.yaml",
+      "upstream_sha256": "ba506b9e7f562c16668e4530cd1506b3e348990290356844580142c0bd92b491",
+      "sanitized_sha256": "4b4cdab3a7c6f9b6b36931ec9121ef10340a7478971998915fb68d124e0d3ca3",
+      "reasons": {
+        "scanner_detected_credential": 4,
+        "configuration_credential": 6
+      }
+    },
+    {
+      "path": "upstream/admin/.env",
+      "upstream_sha256": "1345965a8aeed51f526848483de5ca5366aab8675f9f141e1e60508ef08c191b",
+      "sanitized_sha256": "8287d1a4b3a85c31c975b632f8c006291d8f3cd841fca1e17992a32c9e51ab55",
+      "reasons": {
+        "scanner_detected_credential": 2,
+        "environment_credential": 6
+      }
+    },
+    {
+      "path": "upstream/admin/src/utils/jsencrypt.ts",
+      "upstream_sha256": "3eeaf95baa1e659304b4e6c648f64ad9a58a51692c5eccee6e0eaa6b456b97b5",
+      "sanitized_sha256": "961393fa44533c148ee6cc2f80ac8748207e30de62b889736aaa445531dc9c27",
+      "reasons": {
+        "scanner_detected_credential": 1,
+        "rsa_example_key_removed": 2
+      }
+    },
+    {
+      "path": "upstream/admin/src/views/mp/components/wx-location/main.vue",
+      "upstream_sha256": "71cfde562b2015f9152b3ed737e3fba2289619dd212c22a4db8549a4e1fde3c6",
+      "sanitized_sha256": "d85cd1399d8e0449cbc07c21ae49597071d4dc1a7ddd5dfe53818df6f8aca44f",
+      "reasons": {
+        "scanner_detected_credential": 1
+      }
+    },
+    {
+      "path": "upstream/admin/src/views/Login/SocialLogin.vue",
+      "upstream_sha256": "0a47df07a05a9fc909ebbdd4329723498993d8637d89f33ed4bbd1e3725e4c29",
+      "sanitized_sha256": "8bf1e50e561d19dc8007866643afa19ed569c1a35171cc45f7a7a9462210458a",
+      "reasons": {
+        "demo_login_password_removed": 1
+      }
+    }
+  ],
+  "reviewed_false_positives": [
+    {
+      "path": "upstream/admin/src/views/ai/utils/constants.ts",
+      "line": 127,
+      "reason": "Stable Diffusion sampler identifier, not a credential"
+    },
+    {
+      "path": "upstream/admin/src/views/ai/utils/constants.ts",
+      "line": 135,
+      "reason": "Stable Diffusion sampler identifier, not a credential"
+    }
+  ],
+  "notes": [
+    "No original credential values are included in this report.",
+    "Upstream example passwords, service tokens, RSA keys and seed password hashes are disabled. Configure isolated development credentials before use.",
+    "This is a fresh sanitation pass because the previous report was not present in recovered artifacts."
+  ]
+}
