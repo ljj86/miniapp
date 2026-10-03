@@ -1,0 +1,6 @@
+{
+  "original_sha256": "e8ceb15ebc22c868093e0599022a1e7ccdb400ae66a9105e1ba4fb0893cbc3ef",
+  "repaired_sha256": "b2d1a6e1a77110ea3c7b56faf0f2d26066d6c9d71b8048f01b1564355bdf2f34",
+  "scope": "Application transaction aggregate guard; does not restrict direct privileged SQL; real MySQL not rerun on Oct3",
+  "reapplied_prior_reported_fix": true
+}

@@ -1,0 +1,228 @@
+{
+  "scope": "文档和契约静态验证、CHECK表达式和签名算法自测；不等于业务验收。",
+  "counts": {
+    "operations": 76,
+    "schemas": 199,
+    "tables": 38,
+    "requirements": 42,
+    "product_checklist": 150,
+    "state_transitions": 36
+  },
+  "checks": [
+    {
+      "name": "YAML无重复键",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "路径/引用/幂等/身份/状态/DDL交叉静态检查",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "唯一来源生成物无漂移",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "DDL不得残留字典PK缩写",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "JSON Schema 2020-12组件语法",
+      "status": "PASS",
+      "detail": "199个组件；[]"
+    },
+    {
+      "name": "完整示例实际Schema验证",
+      "status": "PASS",
+      "detail": "9个组件样例；[]"
+    },
+    {
+      "name": "UserUid正负例",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "MerchantUid正负例",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Id正负例",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "BIGINT值域超界第二层示例",
+      "status": "PASS",
+      "detail": "正则通过不等于数据库值域通过"
+    },
+    {
+      "name": "负例能拦截：UID量词破坏",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "负例能拦截：未定义引用",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "负例能拦截：路径空格",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "负例能拦截：错拼状态",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "负例能拦截：复核比较反向",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "负例能拦截：枚举漂移",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "CHECK真值 maker=10/checker=20/APPROVED",
+      "status": "PASS",
+      "detail": "SQLite只验证该布尔表达式，非MySQL迁移验收"
+    },
+    {
+      "name": "CHECK真值 maker=20/checker=10/APPROVED",
+      "status": "PASS",
+      "detail": "SQLite只验证该布尔表达式，非MySQL迁移验收"
+    },
+    {
+      "name": "CHECK真值 maker=10/checker=10/APPROVED",
+      "status": "PASS",
+      "detail": "SQLite只验证该布尔表达式，非MySQL迁移验收"
+    },
+    {
+      "name": "CHECK真值 maker=10/checker=None/APPROVED",
+      "status": "PASS",
+      "detail": "SQLite只验证该布尔表达式，非MySQL迁移验收"
+    },
+    {
+      "name": "CHECK真值 maker=10/checker=None/DRAFT",
+      "status": "PASS",
+      "detail": "SQLite只验证该布尔表达式，非MySQL迁移验收"
+    },
+    {
+      "name": "150项唯一检查和42项需求",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "无伪造验收通过",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "检查需求引用全部存在",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "追溯覆盖与检查编号",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "0.2a/0.2b独立计数",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "36状态转换编号连续",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "DEC未伪造审批",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "DEC截止/未决动作/默认召集人齐全",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "PR未伪造申请通过",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "决策与阶段依赖无环",
+      "status": "PASS",
+      "detail": "仅验证计划拓扑，不把待审批节点标通过"
+    },
+    {
+      "name": "Mock分支不依赖0.2b",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "完整1.0必须真机与最终授权",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "0.4/0.5/0.6决策硬入口",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "签名使用LF字节",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "HMAC正例",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "HMAC拒绝改正文",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "HMAC拒绝过期",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Python与Node签名字节一致",
+      "status": "PASS",
+      "detail": "PASS\n"
+    },
+    {
+      "name": "要求外部完整OpenAPI校验器",
+      "status": "PASS",
+      "detail": "openapi-spec-validator full specification validation"
+    }
+  ],
+  "summary": {
+    "passed": 40,
+    "failed": 0
+  },
+  "external_openapi_validator": {
+    "status": "PASS",
+    "reason": "openapi-spec-validator full specification validation"
+  },
+  "not_executed": [
+    "MySQL 8.4 DDL执行及现有芋道迁移",
+    "实际服务76接口联调和150项产品验收",
+    "k6在线性能测试、真机绑定、权限渗透、灾备恢复",
+    "业务日并发数据库事务测试"
+  ],
+  "all_implemented_checks_passed": true
+}

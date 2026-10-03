@@ -1,0 +1,9 @@
+{
+  "repaired_at_utc": "2026-10-03T04:47:58.828187+00:00",
+  "file": "runtime/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/IndependentSecurityTest.java",
+  "original_sha256": "a7dd3959e6a2291de2ff0745abc345b062bd0526861a476b536a2284ef8a5782",
+  "repaired_sha256": "6534c4c62670e05a917fe15d3ff56f1200ae8dc6d885f6f596c9b732be54b2a2",
+  "original_preserved_at": "recovery-oct3/checkpoint/overlay/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/IndependentSecurityTest.java",
+  "reason": "After advancing fixture clock by 900 seconds, authenticate a fresh synthetic user session for the post-reservation-expiry balance check. Product access-token lifetime and reservation expiry are unchanged.",
+  "production_source_changes": false
+}

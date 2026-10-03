@@ -1,0 +1,24 @@
+--- saved-checkpoint/JdbcSimStore.java
++++ repaired-runtime/JdbcSimStore.java
+@@ -29,8 +29,20 @@
+     public <T> T transaction(Function<SimState,T> work){
+         return tx.execute(status->{
+             String raw=jdbc.queryForObject("SELECT payload FROM sim_v1_partition WHERE id=1 FOR UPDATE",String.class);SimState state=read(raw);T result=work.apply(state);state.meta.remove("requestId");String next=write(state);
+-            if(!next.equals(raw)){materialize(state);jdbc.update("UPDATE sim_v1_partition SET payload=?,revision=revision+1,updated_at=UTC_TIMESTAMP(3) WHERE id=1",next);}return result;
++            if(!next.equals(raw)){assertAppendOnly(read(raw),state);materialize(state);jdbc.update("UPDATE sim_v1_partition SET payload=?,revision=revision+1,updated_at=UTC_TIMESTAMP(3) WHERE id=1",next);}return result;
+         });
++    }
++    /** Existing accounting and review evidence may only be extended, never rewritten. */
++    static void assertAppendOnly(SimState before, SimState after) {
++        for (String kind : Arrays.asList("journals", "lines", "audit", "reportSnapshots", "identityChanges")) {
++            Map<String, Map<String,Object>> previous = before.records.get(kind);
++            if (previous == null || previous.isEmpty()) continue;
++            Map<String, Map<String,Object>> current = after.records.get(kind);
++            for (Map.Entry<String, Map<String,Object>> row : previous.entrySet()) {
++                if (current == null || !Objects.equals(row.getValue(), current.get(row.getKey())))
++                    throw new IllegalStateException("Append-only evidence mutation rejected: " + kind);
++            }
++        }
+     }
+     private void materialize(SimState state){
+         SimContext c=new SimContext(state,null,Instant.now());

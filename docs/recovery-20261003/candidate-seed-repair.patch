@@ -1,0 +1,11 @@
+--- saved-checkpoint/SimulationSeed.java
++++ repaired-runtime/SimulationSeed.java
+@@ -17,7 +17,7 @@
+         user(c,"602","SIM-SECURITY-002","模拟安全管理员二");role(c,"602","SECURITY");
+         user(c,"701","SIM-CONTROLLER-001","模拟结果控制员");role(c,"701","SIM_CONTROLLER");
+         c.create("users",map("id","900","uid","y00000900","displayName","Mock回调服务身份","phoneLookup",c.hash(c.token()),"phoneMasked","SERVICE","status","ACTIVE","fixture",false));
+-        Map<String,Object> rule=c.create("rules",map("code","RV-SIM-TEST-001","status","APPROVED","quotaMinor",1000000L,"transactionMaxMinor",200000L,"termDays",30L,"credentialTtlSeconds",300L,"reservationTtlSeconds",900L,"requesterId","401","checkerId","402","fixtureOnly",true,"formalApproval",false));
++        Map<String,Object> rule=c.create("rules",map("code","RV-SIM-TEST-001","status","APPROVED","quotaMinor",10000L,"transactionMaxMinor",2000L,"termDays",30L,"credentialTtlSeconds",300L,"reservationTtlSeconds",900L,"requesterId","401","checkerId","402","fixtureOnly",true,"formalApproval",false));
+         state.meta.put("ruleId",s(rule,"id"));state.meta.put("ruleCode",s(rule,"code"));return state;
+     }
+     private static void user(SimContext c,String id,String phone,String label){c.create("users",map("id",id,"uid",String.format("y%08d",Long.parseLong(id)),"phoneLookup",c.hash(phone),"phoneMasked","SIM-***"+phone.substring(phone.length()-3),"fixturePhone",phone,"displayName",label,"status","ACTIVE","fixture",true,"upstreamUserId",null));}

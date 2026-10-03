@@ -1,0 +1,367 @@
+{
+  "verification_utc": "2026-10-03T04:54:42.396081+00:00",
+  "status": "RECOVERED_CHECKPOINT_WITH_EXPLICIT_RECOVERY_REPAIRS_VERIFIED_FOCUSED_ONLY",
+  "checkpoint_created_at_utc": "2026-10-02T14:33:11Z",
+  "checkpoint_original_stage": "IN_PROGRESS",
+  "checkpoint_integrity": {
+    "expected_files": 55,
+    "matching_sha256_and_size": 55,
+    "originals_preserved": true,
+    "initial_restored_payload_files": 54,
+    "initial_restored_payload_matching": 54
+  },
+  "runtime_root": "/workspace/scratch/c1b25297bb77/miniapp-baseline/runtime",
+  "baseline_upstream": [
+    {
+      "directory": "upstream/backend",
+      "repository": "https://github.com/YunaiV/ruoyi-vue-pro",
+      "commit": "1697112f1164b206aeb031493980f5cb3a6e2cd5",
+      "license": "MIT",
+      "license_file": "upstream/backend/LICENSE",
+      "license_sha256": "772daf1f82a50025a74e4066050490d875feba62a49cf0ecefa1b4cc824e9a07"
+    },
+    {
+      "directory": "upstream/admin",
+      "repository": "https://github.com/yudaocode/yudao-ui-admin-vue3",
+      "commit": "0af03a93b6b6300f878e28add69b1c7a9f09ec34",
+      "license": "MIT",
+      "license_file": "upstream/admin/LICENSE",
+      "license_sha256": "3f101f5e0207524af727e58ca8abf241b754665ee1eb90b45388ff0263d3640d"
+    },
+    {
+      "directory": "upstream/miniapp",
+      "repository": "https://github.com/yudaocode/yudao-mall-uniapp",
+      "commit": "4924ad51250b66c27e87bf8dece036391cca7fcd",
+      "license": "MIT",
+      "license_file": "upstream/miniapp/LICENSE",
+      "license_sha256": "94ba843e4c0a72090f6dd0ca885c91dd777ae135003141c94f0145f644b79929"
+    }
+  ],
+  "fresh_results": {
+    "original_focused_junit": {
+      "suites": [
+        {
+          "name": "cn.iocoder.yudao.server.simulation.CommerceFinanceJUnitTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.EngineContractTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.IndependentSecurityTest",
+          "tests": 12,
+          "failures": 0,
+          "errors": 1,
+          "skipped": 0
+        }
+      ],
+      "tests": 21,
+      "failures": 0,
+      "errors": 1,
+      "skipped": 0
+    },
+    "original_guard_junit": {
+      "suites": [
+        {
+          "name": "cn.iocoder.yudao.server.foundation.SimulationOnlyGuardTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ],
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "repaired_combined_junit": {
+      "suites": [
+        {
+          "name": "cn.iocoder.yudao.server.foundation.SimulationOnlyGuardTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.CommerceFinanceJUnitTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.EngineContractTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.IndependentSecurityTest",
+          "tests": 12,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ],
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "milestone": "Intermediate fixture-only repair, before new seed/JDBC recovery repairs"
+    },
+    "affected_test_after_repair": {
+      "tests": 1,
+      "passed": 1
+    },
+    "commerce_finance_scenarios": {
+      "scenarios": 13,
+      "assertions": 242,
+      "status": "PASS",
+      "counting_note": "Invoked by one JUnit test; not 242 additional JUnit tests"
+    },
+    "reconciliation_scenarios": {
+      "assertions": 65,
+      "status": "PASS",
+      "counting_note": "Separate executable assertions; not JUnit cases"
+    },
+    "vue_api_tests": {
+      "tests": 8,
+      "passed": 8,
+      "failed": 0
+    },
+    "vue_production_build": {
+      "status": "PASS",
+      "modules_transformed": 15,
+      "artifact_dir": "miniapp-baseline/runtime/foundation-ui/dist"
+    },
+    "final_candidate_junit": {
+      "suites": [
+        {
+          "name": "cn.iocoder.yudao.server.foundation.SimulationOnlyGuardTest",
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.AppendOnlyRecoveryTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.CommerceFinanceJUnitTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.EngineContractTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.IndependentSecurityTest",
+          "tests": 12,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        {
+          "name": "cn.iocoder.yudao.server.simulation.SimulationSeedRecoveryTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ],
+      "tests": 29,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "append_only_guard_test_scope": "Three direct in-process guard cases; application transaction wiring inspected. No actual MySQL rollback, locking, database durability, or direct privileged SQL restriction was tested."
+  },
+  "fixture_repair": {
+    "repaired_at_utc": "2026-10-03T04:47:58.828187+00:00",
+    "file": "runtime/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/IndependentSecurityTest.java",
+    "original_sha256": "a7dd3959e6a2291de2ff0745abc345b062bd0526861a476b536a2284ef8a5782",
+    "repaired_sha256": "6534c4c62670e05a917fe15d3ff56f1200ae8dc6d885f6f596c9b732be54b2a2",
+    "original_preserved_at": "recovery-oct3/checkpoint/overlay/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/IndependentSecurityTest.java",
+    "reason": "After advancing fixture clock by 900 seconds, authenticate a fresh synthetic user session for the post-reservation-expiry balance check. Product access-token lifetime and reservation expiry are unchanged.",
+    "production_source_changes": false
+  },
+  "tools": {
+    "java": "OpenJDK 21.0.12.1",
+    "maven": "3.9.11",
+    "node": "24.19.0",
+    "pnpm": "11.19.0",
+    "vue": "3.5.34",
+    "vite": "8.1.4",
+    "maven_heap_mib": 512,
+    "surefire_fork_heap_mib": 384,
+    "node_heap_mib": 384,
+    "downloads": "Official Maven Central and npm registry; Maven archive SHA-256 matched saved pin; pnpm used frozen lockfile"
+  },
+  "runner_adaptations": [
+    "Separate pom-with-guard.xml adds spring-test 5.3.31 and includes the recovered guard class/test; saved pom.xml is unchanged",
+    "New recovery-mvn.sh uses current system Java and workspace-local Maven/cache instead of the absent previous cloud tools paths",
+    "New recovery-test-reconciliation.py uses restored verification/tests layout and invokes the existing jdk.compiler module; source 8 / target 8 matches Maven, but Java 8 runtime/API compatibility is not certified",
+    "PNPM_HOME and XDG cache/data paths point to writable runtime/tools directories"
+  ],
+  "known_gaps": [
+    {
+      "area": "Later code",
+      "finding": "NotificationDelivery and SimulationExtensions classes/tests are absent in both saved checkpoint and restored backend",
+      "files_checked": [
+        {
+          "filename": "NotificationDelivery.java",
+          "present_in_saved_checkpoint": false,
+          "present_in_restored_backend": false
+        },
+        {
+          "filename": "NotificationDeliveryTest.java",
+          "present_in_saved_checkpoint": false,
+          "present_in_restored_backend": false
+        },
+        {
+          "filename": "SimulationExtensions.java",
+          "present_in_saved_checkpoint": false,
+          "present_in_restored_backend": false
+        },
+        {
+          "filename": "SimulationExtensionsTest.java",
+          "present_in_saved_checkpoint": false,
+          "present_in_restored_backend": false
+        }
+      ]
+    },
+    {
+      "area": "Later operations tools",
+      "finding": "Only the saved cloud-runtime-scripts inventory was restored; later unsaved operations tools were not recovered. Original scripts still depend on the previous prepared cloud tools/layout and were not run."
+    },
+    {
+      "area": "Notification delivery",
+      "finding": "Recovered SimContext.notify deduplicates and stores in-app notification rows. No separate NotificationDelivery service was recovered."
+    },
+    {
+      "area": "Persistence",
+      "finding": "JdbcSimStore uses sim_v1_partition plus journal, journal_line, audit and recon_difference projections. It is not the final 38-table migration."
+    },
+    {
+      "area": "Services and integration",
+      "finding": "No backend, MySQL or Redis service was started; no database, HTTP, browser UI or end-to-end service verification was performed."
+    },
+    {
+      "area": "Full products",
+      "finding": "The full upstream backend reactor, admin/PC bundle, upstream uniapp/miniapp bundle, and real WeChat integration were not built or validated."
+    },
+    {
+      "area": "Original contract coverage",
+      "finding": "The recovered catalog coverage JUnit check passed for 76 declared operations; this does not establish end-to-end correctness for every operation."
+    },
+    {
+      "area": "Warnings",
+      "finding": "Java source/target 8 compiled on Java 21 without bootstrap classpath; SLF4J reports no compatible provider in focused verification. Neither warning failed the focused tests."
+    }
+  ],
+  "claims_not_made": [
+    "Later unsaved code recovered",
+    "54 JUnit tests passed",
+    "Runtime service running",
+    "Live database persistence verified",
+    "HTTP or browser acceptance passed",
+    "Real money capability enabled",
+    "Public deployment or GitHub write completed"
+  ],
+  "services_started": [],
+  "production_source_modified": true,
+  "evidence": {
+    "checkpoint_integrity": "checkpoint-manifest-verification.json",
+    "initial_runtime_integrity": "restored-files-verification.json",
+    "final_overlay_provenance": "final-overlay-provenance.json",
+    "runtime_source_hashes": "restored-runtime-source-manifest.json",
+    "fixture_patch": "fixture-session-repair.patch",
+    "logs": [
+      "maven-focused-tests.log",
+      "maven-guard-tests.log",
+      "maven-repaired-affected-test.log",
+      "maven-repaired-all-tests.log",
+      "reconciliation-scenarios.log",
+      "vue-tests.log",
+      "vue-install.log",
+      "vue-build.log",
+      "maven-final-candidate-tests.log"
+    ],
+    "recovery_patches": [
+      "fixture-session-repair.patch",
+      "candidate-seed-repair.patch",
+      "append-only-recovery.patch"
+    ]
+  },
+  "production_source_changes": [
+    "SimulationSeed.java: candidate amounts restored to 10000/2000 minor units; fixtureOnly=true, formalApproval=false retained",
+    "JdbcSimStore.java: reject deletion/change to prior append-only evidence before materialization and partition update"
+  ],
+  "not_deployed": true,
+  "explicit_recovery_repairs": {
+    "session_fixture": {
+      "repaired_at_utc": "2026-10-03T04:47:58.828187+00:00",
+      "file": "runtime/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/IndependentSecurityTest.java",
+      "original_sha256": "a7dd3959e6a2291de2ff0745abc345b062bd0526861a476b536a2284ef8a5782",
+      "repaired_sha256": "6534c4c62670e05a917fe15d3ff56f1200ae8dc6d885f6f596c9b732be54b2a2",
+      "original_preserved_at": "recovery-oct3/checkpoint/overlay/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/IndependentSecurityTest.java",
+      "reason": "After advancing fixture clock by 900 seconds, authenticate a fresh synthetic user session for the post-reservation-expiry balance check. Product access-token lifetime and reservation expiry are unchanged.",
+      "production_source_changes": false
+    },
+    "candidate_seed": {
+      "repaired_at_utc": "2026-10-03T04:52:01.907893+00:00",
+      "file": "runtime/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationSeed.java",
+      "original_sha256": "3740dc788e92657639cbf6888b578866819ec738d90f8e1bc4f090b46dc53187",
+      "repaired_sha256": "e9df8bde4bbfae05b8354c7661029e6bf2020cc5042ef9e4cce9e837ed63db27",
+      "new_test_file": "runtime/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/SimulationSeedRecoveryTest.java",
+      "new_test_sha256": "fa390807b8c09e1d59aa57932d63de5524f92dd7851aadd139ea9ff6d5a6995e",
+      "changes": {
+        "quotaMinor": {
+          "before": 1000000,
+          "after": 10000
+        },
+        "transactionMaxMinor": {
+          "before": 200000,
+          "after": 2000
+        }
+      },
+      "preserved": {
+        "termDays": 30,
+        "fixtureOnly": true,
+        "formalApproval": false
+      },
+      "provenance": "Explicitly reapplied during Oct 3 recovery based on parent verification of original document candidate values; not claimed present in saved Oct 2 14:33 checkpoint",
+      "deployment": "No database or running service was updated"
+    },
+    "append_only_jdbc": {
+      "original_sha256": "e8ceb15ebc22c868093e0599022a1e7ccdb400ae66a9105e1ba4fb0893cbc3ef",
+      "repaired_sha256": "b2d1a6e1a77110ea3c7b56faf0f2d26066d6c9d71b8048f01b1564355bdf2f34",
+      "scope": "Application transaction aggregate guard; does not restrict direct privileged SQL; real MySQL not rerun on Oct3",
+      "reapplied_prior_reported_fix": true
+    }
+  },
+  "candidate_source_directory": "/workspace/scratch/c1b25297bb77/recovery-oct3/repaired-candidate",
+  "candidate_manifest_files": 62,
+  "runtime_source_manifest_files": 12255,
+  "maven_cached_jar_count": 85
+}

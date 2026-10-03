@@ -1,0 +1,14 @@
+--- saved-checkpoint/IndependentSecurityTest.java
++++ repaired-runtime/IndependentSecurityTest.java
+@@ -99,7 +99,10 @@
+         Map<String,Object> a=draft(f,f.productId),b=draft(f,f.productId),ba=confirmation(f,a),bb=confirmation(f,b);
+         List<Object> results=race(()->f.req("POST","/api/v1/orders/"+s(a,"id")+"/confirm",f.user,ba,"independent-quota-key-a",query()),()->f.req("POST","/api/v1/orders/"+s(b,"id")+"/confirm",f.user,bb,"independent-quota-key-b",query()));
+         assertEquals(1,results.stream().filter(x->x instanceof SimException&&"INSUFFICIENT_QUOTA".equals(((SimException)x).code)).count());Map<String,Object> balance=account(f);assertEquals(2000,n(balance,"reservedMinor"));assertEquals(1000,n(balance,"availableMinor"));assertEquals(1,f.store.state.table("reservations").size());
+-        f.clock.tick(900);f.engine.sweep();assertEquals(0,n(account(f),"reservedMinor"));assertEquals(3000,n(account(f),"availableMinor"));
++        f.clock.tick(900);f.engine.sweep();
++        // The original 900-second access token expires with the reservation.
++        f.user=f.login("SIM-USER-001");
++        assertEquals(0,n(account(f),"reservedMinor"));assertEquals(3000,n(account(f),"availableMinor"));
+     }
+     @Test public void signedCallbacksBindRawBytesTimeNonceAndBusinessEventSeparately(){
+         EngineContractTest.F f=fixture();Map<String,Object> ar=f.fulfill(),repayment=payment(f,ar,800),event=event(f,repayment,"SIM-independent-callback",800);byte[] raw=wire(event).getBytes(StandardCharsets.UTF_8);String now=Long.toString(f.clock.instant().getEpochSecond());

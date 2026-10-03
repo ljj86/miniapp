@@ -1,0 +1,25 @@
+{
+  "repaired_at_utc": "2026-10-03T04:52:01.907893+00:00",
+  "file": "runtime/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationSeed.java",
+  "original_sha256": "3740dc788e92657639cbf6888b578866819ec738d90f8e1bc4f090b46dc53187",
+  "repaired_sha256": "e9df8bde4bbfae05b8354c7661029e6bf2020cc5042ef9e4cce9e837ed63db27",
+  "new_test_file": "runtime/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/SimulationSeedRecoveryTest.java",
+  "new_test_sha256": "fa390807b8c09e1d59aa57932d63de5524f92dd7851aadd139ea9ff6d5a6995e",
+  "changes": {
+    "quotaMinor": {
+      "before": 1000000,
+      "after": 10000
+    },
+    "transactionMaxMinor": {
+      "before": 200000,
+      "after": 2000
+    }
+  },
+  "preserved": {
+    "termDays": 30,
+    "fixtureOnly": true,
+    "formalApproval": false
+  },
+  "provenance": "Explicitly reapplied during Oct 3 recovery based on parent verification of original document candidate values; not claimed present in saved Oct 2 14:33 checkpoint",
+  "deployment": "No database or running service was updated"
+}

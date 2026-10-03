@@ -1,0 +1,8 @@
+warning: [options] bootstrap class path not set in conjunction with -source 8
+warning: [options] source value 8 is obsolete and will be removed in a future release
+warning: [options] target value 8 is obsolete and will be removed in a future release
+warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+Note: /workspace/scratch/c1b25297bb77/miniapp-baseline/verification/tests/ReconciliationModuleScenarios.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+4 warnings
+PASS: 65 domain assertions; no claim of MySQL, HTTP, concurrency or human acceptance

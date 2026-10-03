@@ -1,0 +1,70 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< cn.iocoder.boot:simulation-domain-verification >-----------
+[INFO] Building simulation-domain-verification 1.0-SNAPSHOT
+[INFO]   from pom-with-guard.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The artifact mysql:mysql-connector-java:jar:8.0.33 has been relocated to com.mysql:mysql-connector-j:jar:8.0.33: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ simulation-domain-verification ---
+[INFO] Copying 3 resources from ../runtime/backend/yudao-server/src/main/resources to target-with-guard/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ simulation-domain-verification ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 19 source files with javac [debug target 8] to target-with-guard/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO] /workspace/scratch/c1b25297bb77/miniapp-baseline/runtime/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationApiFilter.java: /workspace/scratch/c1b25297bb77/miniapp-baseline/runtime/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationApiFilter.java uses unchecked or unsafe operations.
+[INFO] /workspace/scratch/c1b25297bb77/miniapp-baseline/runtime/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationApiFilter.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ simulation-domain-verification ---
+[INFO] skip non existing resourceDirectory /workspace/scratch/c1b25297bb77/miniapp-baseline/verification/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ simulation-domain-verification ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 7 source files with javac [debug target 8] to target-with-guard/test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO] /workspace/scratch/c1b25297bb77/miniapp-baseline/runtime/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/EngineContractTest.java: /workspace/scratch/c1b25297bb77/miniapp-baseline/runtime/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/EngineContractTest.java uses unchecked or unsafe operations.
+[INFO] /workspace/scratch/c1b25297bb77/miniapp-baseline/runtime/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/EngineContractTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ simulation-domain-verification ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running cn.iocoder.yudao.server.simulation.CommerceFinanceJUnitTest
+Commerce/finance regression scenarios=13 assertions=242 PASS
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.359 s -- in cn.iocoder.yudao.server.simulation.CommerceFinanceJUnitTest
+[INFO] Running cn.iocoder.yudao.server.simulation.SimulationSeedRecoveryTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in cn.iocoder.yudao.server.simulation.SimulationSeedRecoveryTest
+[INFO] Running cn.iocoder.yudao.server.simulation.AppendOnlyRecoveryTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in cn.iocoder.yudao.server.simulation.AppendOnlyRecoveryTest
+[INFO] Running cn.iocoder.yudao.server.simulation.EngineContractTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.270 s -- in cn.iocoder.yudao.server.simulation.EngineContractTest
+[INFO] Running cn.iocoder.yudao.server.simulation.IndependentSecurityTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.429 s -- in cn.iocoder.yudao.server.simulation.IndependentSecurityTest
+[INFO] Running cn.iocoder.yudao.server.foundation.SimulationOnlyGuardTest
+SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#noProviders for further details.
+SLF4J: Class path contains SLF4J bindings targeting slf4j-api versions prior to 1.8.
+SLF4J: Ignoring binding found at [jar:file:/workspace/scratch/c1b25297bb77/miniapp-baseline/runtime/tools/maven-repository/ch/qos/logback/logback-classic/1.2.12/logback-classic-1.2.12.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#ignoredBindings for an explanation.
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.031 s -- in cn.iocoder.yudao.server.foundation.SimulationOnlyGuardTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.037 s
+[INFO] Finished at: 2026-10-03T13:52:16+09:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,16 @@
+✔ supports both envelopes and raw simulation resources (1.639382ms)
+✔ opaque identifiers survive substitution; monetary values are integer cents (17.171195ms)
+✔ duplicate clicks share one in-flight network request (1.389955ms)
+✔ retry preserves idempotency key and body across unknown network outcome (0.470259ms)
+✔ version conflict is not auto retryable and requests refresh (0.423979ms)
+✔ client never sends bearer token to an external or protocol-relative destination (0.255725ms)
+✔ activity records remove tokens, one-time credentials and signatures (0.389157ms)
+✔ authenticated download uses fetch header and returns blob (0.53692ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.28562
