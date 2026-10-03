@@ -12,12 +12,18 @@ import static cn.iocoder.yudao.server.simulation.SimContext.*;
 /** Auth, schema, rate-limit, idempotency and transaction boundary shared by all APIs. */
 public final class SimulationEngine {
     public final ContractCatalog catalog=new ContractCatalog();
+    public final SupplementalCatalog supplementalCatalog=new SupplementalCatalog(catalog);
     private final SimStore store;private final Clock clock;private final MockKeyRegistry keys;
     private final List<SimModule> modules=Arrays.asList(new IdentityModule(),new MerchantModule(),new CommerceModule(),new FinanceModule(),new ReconciliationModule());
     public SimulationEngine(SimStore store,Clock clock){this(store,clock,new MockKeyRegistry());}
     public SimulationEngine(SimStore store,Clock clock,MockKeyRegistry keys){this.store=store;this.clock=clock;this.keys=keys;}
     public Object request(String method,String path,Map<String,Object> body,Map<String,String> params,Map<String,String> headers,byte[] raw,String requestId){
-        ContractCatalog.Operation operation=catalog.match(method,path,params);catalog.request(operation,body,params);
+        ContractCatalog.Operation operation=supplementalCatalog.match(method,path,params);
+        if(operation==null){operation=catalog.match(method,path,params);catalog.request(operation,body,params);}
+        else supplementalCatalog.validate(operation,body,params);
+        return execute(operation,path,body,params,headers,raw,requestId);
+    }
+    private Object execute(ContractCatalog.Operation operation,String path,Map<String,Object> body,Map<String,String> params,Map<String,String> headers,byte[] raw,String requestId){
         // Expiry is committed independently; a rejected command cannot resurrect stale holds.
         sweep();
         countRequest(operation,headers.get("authorization"),params.get("_remote"));
@@ -37,7 +43,8 @@ public final class SimulationEngine {
                 }
                 Object data=null;boolean found=false;
                 try{
-                    for(SimModule module:modules)if(module.supports(operation.id)){data=module.execute(operation.id,c,body,params);found=true;break;}
+                    if(supplementalCatalog.supports(operation.id)){data=supplementalCatalog.execute(operation.id,c,body,params);found=true;}
+                    else for(SimModule module:modules)if(module.supports(operation.id)){data=module.execute(operation.id,c,body,params);found=true;break;}
                     c.check(found,503,"SERVICE_UNAVAILABLE","该模拟功能尚未实现");
                 }catch(SimException e){if(e.commitSecurityState){securityAudit(c,operation.id,e.code);return new Outcome(null,e);}throw e;}
                 Map<String,Object> response=map("data",data,"meta",map("requestId",requestId,"serverTime",c.now().toString(),"environment","SIMULATION"));
@@ -53,7 +60,7 @@ public final class SimulationEngine {
             throw e;
         }
     }
-    public void sweep(){store.transaction(state->{SimContext c=new SimContext(state,null,clock.instant());CommerceModule.expireReservations(c);FinanceModule.retryPendingCallbacks(c);FinanceModule.expireDisputes(c);new ReconciliationModule().escalateOverdueDifferences(c);for(Map<String,Object> a:c.all("accounts"))CommerceModule.refreshAccount(c,s(a,"userUid"));return null;});}
+    public void sweep(){store.transaction(state->{SimContext c=new SimContext(state,null,clock.instant());NotificationModule.drainDue(c);CommerceModule.expireReservations(c);FinanceModule.retryPendingCallbacks(c);FinanceModule.expireDisputes(c);new ReconciliationModule().escalateOverdueDifferences(c);for(Map<String,Object> a:c.all("accounts"))CommerceModule.refreshAccount(c,s(a,"userUid"));return null;});}
     public Object fixtures(){return store.transaction(state->{SimContext c=new SimContext(state,null,clock.instant());List<Map<String,Object>> users=new ArrayList<>();for(Map<String,Object> u:c.all("users"))if(u.get("fixturePhone")!=null){List<String> roles=new ArrayList<>();roles.add("USER");for(Map<String,Object> g:c.all("grants"))if(s(u,"id").equals(s(g,"userId")) && "ACTIVE".equals(s(g,"status")))roles.add(s(g,"role"));users.add(map("phone",s(u,"fixturePhone"),"label",s(u,"displayName"),"uid",s(u,"uid"),"roles",roles));}return map("environment","SIMULATION","warning",s(state.meta,"fixtureWarning"),"mockCode","246810","privacyVersion",s(state.meta,"privacyVersion"),"agreementVersion",s(state.meta,"agreementVersion"),"users",users);});}
     public Object workspace(String access){sweep();return store.transaction(state->{SimContext a=new SimContext(state,null,clock.instant());String uid=IdentityModule.authenticate(a,access);return SimulationWorkspace.read(new SimContext(state,uid,clock.instant()));});}
     public Object supplemental(String operation,String id,Map<String,Object> body,String access){return store.transaction(state->{SimContext a=new SimContext(state,null,clock.instant());String uid=IdentityModule.authenticate(a,access);SimContext c=new SimContext(state,uid,clock.instant());c.actorId();ReconciliationModule module=new ReconciliationModule();

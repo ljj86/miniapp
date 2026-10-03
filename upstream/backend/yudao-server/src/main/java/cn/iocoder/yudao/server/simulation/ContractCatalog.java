@@ -52,6 +52,7 @@ public final class ContractCatalog {
         }
     }
     public void validate(String schema,Object value){validateNode(spec.path("components").path("schemas").path(schema),json.valueToTree(value),schema,0);}
+    public void validateSchema(JsonNode schema,Object value,String name){validateNode(schema,json.valueToTree(value),name,0);}
     private void validateNode(JsonNode schema,JsonNode value,String at,int depth){
         if(depth>48)fail("结构过深");if(schema.isMissingNode())throw new IllegalStateException("Unknown schema "+at);
         if(schema.has("$ref")){String r=schema.path("$ref").asText();if(!r.startsWith("#/components/schemas/"))fail("不支持外部引用");validateNode(spec.path("components").path("schemas").path(r.substring(r.lastIndexOf('/')+1)),value,at,depth+1);return;}

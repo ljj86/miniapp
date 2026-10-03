@@ -34,7 +34,7 @@ public final class JdbcSimStore implements SimStore {
     }
     /** Existing accounting and review evidence may only be extended, never rewritten. */
     static void assertAppendOnly(SimState before, SimState after) {
-        for (String kind : Arrays.asList("journals", "lines", "audit", "reportSnapshots", "identityChanges")) {
+        for (String kind : Arrays.asList("journals", "lines", "audit", "reportSnapshots", "identityChanges", "applicationMaterials", "applicationHistory", "notificationAttempts", "notificationRetryAudits")) {
             Map<String, Map<String,Object>> previous = before.records.get(kind);
             if (previous == null || previous.isEmpty()) continue;
             Map<String, Map<String,Object>> current = after.records.get(kind);

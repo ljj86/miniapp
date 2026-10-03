@@ -73,8 +73,21 @@ public final class SimContext {
     }
     public void check(boolean condition,int status,String code,String message) { if(!condition)throw new SimException(status,code,message); }
     public void notify(String userId,String title,String resourceType,String resourceId) {
-        for(Map<String,Object> r:all("notifications"))if(Objects.equals(userId,s(r,"userId")) && Objects.equals(title,s(r,"title")) && Objects.equals(resourceType,s(r,"resourceType")) && Objects.equals(resourceId,s(r,"resourceId")))return;
-        create("notifications",map("userId",userId,"title",title,"content",title,"resourceType",resourceType,"resourceId",resourceId,"read",false,"readAt",null));
+        String kind;
+        switch(resourceType){
+            case "merchantApplication":kind="applications";break;
+            case "repayment":kind="repayments";break;
+            case "refund":kind="refunds";break;
+            case "order":kind="orders";break;
+            case "dispute":kind="disputes";break;
+            case "receivable":kind="receivables";break;
+            default:kind=resourceType;
+        }
+        Map<String,Object> resource=state.table(kind).get(resourceId);
+        notify(userId,title,resourceType,resourceId,title,resource==null?1:Math.max(1,n(resource,"version")));
+    }
+    public void notify(String userId,String title,String resourceType,String resourceId,String template,long eventVersion) {
+        NotificationModule.enqueue(this,userId,title,resourceType,resourceId,template,eventVersion);
     }
     public void audit(String action,String resourceType,String resourceId,Map detail) {
         create("audit",map("actorId",userId,"actorUid",userId==null?"ANON":s(actor(),"uid"),"requestId",state.meta.get("requestId"),"action",action,"resourceType",resourceType,"resourceId",resourceId,"detail",detail,"outcome","SUCCESS","occurredAt",now().toString()));

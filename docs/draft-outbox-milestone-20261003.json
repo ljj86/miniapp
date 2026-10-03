@@ -1,0 +1,85 @@
+{
+  "source": "Immutable Library milestone a77fcc0d1d553b80f473f08adcf1552c2b4dc33c41b7de7a65ee99a5d446127e",
+  "library_file_id": "libfile_cb4c793d3cf881918a1e8942b86a0c93",
+  "tests": 51,
+  "failures": 0,
+  "errors": 0,
+  "suites": [
+    {
+      "name": "cn.iocoder.yudao.server.foundation.SimulationOnlyGuardTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.iocoder.yudao.server.simulation.IndependentSecurityTest",
+      "tests": "12",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.iocoder.yudao.server.simulation.AppendOnlyRecoveryTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.iocoder.yudao.server.simulation.SimulationSeedRecoveryTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.iocoder.yudao.server.simulation.NotificationOutboxTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.iocoder.yudao.server.simulation.CommerceFinanceJUnitTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.iocoder.yudao.server.simulation.EngineContractTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.iocoder.yudao.server.simulation.MerchantLifecycleTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.iocoder.yudao.server.simulation.WorkspaceBoundaryTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "runtime_deployed": false,
+  "limitations": [
+    "Legacy applications without immutable material snapshots need verified compatibility handling",
+    "Browser acceptance and scale benchmark remain incomplete",
+    "Only5simulationaggregate/projection tables; canonical38tablemigrationunfinished"
+  ],
+  "changes": [
+    "Scoped draft save, versioned submission, needs-info and resubmission",
+    "Immutable submitted material and application history",
+    "Durable notificationoutbox,retry30/60seconds,three-attemptdeadletter,auditedmanualretry",
+    "Central auth,requestvalidation,ratelimit,scope-bound semanticidempotency",
+    "Workspaceowner/reviewerprivacy and platformcontroller boundaries"
+  ]
+}

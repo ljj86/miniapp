@@ -6,12 +6,12 @@ import static cn.iocoder.yudao.server.simulation.SimContext.map;
 class AppendOnlyRecoveryTest {
     private SimState state() {
         SimState s=new SimState();
-        for(String kind:Arrays.asList("journals","lines","audit","reportSnapshots","identityChanges"))
+        for(String kind:Arrays.asList("journals","lines","audit","reportSnapshots","identityChanges","applicationMaterials","applicationHistory","notificationAttempts","notificationRetryAudits"))
             s.table(kind).put("1",map("id","1","amount",1200L,"evidence",map("hash","original")));
         return s;
     }
     @Test void deletionOfEvidenceIsRejected() {
-        for(String kind:Arrays.asList("journals","lines","audit","reportSnapshots","identityChanges")) {
+        for(String kind:Arrays.asList("journals","lines","audit","reportSnapshots","identityChanges","applicationMaterials","applicationHistory","notificationAttempts","notificationRetryAudits")) {
             SimState before=state(),after=state();after.table(kind).remove("1");
             assertThrows(IllegalStateException.class,()->JdbcSimStore.assertAppendOnly(before,after),kind);
         }

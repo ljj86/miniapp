@@ -10,7 +10,7 @@ public final class MerchantModule implements SimModule {
         switch(op){
             case "createMerchantApplication":return apply(c,b);
             case "getMerchantApplication":{
-                Map<String,Object> r=c.get("applications",p.get("id"));c.check(c.actorId().equals(s(r,"applicantId")) || c.hasRole("MERCHANT_REVIEWER"),403,"SCOPE_DENIED","不能读取其他申请人的资料");return appDto(c,r);}
+                Map<String,Object> r=c.get("applications",p.get("id"));readable(c,r);return appDto(c,r);}
             case "reviewMerchantApplication":return review(c,b,p);
             case "createStore":return createStore(c,b);
             case "listStores":{
@@ -35,18 +35,82 @@ public final class MerchantModule implements SimModule {
     }
     private Object apply(SimContext c,Map<String,Object> b){
         c.requireRoles("USER");c.check(s(b,"merchantName")!=null && !s(b,"merchantName").trim().isEmpty(),422,"VALIDATION_FAILED","模拟商家名称不可为空");
-        for(Map<String,Object> a:c.all("applications"))c.check(!c.actorId().equals(s(a,"applicantId")) || !"SUBMITTED".equals(s(a,"status")),409,"STATE_CONFLICT","已有待复核申请");
+        noOpenApplication(c);
         String mid=c.id();Map<String,Object> merchant=c.create("merchants",map("id",mid,"uid",String.format("s%07d",Long.parseLong(mid)),"ownerId",c.actorId(),"name",s(b,"merchantName"),"regionCode",s(b,"regionCode"),"status","DRAFT"));
         Map<String,Object> app=c.create("applications",map("merchantId",mid,"applicantId",c.actorId(),"status","SUBMITTED","materialVersion",1L,"contractVersion",s(b,"contractVersion"),"materialSummary",s(b,"materialSummary"),"materialHash",c.hashObject(b),"reviewReason",""));
+        app.put("draftMaterials",new LinkedHashMap<>(b));app.put("submittedMaterialVersion",1L);snapshot(c,app,b);history(c,app,"SUBMITTED",null);
         return appDto(c,app);
     }
     private Object review(SimContext c,Map<String,Object> b,Map<String,String> p){
-        c.requireRoles("MERCHANT_REVIEWER");Map<String,Object> r=c.get("applications",p.get("id"));c.version(r,b);c.independent(s(r,"applicantId"));
+        c.requireRoles("MERCHANT_REVIEWER");Map<String,Object> r=c.get("applications",p.get("id"));reviewer(c,r);c.version(r,b);c.independent(s(r,"applicantId"));
         c.check("SUBMITTED".equals(s(r,"status")),409,"STATE_CONFLICT","此申请当前不可复核");c.check(s(b,"reason")!=null && !s(b,"reason").trim().isEmpty(),422,"VALIDATION_FAILED","必须记录复核理由");
         boolean approve="APPROVE".equals(s(b,"decision"));r.put("status",approve?"APPROVED":"REJECTED");r.put("checkerId",c.actorId());r.put("reviewReason",s(b,"reason"));r.put("evidenceIds",list(b,"evidenceIds"));c.bump(r);
         Map<String,Object> m=c.get("merchants",s(r,"merchantId"));m.put("status",approve?"APPROVED":"DRAFT");c.bump(m);
         if(approve){c.create("grants",map("userId",s(m,"ownerId"),"role","OWNER","merchantUid",s(m,"uid"),"status","ACTIVE","validFrom",c.now().toString(),"approvalId",s(r,"id")));c.state.meta.put("grantVersion",n(c.state.meta,"grantVersion")+1);}
-        c.notify(s(r,"applicantId"),approve?"模拟商家申请已通过":"模拟商家申请未通过","merchantApplication",s(r,"id"));return appDto(c,r);
+        history(c,r,approve?"APPROVED":"REJECTED",s(b,"reason"));
+        c.notify(s(r,"applicantId"),approve?"模拟商家申请已通过":"模拟商家申请未通过","merchantApplication",s(r,"id"),approve?"MERCHANT_APPROVED":"MERCHANT_REJECTED",n(r,"materialVersion"));return appDto(c,r);
+    }
+    /** Supplemental lifecycle keeps submitted materials immutable and draft edits private to the applicant. */
+    public Object supplemental(String op,SimContext c,Map<String,Object> b,Map<String,String> p){
+        if("saveMerchantApplicationDraft".equals(op)){
+            c.requireRoles("USER");noOpenApplication(c);String mid=c.id();
+            Map<String,Object> materials=new LinkedHashMap<>(b);
+            c.create("merchants",map("id",mid,"uid",String.format("s%07d",Long.parseLong(mid)),"ownerId",c.actorId(),"name",s(b,"merchantName"),"regionCode",s(b,"regionCode"),"status","DRAFT"));
+            Map<String,Object> r=c.create("applications",map("merchantId",mid,"applicantId",c.actorId(),"status","DRAFT","materialVersion",1L,"reviewReason","","draftMaterials",materials,"submittedMaterialVersion",0L));
+            history(c,r,"DRAFT_CREATED",null);return detail(c,r);
+        }
+        Map<String,Object> r=c.get("applications",p.get("id"));
+        if("requestMerchantApplicationInformation".equals(op)){
+            reviewer(c,r);c.version(r,b);c.independent(s(r,"applicantId"));
+            c.check("SUBMITTED".equals(s(r,"status")),409,"STATE_CONFLICT","仅待复核申请可要求补充资料");
+            r.put("status","NEEDS_INFO");r.put("reviewReason",s(b,"reason"));r.put("checkerId",c.actorId());c.bump(r);history(c,r,"NEEDS_INFO",s(b,"reason"));
+            c.notify(s(r,"applicantId"),"模拟商家申请需要补充资料","merchantApplication",s(r,"id"),"MERCHANT_NEEDS_INFO",n(r,"materialVersion"));
+            return detail(c,r);
+        }
+        if("merchantApplicationHistory".equals(op)){readable(c,r);return detail(c,r);}
+        c.check(c.actorId().equals(s(r,"applicantId")),403,"SCOPE_DENIED","只能操作本人申请草稿");
+        if("getMerchantApplicationDraft".equals(op))return detail(c,r);
+        c.version(r,b);c.check(Arrays.asList("DRAFT","NEEDS_INFO").contains(s(r,"status")),409,"STATE_CONFLICT","审核中或终态申请不可改写资料");
+        if("editMerchantApplicationDraft".equals(op)){
+            c.check(b.size()>1,422,"VALIDATION_FAILED","至少修改一个资料字段");
+            Map<String,Object> materials=materials(r);for(String field:MATERIAL_FIELDS)if(b.containsKey(field))materials.put(field,b.get(field));
+            r.put("draftMaterials",materials);c.bump(r);history(c,r,"DRAFT_UPDATED",null);return detail(c,r);
+        }
+        if("submitMerchantApplicationDraft".equals(op)){
+            Map<String,Object> materials=materials(r);for(String field:MATERIAL_FIELDS)c.check(s(materials,field)!=null&&!s(materials,field).trim().isEmpty(),422,"VALIDATION_FAILED","提交前请补全"+field);
+            long prior=n(r,"submittedMaterialVersion");if(prior==0&&r.get("submittedMaterialVersion")==null)prior=n(r,"materialVersion");
+            c.check(prior==0||!Objects.equals(s(r,"materialHash"),c.hashObject(materials)),409,"STATE_CONFLICT","补件后需修改资料才能重新提交");
+            r.put("materialVersion",prior+1);r.put("submittedMaterialVersion",prior+1);r.put("status","SUBMITTED");r.put("reviewReason","");r.remove("checkerId");r.remove("evidenceIds");
+            for(String field:MATERIAL_FIELDS)r.put(field,materials.get(field));r.put("materialHash",c.hashObject(materials));c.bump(r);
+            Map<String,Object> m=c.get("merchants",s(r,"merchantId"));m.put("name",materials.get("merchantName"));m.put("regionCode",materials.get("regionCode"));c.bump(m);
+            snapshot(c,r,materials);history(c,r,prior==0?"SUBMITTED":"RESUBMITTED",null);return detail(c,r);
+        }
+        throw new IllegalArgumentException(op);
+    }
+    private static final List<String> MATERIAL_FIELDS=Arrays.asList("merchantName","regionCode","contractVersion","materialSummary");
+    private static Map<String,Object> materials(Map<String,Object> r){
+        Map<String,Object> result=new LinkedHashMap<>();Object draft=r.get("draftMaterials");
+        if(draft instanceof Map)result.putAll((Map<String,Object>)draft);else for(String field:MATERIAL_FIELDS)if(r.containsKey(field))result.put(field,r.get(field));return result;
+    }
+    private static void noOpenApplication(SimContext c){
+        for(Map<String,Object> a:c.all("applications"))c.check(!c.actorId().equals(s(a,"applicantId"))||!Arrays.asList("DRAFT","SUBMITTED","NEEDS_INFO").contains(s(a,"status")),409,"STATE_CONFLICT","已有草稿或待处理申请，请继续原申请");
+    }
+    private static void reviewer(SimContext c,Map<String,Object> r){Map<String,Object> m=c.get("merchants",s(r,"merchantId"));c.requireScope(s(m,"uid"),null,null,"MERCHANT_REVIEWER");}
+    private static void readable(SimContext c,Map<String,Object> r){if(!c.actorId().equals(s(r,"applicantId"))){c.check(!"DRAFT".equals(s(r,"status")),403,"SCOPE_DENIED","未提交草稿仅申请人可见");reviewer(c,r);}}
+    private static void snapshot(SimContext c,Map<String,Object> r,Map<String,Object> materials){
+        c.create("applicationMaterials",map("applicationId",s(r,"id"),"applicantId",s(r,"applicantId"),"materialVersion",n(r,"materialVersion"),"materials",new LinkedHashMap<>(materials),"materialHash",c.hashObject(materials),"submittedBy",c.actorId(),"submittedAt",c.now().toString()));
+    }
+    private static void history(SimContext c,Map<String,Object> r,String action,String reason){
+        c.create("applicationHistory",map("applicationId",s(r,"id"),"applicantId",s(r,"applicantId"),"action",action,"status",s(r,"status"),"applicationVersion",n(r,"version"),"materialVersion",n(r,"materialVersion"),"materialHash",r.get("materialHash"),"reason",reason,"actorId",c.actorId(),"requestId",c.state.meta.get("requestId"),"occurredAt",c.now().toString()));
+    }
+    private Map<String,Object> detail(SimContext c,Map<String,Object> r){
+        Map<String,Object> dto=appDto(c,r);dto.put("applicantId",s(r,"applicantId"));dto.put("submittedMaterialVersion",n(r,"submittedMaterialVersion"));dto.put("merchantUid",s(c.get("merchants",s(r,"merchantId")),"uid"));Map<String,Object> visibleMaterials=materials(r);
+        if(!c.actorId().equals(s(r,"applicantId"))){visibleMaterials=new LinkedHashMap<>();for(String field:MATERIAL_FIELDS)if(r.containsKey(field))visibleMaterials.put(field,r.get(field));for(Map<String,Object> item:c.all("applicationMaterials"))if(s(r,"id").equals(s(item,"applicationId"))&&n(r,"materialVersion")==n(item,"materialVersion"))visibleMaterials=new LinkedHashMap<>((Map<String,Object>)item.get("materials"));}
+        dto.put("materials",visibleMaterials);dto.put("simulationOnly",true);
+        List<Map<String,Object>> versions=new ArrayList<>(),events=new ArrayList<>();
+        for(Map<String,Object> item:c.all("applicationMaterials"))if(s(r,"id").equals(s(item,"applicationId")))versions.add(new LinkedHashMap<>(item));
+        for(Map<String,Object> item:c.all("applicationHistory"))if(s(r,"id").equals(s(item,"applicationId")))events.add(new LinkedHashMap<>(item));
+        dto.put("materialHistory",versions);dto.put("history",events);return dto;
     }
     private Object createStore(SimContext c,Map<String,Object> b){
         Map<String,Object> m=IdentityModule.merchant(c,s(b,"merchantUid"));c.requireScope(s(m,"uid"),null,null,"OWNER");c.check("APPROVED".equals(s(m,"status")),409,"STATE_CONFLICT","模拟商家未通过或已停用");
