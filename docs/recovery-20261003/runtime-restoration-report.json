@@ -1,0 +1,167 @@
+{
+  "observed_at_utc": "2026-10-03T05:06:16.609562+00:00",
+  "status": "RESTORED_AND_RUNNING_POINT_IN_TIME_HEALTH_VERIFIED",
+  "environment": "dot cloud desktop namespace",
+  "build": {
+    "selected_reactor_modules": 20,
+    "status": "PASS",
+    "command": "verification/recovery-mvn.sh -f runtime/backend/pom.xml -pl yudao-server -am -Dmaven.test.skip=true package",
+    "upstream_tests": "SKIPPED",
+    "focused_recovery_tests": "29 JUnit passed separately",
+    "artifact_bytes": 159469327,
+    "artifact_sha256": "fe4723a6c66b0b0061f7785a2b75edd5404d3488e18640be56e9c433112f7a88"
+  },
+  "services": {
+    "mysql": {
+      "version": "8.0.46",
+      "port": 13306,
+      "bind": "127.0.0.1",
+      "buffer_pool_bytes": 268435456,
+      "table_count": 53
+    },
+    "redis": {
+      "port": 16379,
+      "database": 10,
+      "ping": "PONG"
+    },
+    "backend": {
+      "url": "http://127.0.0.1:48080/actuator/health",
+      "http_status": 200
+    },
+    "foundation_ui": {
+      "url": "http://127.0.0.1:5174/",
+      "http_status": 200
+    },
+    "observed_environment_utc": "2026-10-03T05:02:29.027870+00:00",
+    "hostname": "5fb8abd4f0d8",
+    "scope": "Point-in-time local health only; not full business acceptance"
+  },
+  "runtime_smoke": {
+    "observed_at_utc": "2026-10-03T05:04:22.258313+00:00",
+    "execution": "dot cloud GUI terminal",
+    "scope": "Runtime health, guard and seed smoke checks; not full business acceptance",
+    "simulation_health": {
+      "status": 200,
+      "response": {
+        "data": {
+          "status": "UP",
+          "environment": "SIMULATION",
+          "version": "simulation-1.0-dev"
+        },
+        "meta": {
+          "requestId": "d15a2c98-c4d9-4469-9994-b288fe90aa77",
+          "serverTime": "2026-10-03T05:04:22.273915328Z",
+          "environment": "SIMULATION"
+        }
+      }
+    },
+    "real_money_guard": [
+      {
+        "path": "/admin-api/pay/order/create",
+        "http_status": 403,
+        "simulation_only": true
+      },
+      {
+        "path": "/app-api/pay/order/submit",
+        "http_status": 403,
+        "simulation_only": true
+      },
+      {
+        "path": "/api/v1/withdrawals",
+        "http_status": 403,
+        "simulation_only": true
+      },
+      {
+        "path": "/api/v1/real-payments",
+        "http_status": 403,
+        "simulation_only": true
+      }
+    ],
+    "persisted_candidate_rule": {
+      "partition_revision": 2,
+      "quotaMinor": 10000,
+      "transactionMaxMinor": 2000,
+      "termDays": 30,
+      "fixtureOnly": true,
+      "formalApproval": false
+    },
+    "journal_rows_at_smoke_check": 0,
+    "running_jar_sha256": "fe4723a6c66b0b0061f7785a2b75edd5404d3488e18640be56e9c433112f7a88",
+    "services": {
+      "mysql": {
+        "pid": 12247,
+        "running": true
+      },
+      "redis": {
+        "pid": 12250,
+        "running": true
+      },
+      "backend": {
+        "pid": 12496,
+        "running": true
+      },
+      "foundation-ui": {
+        "pid": 12516,
+        "running": true
+      }
+    },
+    "status": "PASS"
+  },
+  "database_initialization": {
+    "database": "sim_miniapp_dev",
+    "host": "127.0.0.1",
+    "port": 13306,
+    "source_sha256": "d3e982727e24c4e133c0219a6b53a1295d1385c2105c1e6eda0aac469ab6d60c",
+    "expected_tables": 48,
+    "overwrites_existing_database": false,
+    "executed": true,
+    "status": "IMPORTED_NEW_DATABASE",
+    "actual_tables": 48,
+    "mysql_version": "8.0.46",
+    "observed_environment_utc": "2026-10-03T05:01:42.536523+00:00",
+    "hostname": "5fb8abd4f0d8"
+  },
+  "scope": {
+    "hostname": "5fb8abd4f0d8",
+    "network_namespace": "net:[4026531833]",
+    "observed_at_utc": "2026-10-03T05:01:38.949150+00:00",
+    "execution": "dot cloud GUI terminal"
+  },
+  "configuration": {
+    "environment": "SIMULATION",
+    "real_funds_enabled": false,
+    "mysql_bind": "127.0.0.1",
+    "redis_bind": "127.0.0.1",
+    "backend_bind": "127.0.0.1",
+    "vue_bind": "127.0.0.1",
+    "java_heap_max_mib": 512,
+    "java_metaspace_max_mib": 256,
+    "node_heap_max_mib": 384,
+    "mysql_buffer_pool_mib": 256,
+    "redis_maxmemory_mib": 128,
+    "new_persistent_service_credentials_generated": false
+  },
+  "data_preservation": "New isolated sim_miniapp_dev database imported; no existing database or project data was overwritten. Services remain running.",
+  "runtime_script_adaptations": [
+    "Reuse installed system Java 21 instead of missing prior extracted JDK path",
+    "Restore tools invokes existing jdk.compiler module instead of absent javac launcher",
+    "Pinned download helper skips duplicate JDK downloads",
+    "Existing service PID/process identity, port, filesystem and namespace guards were retained",
+    "Cloud desktop terminal keyboard input used because terminal paste action is not exposed"
+  ],
+  "verification_limits": [
+    "Only point-in-time runtime health, simulation marker, four real-money route blocks and persisted candidate seed values are covered",
+    "No complete business workflow, MySQL transaction rollback/concurrency/durability or restart validation was performed in this phase",
+    "No browser UI validation; the prior localhost browser restriction was not bypassed",
+    "Full upstream admin/PC and uniapp builds were not attempted",
+    "Later NotificationDelivery and SimulationExtensions code is still absent",
+    "53 total tables means 48 upstream seed tables plus 5 simulation persistence tables, not a completed final 38-table domain migration"
+  ],
+  "next_supported_commands": {
+    "health": "bash /workspace/shared/miniapp-check.sh",
+    "simulation_smoke": "bash /workspace/shared/miniapp-verify-runtime.sh",
+    "resume": "bash /workspace/shared/miniapp-resume.sh",
+    "preserving_data_shutdown": "bash /workspace/shared/miniapp-sleep.sh"
+  },
+  "services_started_from": "cloud GUI Terminal window 39845891; PIDs are in runtime-smoke.json; invoke service commands from that network namespace"
+}

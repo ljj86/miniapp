@@ -1,0 +1,14 @@
+{
+  "repository": "ljj86/miniapp",
+  "visibility": "private",
+  "branch": "main",
+  "commit": "aef61e6eacc17762b91600871baa87066181ebb7",
+  "parent": "e6d425eec88293ad3aecbb4dc9d84f313e401f12",
+  "tree": "60f8d4dfee6e406811a8a995cadeeb1b12461f29",
+  "verified_files": 65,
+  "errors": [],
+  "workflow_runs": 0,
+  "forced_update": false,
+  "scope": "Recovered partial simulation checkpoint; not full1.0 acceptance",
+  "verified_at_utc": "2026-10-03T05:09:30Z"
+}
