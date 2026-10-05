@@ -1,3 +1,8 @@
+import { supportResourceQuery, supportResourceAction } from './local-service-resources'
+import { HELP_BUILTINS, attachManualMetadata, localManualAsset } from './help-builtins'
+import { isBackendMode, backendRequest, useDemoMode, serviceConnection } from './service-mode'
+import { serviceKey } from './service-files'
+import { supportQuery, supportAction } from './support-service'
 import { feedbackOrders, reviewInfo, publicReviews, submitReview, replyReview, afterSalesList, createAfterSales, merchantAfterSales } from './feedback-service'
 import { creditOverview, creditAction, createCreditRequests, expireCredit } from './credit-service'
 import { sanitizeHTML } from './sanitize'
@@ -64,6 +69,12 @@ async function runTransaction(method,path,data,config={}) {
   try {
     if(db.credit){expireCredit(db);persist()}
     const params=config.params||{},a=account(),parts=path.split('/').filter(Boolean),name=parts[0]
+    if(path.startsWith('/support/')){
+      const resource=parts.slice(1).join('/'),resourceDomain=['resources','resource','manuals','manual','updates','profile'].includes(resource)||resource.startsWith('admin/')||resource.startsWith('resources/')||resource.startsWith('platform/')
+      if(resource==='manual-asset'){supportResourceQuery(db,a,'manual',{id:String(params.id)},HELP_BUILTINS);return ok(await localManualAsset(params))}
+      const result=resourceDomain?(method==='get'?supportResourceQuery(db,a,resource,params,HELP_BUILTINS):supportResourceAction(db,a,resource,data||{},params,HELP_BUILTINS)):(method==='get'?supportQuery(db,a,resource,params):supportAction(db,a,resource,data||{}))
+      if(method!=='get')persist();return ok(resourceDomain?attachManualMetadata(result):result)
+    }
     if(path==='/credit/overview'){const overview=creditOverview(db,a);persist();return ok(overview)}
     if(method==='post'&&path.startsWith('/credit/')){const result=creditAction(db,a,parts[1],data||{});persist();return ok(result)}
     if(path==='/feedback/orders'){return ok(feedbackOrders(db,a,params))}
@@ -79,7 +90,9 @@ async function runTransaction(method,path,data,config={}) {
     if(path==='/web/login') {
       if(data.username!=='111'||data.password!=='111')return fail('所有体验身份的账号和密码均为 111')
       if(!['ROLE_USER','ROLE_UNIT','ROLE_ADMIN'].includes(data.role))return fail('请选择身份')
-      return ok({...db[entityRole(data.role)][0],role:data.role,username:'111'})
+      const profile=data.role==='ROLE_UNIT'&&data.unitId!==undefined?db.unit.find(u=>Number(u.id)===Number(data.unitId)):db[entityRole(data.role)][0]
+      if(!profile)return fail('所选示例店铺不存在，请重新选择')
+      return ok({...profile,role:data.role,username:'111'})
     }
     if(path==='/web/userInfo')return ok({...find(entityRole(a.role),a.id),role:a.role})
     if(path==='/web/password'||path==='/web/register')return fail('此版本无需注册或改密，请选择身份并使用 111 / 111')
@@ -180,8 +193,18 @@ async function runTransaction(method,path,data,config={}) {
   }
 }
 function run(method,path,data,config={}) {
-  if(typeof navigator!=='undefined'&&navigator.locks)return navigator.locks.request('mall-demo-atomic-state',()=>runTransaction(method,path,data,config))
-  return runTransaction(method,path,data,config)
+  if(path.includes('?')){const [clean,query]=path.split('?');path=clean;config={...config,params:{...Object.fromEntries(new URLSearchParams(query)),...(config.params||{})}}}
+  if(method==='post'&&path.startsWith('/support/'))data={...(data||{}),clientKey:data?.clientKey||serviceKey('ACTION')}
+  if(isBackendMode())return backendRequest(method,path,data,config)
+  // Recheck the connection after the lock wait, including switches away and back to demo.
+  const identity=a=>(a.role||'')+':'+String(a.id??''),origin=identity(account()),revision=serviceConnection.revision
+  const execute=()=>{
+    if(isBackendMode()||serviceConnection.revision!==revision)return Promise.resolve(fail('服务模式或会话已切换，请在当前模式下重新操作'))
+    return identity(account())===origin?runTransaction(method,path,data,config):Promise.resolve(fail('体验身份已切换，请在当前身份下重新操作'))
+  }
+  if(typeof navigator!=='undefined'&&navigator.locks)return navigator.locks.request('mall-demo-atomic-state',execute)
+  return execute()
 }
-export const resetDemo = () => {db=clone(seed);persist();sessionStorage.removeItem('account');localStorage.removeItem('mall-ui-bills');localStorage.removeItem('mall-ui-address');location.hash='#/mall/home';location.reload()}
+export const resetDemo = () => {if(isBackendMode())throw new Error('后端模式不支持重置服务端数据，请明确切回本机体验');db=clone(seed);persist();sessionStorage.removeItem('account');localStorage.removeItem('mall-ui-bills');localStorage.removeItem('mall-ui-address');location.hash='#/mall/home';location.reload()}
+export const demoStores = () => rows('unit','/unit')
 export default {get:(url,config)=>run('get',url,null,config),post:(url,data,config)=>run('post',url,data,config),delete:(url,config)=>run('delete',url,null,config)}

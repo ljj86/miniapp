@@ -1,0 +1,161 @@
+/* Customer-only responsive revision. No UA checks or role/router changes.
+   <768px portrait: 9:16; >=768x600: tablet/desktop; wide short view: compact landscape. */
+.native-stage.native-stage{height:calc(100dvh - var(--demo-ribbon-height,56px));padding:8px;min-height:0;align-items:center}
+.native-stage .native-device{--device-height:min(calc(100dvh - var(--demo-ribbon-height,56px) - 16px),calc((100vw - 16px) * 16 / 9));height:var(--device-height)!important;width:calc(var(--device-height) * 9 / 16)!important;max-width:none;aspect-ratio:9/16;border-radius:12px}
+.native-stage .native-app{--customer-header-space:54px;min-width:0;overscroll-behavior:contain}
+.native-stage .native-app>*{min-width:0}
+.native-stage .home-feature-grid,.native-stage .detail-intro,.native-stage .detail-gallery,.native-stage .detail-summary{min-width:0}
+.native-stage .native-line>span,.native-stage .native-line>strong,.native-stage .shop-summary>div{min-width:0;overflow-wrap:anywhere}
+.native-stage .native-line{gap:10px}
+.native-stage .native-checkout-bar{flex-wrap:wrap}
+.native-stage .native-sheet{overscroll-behavior:contain}
+/* Messages own their scroll region; attachments and the composer cannot cover it. */
+.native-stage .view-supportChat{padding-bottom:0!important;overflow-y:hidden!important}
+.native-stage .view-supportChat>.support-mobile{height:calc(100% - var(--customer-header-space,54px));min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.native-stage .view-supportChat .support-chat-heading,.native-stage .view-supportChat .support-thread-tip,.native-stage .view-supportChat .support-history-more{flex-shrink:0}
+.native-stage .view-supportChat .support-messages{flex:1;min-height:0;overflow:auto;padding:6px 16px 20px;overscroll-behavior:contain}
+.native-stage .view-supportChat .support-chat-compose{position:static;flex-shrink:0;max-height:48%;overflow-y:auto;min-height:80px}
+.native-stage .support-mobile .support-message{overflow-wrap:anywhere}
+.native-stage .support-pagination{flex-wrap:wrap}
+.native-stage .native-header strong{min-width:0;overflow-wrap:anywhere}
+@media(max-width:700px){.native-stage .native-app{--customer-header-space:52px}}
+/* Tablet and computer use the same wide customer shell. */
+@media(min-width:768px) and (min-height:600px){
+ .native-stage.native-stage{padding:18px 24px;align-items:stretch}
+ .native-stage .native-device{width:min(1320px,100%)!important;height:100%!important;aspect-ratio:auto;max-width:1320px;border-radius:16px}
+ .native-stage .native-app{--customer-header-space:82px;padding:0 18px 96px;background:#f6f6f6}
+ .native-stage .native-header{height:64px;padding:0 20px;margin:0 -18px 18px;border-bottom:1px solid #ececec}
+ .native-stage .native-header strong{font-size:20px}
+ .native-stage .native-header button{padding:12px}
+ .native-stage .mall-app-brand{padding:18px 20px 12px;margin:0 -18px;font-size:18px}
+ .native-stage .mall-app-brand>span{font-size:13px}
+ .native-stage .home-top{margin:0 -18px 14px;padding:8px 20px 16px}
+ .native-stage .native-search{padding:14px 16px;font-size:15px}
+ .native-stage .native-notice{border-radius:8px;font-size:13px}
+ .native-stage .home-feature-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:stretch;gap:16px;margin:14px 12px 18px;--customer-hero-height:250px}
+ .native-stage .native-banner-carousel{margin:0;min-width:0}
+ .native-stage .food-hero{height:var(--customer-hero-height,250px);margin:0;border-radius:12px}
+ .native-stage .native-shortcuts{margin:0;padding:22px 8px;align-content:space-around;row-gap:24px;border-radius:12px}
+ .native-stage .native-shortcuts button{font-size:13px}
+ .native-stage .food-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+ .native-stage .food-card>img{height:auto;aspect-ratio:1.2;object-fit:cover}
+ .native-stage .food-card-body{padding:16px}
+ .native-stage .food-card h4{font-size:16px}
+ .native-stage .food-card p{font-size:13px}
+ .native-stage .native-tabbar{height:72px;justify-content:center;padding:10px 22px;background:#fffffff5;backdrop-filter:blur(12px)}
+ .native-stage .native-tabbar button{max-width:180px;flex:1;font-size:13px;gap:5px}
+ .native-stage .native-tabbar b{right:calc(50% - 30px)}
+ .native-stage .native-app:has(.native-tabbar) .native-checkout-bar{bottom:72px!important}
+ .native-stage .native-app.view-cart{padding-bottom:158px}
+ .native-stage .native-checkout-bar,.native-stage .native-detail-bottom{padding:14px 30px;justify-content:flex-end;gap:22px;min-height:72px}
+ .native-stage .native-checkout-bar>label{margin-right:auto}
+ .native-stage .native-detail-bottom>button:nth-child(-n+2){width:64px}
+ .native-stage .native-detail-bottom .soft-btn{margin-left:16px}
+ .native-stage .native-detail-bottom .primary-pill,.native-stage .native-detail-bottom .soft-btn{min-width:170px}
+ .native-stage .native-card{padding:22px;border-radius:12px;margin:14px 12px}
+ .native-stage .native-card h3{font-size:18px}
+ .native-stage .native-card>p{font-size:14px}
+ .native-stage .native-line{min-height:48px;font-size:14px}
+ .native-stage .catalog-tabs{border-radius:10px;gap:28px;padding:0 24px}
+ .native-stage .catalog-tabs button,.native-stage .sort-tabs{font-size:14px}
+ .native-stage .view-category>.native-list,.native-stage .view-shop>.native-list,.native-stage .customer-order-grid,.native-stage .customer-shop-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:0 12px}
+ .native-stage .customer-order-grid>.native-card,.native-stage .customer-shop-grid>.native-card{margin:0}
+ .native-stage .native-product-row{padding:18px;margin:0;align-items:center}
+ .native-stage .native-product-row h4{font-size:16px}
+ .native-stage .native-product-row p{font-size:13px}
+ .native-stage .native-product-row>img{width:112px;height:112px}
+ .native-stage .detail-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin:0 12px 20px;align-items:start}
+ .native-stage .detail-photo{border-radius:14px;overflow:hidden;background:white}
+ .native-stage .detail-photo img{aspect-ratio:1;max-height:540px}
+ .native-stage .detail-thumbnails{border-radius:10px;margin-top:10px}
+ .native-stage .detail-summary>.native-card{margin:0 0 14px}
+ .native-stage .detail-info h2{font-size:25px}
+ .native-stage .detail-info p{font-size:15px;line-height:1.8}
+ .native-stage .view-detail>.native-card{margin-top:20px}
+ .native-stage .native-rich-content{font-size:15px;max-width:900px}
+ .native-stage .native-rich-content img{max-height:640px;object-fit:contain}
+ .native-stage .view-cart>.native-list{max-width:1000px;margin:auto}
+ .native-stage .cart-row{padding:20px;gap:18px}
+ .native-stage .cart-row>img{width:104px;height:104px}
+ .native-stage .cart-row h4{font-size:16px}
+ .native-stage .view-checkout>.native-card,.native-stage .view-orderDetail>.native-card,.native-stage .view-orderService>.purchase-feedback,.native-stage .view-profile>.profile-editor{max-width:920px;margin:16px auto}
+ .native-stage .view-profile>.profile-editor{max-width:700px;padding:28px 40px}
+ .native-stage .view-address>.native-card{max-width:900px;margin:14px auto}
+ .native-stage .view-address>.address-button{display:block;max-width:600px;margin:20px auto}
+ .native-stage .view-mine>.native-card,.native-stage .view-mine>.mine-credit{max-width:1000px;margin:16px auto}
+ .native-stage .mine-banner{border-radius:12px;margin-top:16px;height:180px}
+ .native-stage .mine-orders{max-width:820px;margin:auto}
+ .native-stage .service-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+ .native-stage .native-overlay{align-items:center;padding:24px}
+ .native-stage .native-sheet{width:min(620px,100%);max-height:92%;border-radius:18px;padding:30px}
+ .native-stage .credit-customer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:0 12px}
+ .native-stage .credit-customer>.native-card{margin:0}
+ .native-stage .credit-customer>.credit-wallet,.native-stage .credit-customer>.credit-disclaimer,.native-stage .credit-customer>.credit-empty{grid-column:1/-1}
+ .native-stage .native-app .credit-wallet{margin:0;padding:28px 34px}
+ .native-stage .credit-guide{align-self:start}
+ .native-stage .after-sales-customer{max-width:1100px;margin:auto}
+ .native-stage .after-sales-customer.case-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:0 12px}
+ .native-stage .after-sales-customer.case-list>.after-sales-list-heading,.native-stage .after-sales-customer.case-list>.native-empty{grid-column:1/-1}
+ .native-stage .after-sales-customer.case-list>.native-card{margin:0}
+ .native-stage .support-mobile{max-width:1100px;margin:0 auto}
+ .native-stage .support-mobile .support-hero{border-radius:12px;padding:30px}
+ .native-stage .support-mobile .support-entry-grid{margin:18px 0;gap:18px}
+ .native-stage .support-mobile .support-entry-grid button{padding:24px;display:grid;grid-template-columns:46px 1fr;column-gap:14px}
+ .native-stage .support-entry-grid button>span{grid-row:1/3}
+ .native-stage .support-entry-grid strong,.native-stage .support-entry-grid small{margin:0;align-self:center}
+ .native-stage .support-mobile .support-help-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:34px}
+ .native-stage .support-mobile .support-ticket-form,.native-stage .support-mobile .support-ticket-state,.native-stage .support-mobile:has(.support-ticket-state){max-width:900px;margin-left:auto;margin-right:auto}
+ .native-stage .view-supportChat>.support-mobile{height:calc(100% - var(--customer-header-space));max-width:1000px;border:1px solid #e5e5e5;border-radius:12px;background:#faf8f6}
+ .native-stage .view-supportChat .support-message{max-width:75%}
+ .native-stage .view-supportChat .support-message p{font-size:14px}
+ .native-stage .native-app .help-customer{max-width:1180px;margin:auto;padding:20px 12px 36px}
+ .native-stage .help-customer .manual-catalog,.native-stage .help-customer .resource-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+ .native-stage .help-customer .manual-card{padding:20px;gap:20px}
+ .native-stage .help-customer .manual-card h2{font-size:16px}
+ .native-stage .help-customer .manual-card p{font-size:12px}
+ .native-stage .help-customer .manual-preview{max-width:760px;margin:0 auto}
+ .native-stage .help-customer .manual-text,.native-stage .help-customer .update-timeline{max-width:920px;margin-left:auto;margin-right:auto}
+ .native-stage.entry-stage .native-device{max-width:1040px}
+ .native-stage .entry-app{padding-bottom:32px}
+ .native-stage .native-device .entry-content{max-width:680px;margin:auto;padding:24px 48px 40px}
+ .native-stage .native-device .entry-content .entry-roles{gap:18px}
+ .native-stage .native-device .entry-content .entry-roles button{padding:20px}
+ .native-stage .native-device .entry-content .native-form{max-width:540px;margin-left:auto;margin-right:auto}
+}
+@media(min-width:1100px) and (min-height:600px){
+ .native-stage .food-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .native-stage .home-feature-grid{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);--customer-hero-height:300px}
+ .native-stage .view-category>.native-list,.native-stage .view-shop>.native-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .native-stage .help-customer .manual-catalog{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+/* A rotated phone has useful width but little height. Remove the portrait box. */
+@media(min-width:480px) and (max-height:599px) and (orientation:landscape){
+ .native-stage.native-stage{padding:6px 12px;align-items:stretch}
+ .native-stage .native-device{width:100%!important;height:100%!important;aspect-ratio:auto;border-radius:10px}
+ .native-stage .native-app{--customer-header-space:44px;padding-bottom:72px}
+ .native-stage .native-header{height:44px}
+ .native-stage .native-tabbar{height:48px;padding:5px 20px;justify-content:center}
+ .native-stage .native-tabbar button{flex-direction:row;justify-content:center;max-width:180px;font-size:12px}
+ .native-stage .native-app:has(.native-tabbar) .native-checkout-bar{bottom:48px!important}
+ .native-stage .view-cart{padding-bottom:112px}
+ .native-stage .native-checkout-bar,.native-stage .native-detail-bottom{padding:8px 18px;min-height:52px}
+ .native-stage .food-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+ .native-stage .food-card>img{height:140px}
+ .native-stage .view-category>.native-list,.native-stage .view-shop>.native-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .native-stage .native-product-row>img{width:80px;height:80px}
+ .native-stage .detail-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin:0 12px}
+ .native-stage .detail-summary>.native-card{margin:0 0 10px}
+ .native-stage .detail-photo img{max-height:320px}
+ .native-stage .native-overlay{align-items:center;padding:12px}
+ .native-stage .native-sheet{width:min(600px,100%);max-height:96%;border-radius:12px;padding:20px}
+ .native-stage .view-supportChat>.support-mobile{height:calc(100% - var(--customer-header-space))}
+ .native-stage .view-supportChat .support-chat-heading{padding:8px 16px}
+ .native-stage .view-supportChat .support-thread-tip{display:none}
+ .native-stage .view-supportChat .support-chat-compose{padding:6px 12px;min-height:70px;max-height:55%}
+ .native-stage .native-device .entry-content{max-width:620px;margin:auto;padding:12px 28px 28px}
+ .native-stage .native-device .entry-content .entry-logo{width:42px;height:42px;margin:0 auto 8px}
+ .native-stage .native-device .entry-content .entry-roles{margin-top:18px}
+ .native-stage .help-customer .manual-catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(min-width:480px) and (max-width:599px) and (max-height:599px) and (orientation:landscape){.native-stage .food-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.native-stage .view-category>.native-list,.native-stage .view-shop>.native-list{grid-template-columns:1fr}.native-stage .detail-intro{grid-template-columns:1fr}.native-stage .native-detail-bottom{gap:8px}.native-stage .native-detail-bottom .primary-pill,.native-stage .native-detail-bottom .soft-btn{padding-left:12px;padding-right:12px}}

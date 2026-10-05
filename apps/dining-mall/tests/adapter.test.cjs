@@ -1,9 +1,10 @@
 ;(async()=>{
+const {requestTestGlobals}=await import('./request-test-globals.mjs')
 const feedback=await import('../src/utils/feedback-service.js')
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict')
-const source=fs.readFileSync('src/utils/request.js','utf8').replace(/^import.*$/mg,'').replace('export const resetDemo','const resetDemo').replace('export default','globalThis.api=')
+const source=fs.readFileSync('src/utils/request.js','utf8').replace(/^import.*$/mg,'').replace(/export const /g,'const ').replace('export default','globalThis.api=')
 const memory=new Map()
-const ctx={...feedback,seed:JSON.parse(fs.readFileSync('src/utils/seed.json')),sanitizeHTML:s=>s,localStorage:{getItem:k=>memory.get(k),setItem:(k,v)=>memory.set(k,v),removeItem:k=>memory.delete(k)},location:{},console}
+const ctx={...requestTestGlobals,...feedback,seed:JSON.parse(fs.readFileSync('src/utils/seed.json')),sanitizeHTML:s=>s,localStorage:{getItem:k=>memory.get(k),setItem:(k,v)=>memory.set(k,v),removeItem:k=>memory.delete(k)},location:{},console}
 ctx.sessionStorage=ctx.localStorage;vm.createContext(ctx);vm.runInContext(source,ctx)
 const api=ctx.api,passes=[]
 async function role(r){const result=await api.post('/web/login',{username:'111',password:'111',role:r});assert.equal(result.code,'200');memory.set('account',JSON.stringify(result.data));return result.data}

@@ -1,59 +1,60 @@
-# miniapp · v0.2
+# miniapp · v0.2 持续修订
 
-在芋道餐饮「先吃后付」模拟项目的基础上，结合项目所有者此前开发的购物商城，完善顾客、商家、平台三端的餐饮体验与本机业务演示。
+结合项目所有者此前开发的购物商城，在原芋道餐饮「先吃后付」模拟基础上，完善顾客、商家和平台三端。当前源码同时包含本机商城演示，以及已通过真实回环 HTTP 联调的 Java 客服/留言、附件、资料、手册、配置元数据和本人显示资料接口。
 
-本版保留既有 Java 后端、芋道上游源码和轻量验证界面，另在 `apps/dining-mall` 交付融合原商城的新前端。新前端仍使用浏览器本机状态，尚未接入真实 Java 服务端、原 96 个端点或真实支付；不能用于真实资金、授信或生产账户。
+本次以 `77bd867b5884779a00f5fe2d6e4d74143db424b7` 为基线，合入此前交付但未进入 GitHub 的客服功能、Java接线、手机/平板响应式修订及品牌检查。版本继续为 `0.2.0`，未创建新 tag 或 GitHub Release。
 
-- [v0.2 更新日志](CHANGELOG.md)
-- [安装、测试、构建与部署](docs/BUILD-DEPLOY-v0.2.md)
-- [本次发布验证与边界](docs/RELEASE-VERIFICATION-v0.2.md)
-- [源码、素材与许可来源](docs/SOURCE-PROVENANCE-v0.2.md)
+对应149文件前端已发布到 [鲜食好店体验页](https://mall-original-ui.lijunjie050307.chatgpt.site)，源身份与本次GitHub应用目录一致；默认仍是本机演示。代码提交和静态站点发布不代表 Java 云服务已部署。真实支付、短信、外部 AI 和生产身份服务仍未接通；商城目录/购物车/订单/额度/还款/售后等原有流程尚未全部映射到新前端的 Java 模式。
 
-## 快速体验新增餐饮应用
+- [更新日志](CHANGELOG.md)
+- [功能覆盖与未接入清单](docs/SHOP-FEATURE-COVERAGE.md)
+- [构建与部署](docs/BUILD-DEPLOY-v0.2.md)
+- [此次修订验证](docs/REVISION-VERIFICATION-20261005.md)
+- [Java支持接口](docs/SHOP-SUPPORT-CONTRACT.md)、[资料接口](docs/SHOP-RESOURCE-CONTRACT.md)
+- [源码与许可来源](docs/SOURCE-PROVENANCE-v0.2.md)
 
-使用 Node.js 20.19+；本次验证环境为 Node.js 24.19.0 / npm 11.9.0。
+## 快速运行
+
+Node.js 20.19+，锁文件固定依赖；已验证环境为 Node.js 24.19.0 / npm 11.9.0。
 
 ```sh
 cd apps/dining-mall
 npm ci
 npm run dev
-```
-
-- 顾客端：`/#/mall/home`
-- 商家端：`/#/merchant/home`
-- 平台端：`/#/platform/home`
-- 角色入口：`/#/login`，三个角色账号与密码均为 `111 / 111`
-
-账号只切换演示身份。业务数据保存在同一浏览器的 `localStorage`，不跨设备同步；不要输入真实个人资料或支付信息。
-
-```sh
 npm run verify
 ```
 
-上述命令运行数据适配、角色路由、原业务规则、跨角色流程、售后/评价、实际 Vue DOM 事件测试，并构建静态站点。它不启动 Java，也不代表真实后端端到端或像素布局验收。
+顾客入口 `/#/mall/home`、商家 `/#/merchant/home`、平台 `/#/platform/home`。默认通过 `/#/login` 使用 `111 / 111` 选择本机体验身份，数据保存在本浏览器，不是生产认证或跨设备服务。
 
-## 源码目录
+顾客手机竖屏保留9:16容器和内部滚动；平板/电脑展开为宽版，低高度横屏采用可滚动紧凑布局。仍使用同一顾客路由，不会因屏幕变化进入商家/平台后台。详见 [响应式规则](apps/dining-mall/docs/RESPONSIVE-REVISION.md)。
+
+## Java 模拟服务
+
+```sh
+mvn -f verification/pom-with-guard.xml test
+python3 verification/run-support-http-fixture.py --port 18081
+```
+
+随后在前端登录页明确选择“连接Java模拟服务”，使用 `http://127.0.0.1:18081/api/v1` 及该夹具说明中的合成身份流程。服务端签发模拟会话，令牌只在前端内存中；刷新需重新连接。本机演示的 `111 / 111` 不能代替 Java 身份认证。
+
+当前实际 HTTP 连接范围是客服会话/消息/已读、附件、留言处理/归档恢复、资料/手册、AI/支付展示元数据及本人显示资料。未映射的商城/信用页面明确提示，不静默回退到本机成功。测试服务只绑定回环地址，使用测试用原子 JSON 存储，未完成 MySQL/JDBC 或线上部署验收。
+
+## 目录
 
 | 目录 | 作用 |
 | --- | --- |
-| `apps/dining-mall` | 本次融合用户原商城的餐饮三端应用；Vue 3 / Element Plus / 本机适配层 |
-| `apps/simulation-ui` | 既有 Java 模拟后端的轻量验证 UI；本版同步此前交付的草稿、通知、日期等源码增量 |
-| `upstream/backend` | 固定版本芋道 `ruoyi-vue-pro` Java 后端，项目模拟业务扩展在 `yudao-server` |
-| `upstream/admin` | 固定版本芋道 `yudao-ui-admin-vue3` 管理后台；本版恢复 OA 常量文件 |
-| `upstream/miniapp` | 固定版本芋道 `yudao-mall-uniapp` 原商城移动端/小程序 |
-| `contract` | 原冻结接口、状态机、候选数据字典和验证工具；不是已经执行的生产迁移 |
-| `verification` | 聚焦模拟领域与保护测试的 Maven 入口及历史验证脚本 |
+| `apps/dining-mall` | 用户原商城融合后的餐饮三端、响应式界面、本机适配与明确选择的 Java 支持接口 |
+| `apps/simulation-ui` | 原 Java 模拟业务的轻量验证界面 |
+| `upstream/backend` | 固定芋道 Java 基线与项目模拟领域、客服/资料接口实现 |
+| `upstream/admin` | 固定版本芋道 Vue 管理后台 |
+| `upstream/miniapp` | 固定版本芋道 uni-app 商城源码 |
+| `contract` | 原冻结76项操作及状态规则；新增支持接口单独注册 |
+| `verification` | 聚焦 Java、财务场景及真实回环 HTTP 夹具/脚本 |
 
-三套前端保留各自用途，不能混用登录、接口或构建产物。餐饮 UI 的视觉参考来自芋道商城，运行实现是用户原 Vue 商城的适配，不能称为未修改的芋道原版。
+三套前端各自保留用途。餐饮 UI 参考芋道商城视觉，但运行实现来自用户原商城的适配，并非未修改的芋道原版。
 
-## 原有后端增量
+## 边界与来源
 
-同步此前源代码交付中的时间/键集分页、上海时区日期边界、游标身份与权限绑定、历史商户申请恢复及其回归测试。原 76 项冻结操作保持不变；补充接口与 UI 本地适配动作分别管理。
+测试包含真实 Vue DOM 事件、Java servlet 和 HTTP，不等于浏览器像素、手机实机、完整上游、MySQL、生产安全或压测验收。附件类型与签名检查不等于病毒扫描；不要输入真实个人、交易、账户或密钥信息。
 
-生产身份映射、规范领域表迁移、真实支付和外部渠道、完整上游构建、性能与跨机器部署验收仍未完成。历史 150 项状态与运行证据保留在已有 `docs` 中，不能当作 v0.2 新验收结论。
-
-## 版本与许可
-
-`VERSION` 为 `0.2.0`。本次日志以原 `main` 的 `dad246de9ae2f3888bad454cfac402a2eb7ef3af` 为比较基线；发布前没有 v0.1 标签或 GitHub Release。源码提交和可下载源码包不表示网站已部署，也不自动创建 GitHub Release。
-
-上游 README、LICENSE、作者和固定提交记录保持原样，详见 [上游来源](docs/UPSTREAM-SOURCES.md)。不对整个组合项目追加统一开源许可证。用户提供商城源与素材的再分发/商用许可须按各自权利确认。
+原项目的 README、LICENSE、作者与固定版本记录保持原样。各组件和素材权利分别适用，不对组合项目擅自追加统一开源许可证。历史 v0.2 初版说明与测试范围保留在更新日志及 `docs/RELEASE-VERIFICATION-v0.2.md` 中，最新接口范围以本页和覆盖清单为准。

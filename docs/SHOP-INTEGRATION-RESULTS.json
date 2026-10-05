@@ -1,0 +1,60 @@
+{
+  "snapshot": "shop-responsive-revision-20261005",
+  "base_commit": "77bd867b5884779a00f5fe2d6e4d74143db424b7",
+  "status": "SOURCE_VERIFIED",
+  "frontend": {
+    "install": "npm ci passed",
+    "production_build": "passed",
+    "mall_adapter_scenarios": 12,
+    "route_checks": 58,
+    "credit_contract_groups": 13,
+    "after_sales_groups": 6,
+    "support_resource_tests": 30,
+    "mode_lock_cases": 6,
+    "service_mode_race_cases": 6,
+    "message_history_component_cases": 6,
+    "customer_upload_lifecycle_cases": 13,
+    "local_vue_dom": "passed review/refund and support three-role flows",
+    "actual_http_support_vue": "passed",
+    "actual_http_resources_vue": {
+      "groups": 8,
+      "support_requests": 71,
+      "all_passed": true
+    },
+    "warnings": [
+      "Vite dependency chunks exceed 500kB"
+    ]
+  },
+  "java": {
+    "focused_tests": 95,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "commerce_finance_scenarios": 13,
+    "commerce_finance_assertions": 242,
+    "store": "test atomic JSON file for HTTP verification; existing JDBC wiring preserved"
+  },
+  "not_verified": [
+    "browser pixel rendering or actual 9:16 dimensions",
+    "hosted Java service",
+    "MySQL/JDBC runtime",
+    "full original upstream build reactor",
+    "production authentication/security/load",
+    "real SMS/payment/AI",
+    "malware scanning"
+  ],
+  "bounded_unmapped": [
+    "retail catalog/cart/orders/credit/refund legacy APIs in Java frontend mode",
+    "separate store contact-profile API",
+    "arbitrary cloud deployment/configuration"
+  ],
+  "responsive_revision": {
+    "route_renders": 44,
+    "css_media_cascade_viewports": 12,
+    "frontend_verify": "passed",
+    "actual_http_support_vue": "passed after responsive changes",
+    "browser_visual": "blocked; not verified",
+    "details": "apps/dining-mall/docs/RESPONSIVE-REVISION.md"
+  },
+  "hosting_status_note": "GitHub records source. Static-site deployment and hosted Java service are verified separately."
+}

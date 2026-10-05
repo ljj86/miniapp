@@ -140,14 +140,16 @@ const routes = [
     name: 'back',
     component: () => import('../views/Back.vue'),
     children: [
+      {path:'materials',name:'BackMaterials',component:()=>import('../views/back/ServiceSettings.vue'),meta:{title:'资料管理'}},
+      {path:'support',name:'BackSupport',component:()=>import('../views/back/SupportWorkspace.vue'),meta:{title:'客服与留言'}},
       {path:'afterSales',name:'BackAfterSales',component:()=>import('../views/back/AfterSales.vue'),meta:{title:'售后与评价'}},
-      {path:'paymentManagement',name:'BackpaymentManagement',component:()=>import('../views/back/Integrations.vue'),meta:{title:'系统支付管理'}},
-      {path:'payWechat',name:'BackpayWechat',component:()=>import('../views/back/Integrations.vue'),meta:{title:'微信支付接入'}},
-      {path:'payBank',name:'BackpayBank',component:()=>import('../views/back/Integrations.vue'),meta:{title:'银行卡支付接入'}},
-      {path:'payAlipay',name:'BackpayAlipay',component:()=>import('../views/back/Integrations.vue'),meta:{title:'支付宝支付接入'}},
-      {path:'aiManagement',name:'BackaiManagement',component:()=>import('../views/back/Integrations.vue'),meta:{title:'AI管理系统'}},
-      {path:'aiConfiguration',name:'BackaiConfiguration',component:()=>import('../views/back/Integrations.vue'),meta:{title:'AI配置与连接'}},
-      {path:'aiSessions',name:'BackaiSessions',component:()=>import('../views/back/Integrations.vue'),meta:{title:'客服会话与消息'}},
+      {path:'paymentManagement',name:'BackpaymentManagement',component:()=>import('../views/back/ServiceSettings.vue'),meta:{title:'系统支付管理'}},
+      {path:'payWechat',name:'BackpayWechat',component:()=>import('../views/back/ServiceSettings.vue'),meta:{title:'微信支付接入'}},
+      {path:'payBank',name:'BackpayBank',component:()=>import('../views/back/ServiceSettings.vue'),meta:{title:'银行卡支付接入'}},
+      {path:'payAlipay',name:'BackpayAlipay',component:()=>import('../views/back/ServiceSettings.vue'),meta:{title:'支付宝支付接入'}},
+      {path:'aiManagement',name:'BackaiManagement',component:()=>import('../views/back/Integrations.vue'),meta:{title:'AI客服管理'}},
+      {path:'aiConfiguration',name:'BackaiConfiguration',component:()=>import('../views/back/ServiceSettings.vue'),meta:{title:'AI配置与连接'}},
+      {path:'aiSessions',name:'BackaiSessions',component:()=>import('../views/back/SupportWorkspace.vue'),meta:{title:'客服会话与消息'}},
       {path:'credit',name:'BackCredit',component:()=>import('../views/back/Credit.vue'),meta:{title:'先吃后付工作台'}},
       // 后台子路由
       {
@@ -297,24 +299,24 @@ router.beforeEach((to, from, next) => {
   if(to.path==='/404')return next('/mall/notFound')
   const ownBase=account.role==='ROLE_UNIT'?'/merchant':'/platform'
   if(to.path.startsWith('/front')){
-    const pages={home:'home',goods:'category',goodsDetail:'detail',search:'category',unit:'shop',collect:'category',person:'profile',password:'profile',address:'address',cart:'cart',orders:'orders'}
+    const pages={home:'home',goods:'category',goodsDetail:'detail',search:'category',unit:'shop',collect:'category',person:'profile',password:'profile',service:'support',chat:'support',message:'supportTickets',manual:'manuals',updateLog:'updates',updatelog:'updates',address:'address',cart:'cart',orders:'orders'}
     const page=to.path.split('/')[2]||'home'
     return next({path:'/mall/'+(pages[page]||'notFound'),query:{...(to.query||{}),...(page==='collect'?{favorites:1}:{})},replace:true})
   }
-  if(to.path.startsWith('/mall/') && !['home','category','detail','cart','orders','mine','checkout','bill','address','profile','shops','shop','orderDetail','deferredOrder','orderService','afterSales','afterSale','notFound','support'].includes(to.path.split('/')[2]))return next('/mall/home')
-  if(/^\/mall\/(cart|orders|orderDetail|deferredOrder|orderService|afterSales|afterSale|checkout|address|profile|bill)$/.test(to.path) && account.role!=='ROLE_USER')return next({path:'/login',query:{returnTo:to.fullPath||to.path}})
+  if(to.path.startsWith('/mall/') && !['home','category','detail','cart','orders','mine','checkout','bill','address','profile','shops','shop','orderDetail','deferredOrder','orderService','afterSales','afterSale','notFound','support','supportChat','supportTickets','supportNew','supportTicket','manuals','manual','materials','updates'].includes(to.path.split('/')[2]))return next('/mall/home')
+  if(/^\/mall\/(cart|orders|orderDetail|deferredOrder|orderService|afterSales|afterSale|checkout|address|profile|bill|supportChat|supportTickets|supportNew|supportTicket|manuals|manual|materials|updates)$/.test(to.path) && account.role!=='ROLE_USER')return next({path:'/login',query:{returnTo:to.fullPath||to.path}})
   if(to.path.startsWith('/back') && ['ROLE_ADMIN','ROLE_UNIT'].includes(account.role))return next(to.path.replace('/back',ownBase))
   if(to.path.startsWith('/merchant')||to.path.startsWith('/platform')){
     if(!['ROLE_ADMIN','ROLE_UNIT'].includes(account.role))return next('/login')
     if(!to.path.startsWith(ownBase))return next(ownBase+'/home')
     if(to.path===ownBase)return next(ownBase+'/home')
-    if(account.role==='ROLE_UNIT'&&!['home','credit','afterSales','echarts','goods','orders','unitPerson','password'].includes(to.path.split('/')[2]))return next(ownBase+'/home')
+    if(account.role==='ROLE_UNIT'&&!['home','credit','afterSales','support','echarts','goods','orders','unitPerson','password'].includes(to.path.split('/')[2]))return next(ownBase+'/home')
   }
   if (to.path === '/front') return next('/mall/home')
   if (to.path === '/back') return next('/back/credit')
   if (to.path === '/register') return next('/login')
   if (to.path.startsWith('/back') && !['ROLE_ADMIN','ROLE_UNIT'].includes(account.role)) return next('/login')
-  if (to.path.startsWith('/back') && account.role === 'ROLE_UNIT' && !['/back/home','/back/credit','/back/afterSales','/back/echarts','/back/goods','/back/orders','/back/unitPerson','/back/password'].includes(to.path)) return next('/back/credit')
+  if (to.path.startsWith('/back') && account.role === 'ROLE_UNIT' && !['/back/home','/back/credit','/back/afterSales','/back/support','/back/echarts','/back/goods','/back/orders','/back/unitPerson','/back/password'].includes(to.path)) return next('/back/credit')
   if (to.matched.length === 0) {
     next('/mall/notFound')
     return
@@ -341,7 +343,7 @@ router.beforeEach((to, from, next) => {
 
 // 全局后置守卫
 router.afterEach((to) => {
-  document.title = to.meta.title ? `${to.meta.title} - ${projectName}` : projectName // 设置页面标题
+  document.title = to.meta.title && to.meta.title !== projectName ? `${to.meta.title} - ${projectName}` : projectName // 设置页面标题
 })
 
 export default router

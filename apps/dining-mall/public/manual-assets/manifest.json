@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "manuals": [
+    {
+      "id": "1",
+      "title": "顾客使用指南",
+      "assets": [
+        {
+          "format": "PDF",
+          "file": "customer-manual.pdf",
+          "mime": "application/pdf",
+          "size": 121809,
+          "sha256": "c58625413b54492c7037cec4d4ee1bebc1f3702a5b89ee39cf1abd1cfa8ee71e"
+        },
+        {
+          "format": "PNG",
+          "file": "customer-manual-page-1.png",
+          "mime": "image/png",
+          "size": 276849,
+          "sha256": "6e94465cdd0a4626edfdc214eaa860aaf4ace4d0086508ac8519ea8b9a082722",
+          "page": 1
+        },
+        {
+          "format": "PNG",
+          "file": "customer-manual-page-2.png",
+          "mime": "image/png",
+          "size": 310829,
+          "sha256": "297c00bd280d035f0e3aa896e3818acd782bf3fb35a02568705ed1ca6d04f754",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "商家使用指南",
+      "assets": [
+        {
+          "format": "PDF",
+          "file": "merchant-manual.pdf",
+          "mime": "application/pdf",
+          "size": 104843,
+          "sha256": "534d07f2d32eeaae977f2b3362de908da298a363afeb96f7de117b2984f7f192"
+        },
+        {
+          "format": "PNG",
+          "file": "merchant-manual-page-1.png",
+          "mime": "image/png",
+          "size": 287041,
+          "sha256": "dfab4a5e004efee3ca96794a32b197217bcf56a3d0690591a5c4defc5406fb25",
+          "page": 1
+        },
+        {
+          "format": "PNG",
+          "file": "merchant-manual-page-2.png",
+          "mime": "image/png",
+          "size": 300126,
+          "sha256": "89a97e606339b7021dce8fa29e253f77231c9bbceaa272ce05ef2925d13ea191",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "平台与资料中心指南",
+      "assets": [
+        {
+          "format": "PDF",
+          "file": "platform-manual.pdf",
+          "mime": "application/pdf",
+          "size": 108815,
+          "sha256": "d6913fd148ad97cdb56d2ebeb058bd5c11428e43fa4b18001d4fb11ce4c70c6c"
+        },
+        {
+          "format": "PNG",
+          "file": "platform-manual-page-1.png",
+          "mime": "image/png",
+          "size": 342388,
+          "sha256": "80bf4162bd10c779990423fd7da51d3724dd051190e0bc6cdbb8a63755daed75",
+          "page": 1
+        },
+        {
+          "format": "PNG",
+          "file": "platform-manual-page-2.png",
+          "mime": "image/png",
+          "size": 300512,
+          "sha256": "a655076c514b84a2ae99eb54b5965dcb758cc79d938f5af20acf05b0bfb83bbb",
+          "page": 2
+        }
+      ]
+    }
+  ]
+}

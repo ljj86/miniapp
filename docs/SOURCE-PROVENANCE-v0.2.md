@@ -33,3 +33,16 @@
 ## 后续手机版部署包
 
 该包包含已编译前端和 Spring Boot JAR，没有配套可编辑源代码。本版只将其中已核实的 AI 配置/连接、客服会话/消息模块结构用于平台菜单概览，没有把其全部业务合并，也未提交 JAR、二进制部署包或运行数据库。
+
+
+## 2026-10-05 Shop integration supplement
+
+The current frontend adds source-maintained support, resources, profile and configuration HTTP integration. The later supplied Shop bundle contained compiled artifacts rather than Vue/Java source; its functionality was statically reviewed. No original runtime database records, payment configuration, keys, unknown JARs or downloaded executable hooks were copied. The existing unused electronics source-catalog.json and public/files reference images remain excluded from this source distribution. All active dining, brand and manual assets are included. The current snapshot is not a new GitHub release or deployed version.
+
+## 2026-10-05 持续修订
+
+本次GitHub修订以77bd867为基线，合入先前已交付的客服/资料、Java支持接口及响应式源码，并与最终品牌/导航修订使用同一份149文件前端快照。前端逐文件与整体SHA-256记录见 `REVISION-SOURCE-IDENTITY-20261005.json`。
+
+原部署包仍只作为功能对照，未执行、反向发布或提交其JAR；客服、资料等实现来自维护中的Java/Vue源码。三份内置餐饮手册和对应预览图为本项目配套资料；不包含原设备手册、原用户/会话/支付配置或私有托管绑定。
+
+GitHub提交、静态站点发布与Java托管服务是独立验证项。新增服务接口不改变既有上游许可，也不把源码发布等同于生产验收。

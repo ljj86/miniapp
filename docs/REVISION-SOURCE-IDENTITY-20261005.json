@@ -1,0 +1,1004 @@
+{
+  "base_commit": "77bd867b5884779a00f5fe2d6e4d74143db424b7",
+  "frontend": {
+    "frontend_tree_sha256": "a0aeab765ea94a738a825512a6aaadadc8291ec4dcaeb505371c5a4f1f32a3f1",
+    "algorithm": "sha256 of sorted relative-path + NUL + file-sha256 + newline",
+    "files": [
+      {
+        "path": ".gitignore",
+        "bytes": 59,
+        "sha256": "a65da5599c573a2521b5f6d82731dcfd6c2c94be1c3a488b1018e6cc2715daae"
+      },
+      {
+        "path": "README.md",
+        "bytes": 3328,
+        "sha256": "50ca7950ddbe101e96795f2aca777c5568eb8a9f7ecd3a6d110dce8cbde8097e"
+      },
+      {
+        "path": "config/config.default.js",
+        "bytes": 122,
+        "sha256": "66151a651611b0e2977059b87aa00c9e6361400ce1d9029a8e04b9c0fa914584"
+      },
+      {
+        "path": "config/logo.svg",
+        "bytes": 630,
+        "sha256": "8c1a29a8a93513826bbe07492271257afb5551688fbcbef79092617513eebc2c"
+      },
+      {
+        "path": "docs/ADAPTER.md",
+        "bytes": 11321,
+        "sha256": "b65fb2635062cba03fd66777cb0ce63dca33034307abdbf9c76a12cfc3cecfcc"
+      },
+      {
+        "path": "docs/BRAND-AND-NAVIGATION-REVISION.md",
+        "bytes": 1630,
+        "sha256": "6ae87a877bd78f78eef19a023473e40a833da18a542e2b8e19256f702cda7564"
+      },
+      {
+        "path": "docs/OriginalLogin.reference.vue",
+        "bytes": 10034,
+        "sha256": "14a515c668cc3897ec3ad5bc8f4e521908d539b5de95ab2334291b184606b3a9"
+      },
+      {
+        "path": "docs/RESPONSIVE-REVISION.md",
+        "bytes": 3688,
+        "sha256": "331d87d396009c372749984b063255764efd9fc321785816bb2582f311ebeeae"
+      },
+      {
+        "path": "docs/food-image-sources.json",
+        "bytes": 3170,
+        "sha256": "12e0554116e945c16c8001b2da7b79db80adf4e89d1f641125c6d35af1239b1a"
+      },
+      {
+        "path": "index.html",
+        "bytes": 815,
+        "sha256": "1407614a523e19ca5b208e9b66e71f1a3d15549f09fbc1bc168c1e9283178a4b"
+      },
+      {
+        "path": "jsconfig.json",
+        "bytes": 116,
+        "sha256": "a694c5fbd658b2bae25fb085b1678a71b8ecdc30c7ed99dd5d54e4debdcdf200"
+      },
+      {
+        "path": "package-lock.json",
+        "bytes": 173055,
+        "sha256": "a20cabcf248654854c7bbdd245bcbf8d5042517913c915f90f6ea148e7dc26a0"
+      },
+      {
+        "path": "package.json",
+        "bytes": 1760,
+        "sha256": "ad69ec53a95ebaa86d2a95ac61fed0407222adb30a22ace8b1f4fbf9f4debb73"
+      },
+      {
+        "path": "public/apple-touch-icon.png",
+        "bytes": 5767,
+        "sha256": "e6431f69b0c2a42f45c706da02cf8f7b9ac9bf7d8121bad0abc11a8daa74df4e"
+      },
+      {
+        "path": "public/avatar.svg",
+        "bytes": 1073,
+        "sha256": "87bf0090137ec0ce1742384ec49094b89c35d3bcc45ccbcf9d2335a213501931"
+      },
+      {
+        "path": "public/brand/apple-touch-icon-v5.png",
+        "bytes": 5767,
+        "sha256": "e6431f69b0c2a42f45c706da02cf8f7b9ac9bf7d8121bad0abc11a8daa74df4e"
+      },
+      {
+        "path": "public/brand/dining-app-icon-v5.svg",
+        "bytes": 706,
+        "sha256": "f8c0d8d112385ae4615e8acaab2e4fcda55cb1699deb9245cad9d4eccc5ffdfb"
+      },
+      {
+        "path": "public/brand/dining-logo-v5.svg",
+        "bytes": 630,
+        "sha256": "8c1a29a8a93513826bbe07492271257afb5551688fbcbef79092617513eebc2c"
+      },
+      {
+        "path": "public/brand/favicon-v5.png",
+        "bytes": 1052,
+        "sha256": "31f4f09c243c8bd84bfc481fc2b5d6d228004bc4151c993c39fbd259c8bd5b67"
+      },
+      {
+        "path": "public/favicon.ico",
+        "bytes": 1016,
+        "sha256": "2d670c62d3206981cc6d2d70baf5903fc3bdc1091094f67dae26cae28491bb70"
+      },
+      {
+        "path": "public/favicon.png",
+        "bytes": 1052,
+        "sha256": "31f4f09c243c8bd84bfc481fc2b5d6d228004bc4151c993c39fbd259c8bd5b67"
+      },
+      {
+        "path": "public/favicon.svg",
+        "bytes": 706,
+        "sha256": "f8c0d8d112385ae4615e8acaab2e4fcda55cb1699deb9245cad9d4eccc5ffdfb"
+      },
+      {
+        "path": "public/food/banner.jpg",
+        "bytes": 340176,
+        "sha256": "7cf17e5fed8098311023889e13ba71b9546bec959e4fac809bef937c00b0b50c"
+      },
+      {
+        "path": "public/food/beef-noodles.jpg",
+        "bytes": 213186,
+        "sha256": "102243d511a49dd19fd424380d8090f732e1b32c34671c659dbf7c05736cf1d7"
+      },
+      {
+        "path": "public/food/beef-rice.jpg",
+        "bytes": 60275,
+        "sha256": "1091fdbf481565f50febcd0d9fb5e5e8f6e63113bcc035fd7228c3c884d02944"
+      },
+      {
+        "path": "public/food/chicken-burger.jpg",
+        "bytes": 80546,
+        "sha256": "550a24fc937b7ec4ba2e0f356a5be78d370c8f03e6e8b9c3bcd5f091ab279e24"
+      },
+      {
+        "path": "public/food/iced-coffee.jpg",
+        "bytes": 164081,
+        "sha256": "686f4cb68d478f98a9415eb30ccbb925366cf8d45421c72c6c2b9ed99387db70"
+      },
+      {
+        "path": "public/food/meal-banner-wide.jpg",
+        "bytes": 340176,
+        "sha256": "7cf17e5fed8098311023889e13ba71b9546bec959e4fac809bef937c00b0b50c"
+      },
+      {
+        "path": "public/food/meal-banner.jpg",
+        "bytes": 1070338,
+        "sha256": "b0a83c1c257399b6b3e7d3832f67d5bb81270427ff805b8ef6e89bb181ea18a6"
+      },
+      {
+        "path": "public/food/orange-juice.jpg",
+        "bytes": 76969,
+        "sha256": "fbf8763da13982fa269f720c4e1957943c1b53db3eec795a23272e9c38f50bd9"
+      },
+      {
+        "path": "public/food/salad.jpg",
+        "bytes": 104660,
+        "sha256": "9294393f20f2f647f6a2046d30a00f61867720c3d59ac401ad017a2a1b2d3738"
+      },
+      {
+        "path": "public/manual-assets/customer-manual-page-1.png",
+        "bytes": 276849,
+        "sha256": "6e94465cdd0a4626edfdc214eaa860aaf4ace4d0086508ac8519ea8b9a082722"
+      },
+      {
+        "path": "public/manual-assets/customer-manual-page-2.png",
+        "bytes": 310829,
+        "sha256": "297c00bd280d035f0e3aa896e3818acd782bf3fb35a02568705ed1ca6d04f754"
+      },
+      {
+        "path": "public/manual-assets/customer-manual.pdf",
+        "bytes": 121809,
+        "sha256": "c58625413b54492c7037cec4d4ee1bebc1f3702a5b89ee39cf1abd1cfa8ee71e"
+      },
+      {
+        "path": "public/manual-assets/manifest.json",
+        "bytes": 2606,
+        "sha256": "f9c94144abb94896d5191dfa2fe45341f4c46eeeda1d4331d13a6b637d1aaa84"
+      },
+      {
+        "path": "public/manual-assets/merchant-manual-page-1.png",
+        "bytes": 287041,
+        "sha256": "dfab4a5e004efee3ca96794a32b197217bcf56a3d0690591a5c4defc5406fb25"
+      },
+      {
+        "path": "public/manual-assets/merchant-manual-page-2.png",
+        "bytes": 300126,
+        "sha256": "89a97e606339b7021dce8fa29e253f77231c9bbceaa272ce05ef2925d13ea191"
+      },
+      {
+        "path": "public/manual-assets/merchant-manual.pdf",
+        "bytes": 104843,
+        "sha256": "534d07f2d32eeaae977f2b3362de908da298a363afeb96f7de117b2984f7f192"
+      },
+      {
+        "path": "public/manual-assets/platform-manual-page-1.png",
+        "bytes": 342388,
+        "sha256": "80bf4162bd10c779990423fd7da51d3724dd051190e0bc6cdbb8a63755daed75"
+      },
+      {
+        "path": "public/manual-assets/platform-manual-page-2.png",
+        "bytes": 300512,
+        "sha256": "a655076c514b84a2ae99eb54b5965dcb758cc79d938f5af20acf05b0bfb83bbb"
+      },
+      {
+        "path": "public/manual-assets/platform-manual.pdf",
+        "bytes": 108815,
+        "sha256": "d6913fd148ad97cdb56d2ebeb058bd5c11428e43fa4b18001d4fb11ce4c70c6c"
+      },
+      {
+        "path": "src/App.vue",
+        "bytes": 2041,
+        "sha256": "16171abcdf8d79d6525386a77d200267e1baa1c03f49775f17a282aa46d7d33f"
+      },
+      {
+        "path": "src/assets/404.svg",
+        "bytes": 5098,
+        "sha256": "c5df42f84b219f8f57fe136dc88f883e8aa14bb477d2aedb798c50022672f920"
+      },
+      {
+        "path": "src/assets/喜欢.png",
+        "bytes": 3026,
+        "sha256": "2ff2f844d55227ca0c152ae30445b159cd9aa9826c8a6d5b1bba4382cf3445ff"
+      },
+      {
+        "path": "src/assets/用户头像.svg",
+        "bytes": 1073,
+        "sha256": "87bf0090137ec0ce1742384ec49094b89c35d3bcc45ccbcf9d2335a213501931"
+      },
+      {
+        "path": "src/components/AfterSalesCustomer.vue",
+        "bytes": 7709,
+        "sha256": "1d9349f62dd99ec45bfc201aee7fe35f192e4844134614035173a18b534ebfe0"
+      },
+      {
+        "path": "src/components/BackendConnectionForm.vue",
+        "bytes": 2711,
+        "sha256": "0eb02595df6ec3926067e0e07209a50dd27350bbf945c950a45356c1672d16f4"
+      },
+      {
+        "path": "src/components/CreditCustomer.vue",
+        "bytes": 19227,
+        "sha256": "7ff172a7a20450aa91071baf7b51e8090f814820376d8d452208a82488b4d934"
+      },
+      {
+        "path": "src/components/HelpCustomer.vue",
+        "bytes": 25829,
+        "sha256": "86d4742f967cb176f491e1038fd4afe4165148ed5ef1b10eb464a698f42a4db2"
+      },
+      {
+        "path": "src/components/PurchaseFeedback.vue",
+        "bytes": 10002,
+        "sha256": "793991e6a71714d86b7ae18a62d3973442e0ab1a3dbf9d06b5f1270503f0ec4a"
+      },
+      {
+        "path": "src/components/ServiceAttachment.vue",
+        "bytes": 4639,
+        "sha256": "4a32e053c44914b8b78d6b32826df7fe9a149be9fb2c4ac8ac2c6014d9889eec"
+      },
+      {
+        "path": "src/components/ServiceUpload.vue",
+        "bytes": 4099,
+        "sha256": "fcbc589bf4811b8f4fba0f3651cd87e920113a03c812fa723b3768e9166c4596"
+      },
+      {
+        "path": "src/components/SupportCustomer.vue",
+        "bytes": 30410,
+        "sha256": "4f44825a7f6671b6d89958df6740aa5beac0995a80192ca2370b79ede4074a62"
+      },
+      {
+        "path": "src/components/zoom.vue",
+        "bytes": 4580,
+        "sha256": "6fa79b836125ddf875402117dee1ea3d8858ba51b395983dc88efb6102e6671d"
+      },
+      {
+        "path": "src/main.js",
+        "bytes": 713,
+        "sha256": "f58ff6df4fb6b2c175d7e4b556a6b954b5d70f04ba4ab46e7bb9148b7f693918"
+      },
+      {
+        "path": "src/router/index.js",
+        "bytes": 11706,
+        "sha256": "16363e365cabb9b7a0824460ee5b6150c3cf7d84b42f6634399f4b54f52107cb"
+      },
+      {
+        "path": "src/style/adapt.css",
+        "bytes": 6245,
+        "sha256": "dc91741f109b42196ee1f1a8a6556e4e7c65b6e75770bedf1303dffede882023"
+      },
+      {
+        "path": "src/style/customer-responsive.css",
+        "bytes": 14160,
+        "sha256": "207df9c9a2f43374cabcfc4ab1cd2a93ad42fc38df753a7e8e48d584328d3873"
+      },
+      {
+        "path": "src/style/index.scss",
+        "bytes": 3872,
+        "sha256": "45730c6930fdaf4c4e01c42afedce02753462148a2bf1d6902660a0c7a98ed3b"
+      },
+      {
+        "path": "src/style/native-mall.css",
+        "bytes": 21758,
+        "sha256": "40d8ae60a89e26bdf07bc02783a76fb0a3e2e2715ae350af07b2a5cfa822ac2e"
+      },
+      {
+        "path": "src/utils/credit-service.js",
+        "bytes": 35140,
+        "sha256": "fc205b221672f0bd9e76ddd0c237f7491f8248b250b3ad906cb5fa0e04be4751"
+      },
+      {
+        "path": "src/utils/feedback-service.js",
+        "bytes": 8620,
+        "sha256": "91f8e8a99b64da97fc0b31b1c1815dea20ffd7c02fcc2f3ebce9effe108f68d7"
+      },
+      {
+        "path": "src/utils/help-builtins.js",
+        "bytes": 3711,
+        "sha256": "8791ec2875dcca4b0743fe2215b5b96ca17c21123b6cdc6f49304e4d51b05998"
+      },
+      {
+        "path": "src/utils/local-service-resources.js",
+        "bytes": 14359,
+        "sha256": "8738a8e536fb0c38a6c4b2cb4cc645f11bfaea70f9f3694e82a06e0a03e2e1ee"
+      },
+      {
+        "path": "src/utils/local-upload.js",
+        "bytes": 648,
+        "sha256": "5b259a451df61d68001b6afa2b82a88cf3bef7a98ecaf0b2c997b07efe109f7a"
+      },
+      {
+        "path": "src/utils/manual-assets.js",
+        "bytes": 2622,
+        "sha256": "0023471ab77b89f10071afd472008b2e375b7e675dfcf4dfd2fa626ea8e8b076"
+      },
+      {
+        "path": "src/utils/manual-assets.json",
+        "bytes": 2606,
+        "sha256": "f9c94144abb94896d5191dfa2fe45341f4c46eeeda1d4331d13a6b637d1aaa84"
+      },
+      {
+        "path": "src/utils/request.js",
+        "bytes": 18706,
+        "sha256": "dee2db15f1cb1cfaba41c51222d928eb9e34aaeaceb7890f139fe6aaed8231af"
+      },
+      {
+        "path": "src/utils/sanitize.js",
+        "bytes": 933,
+        "sha256": "333c5ed1171f43307498295eca133b2dbf12d03b52d87ffb39e69dfb789bda66"
+      },
+      {
+        "path": "src/utils/seed.json",
+        "bytes": 7566,
+        "sha256": "1229319a53155af9b30185748b51d100ec011cc6ea43da44c763ca4059960c48"
+      },
+      {
+        "path": "src/utils/service-files.js",
+        "bytes": 1333,
+        "sha256": "c56def78a15575df260fc61848f35abf9b5730ac75c0b59a94465aa35f846bd2"
+      },
+      {
+        "path": "src/utils/service-history.js",
+        "bytes": 1156,
+        "sha256": "8b013637e3c36c1cb713086585c5bbd6cbb4fb4063a88dc90af9331094b87e3c"
+      },
+      {
+        "path": "src/utils/service-http.js",
+        "bytes": 3986,
+        "sha256": "b2724e9c82ed7607dbba3b4eabb67515646314569333afc4f33d2b850d5f1b59"
+      },
+      {
+        "path": "src/utils/service-mode.js",
+        "bytes": 8330,
+        "sha256": "2453c9a3d4961ae8445c8a8027c8462955233e14245670708c3251b94ebbea3e"
+      },
+      {
+        "path": "src/utils/support-attachments.js",
+        "bytes": 9457,
+        "sha256": "6f8e9ea3bc56b2ff0c6203ef3a432410e6060586b42e62a029ce5781841fad10"
+      },
+      {
+        "path": "src/utils/support-domain.js",
+        "bytes": 8496,
+        "sha256": "c1f24fe48b46307f235a43d231547492a771c4fb14ca6009be25ce1491aa7ca2"
+      },
+      {
+        "path": "src/utils/support-service.js",
+        "bytes": 18881,
+        "sha256": "4c15755e982e5c97a9f610017eb92f0ec84dab13261ebfe75caa520116af11a0"
+      },
+      {
+        "path": "src/views/404.vue",
+        "bytes": 3342,
+        "sha256": "dbe5574ad5f7fccf3c03c9107889d6844ce9f24b33d05dac84a6183540730bd7"
+      },
+      {
+        "path": "src/views/Back.vue",
+        "bytes": 15436,
+        "sha256": "9b70136286de90db8137ef2bdb2b0f217edea3a7ed6d7303aca90b56b1d12524"
+      },
+      {
+        "path": "src/views/Front.vue",
+        "bytes": 6988,
+        "sha256": "e2518e0860cb203a2fc479907914a13c051a23234e27b4bf02c8b68802713161"
+      },
+      {
+        "path": "src/views/Login.vue",
+        "bytes": 5306,
+        "sha256": "e2ed38fad22f3830dfbeb9f5d6ec6c8c5bc42348c58297dead17c2f2a1229f97"
+      },
+      {
+        "path": "src/views/Mall.vue",
+        "bytes": 40004,
+        "sha256": "5153b1a2c55fdc58fefe177e93336e2f2e53b82f1d52c9be76e13b13fb2dc597"
+      },
+      {
+        "path": "src/views/Register.vue",
+        "bytes": 11070,
+        "sha256": "ae87e5b1c585f08e7e0b5e49ae4b6852201f025844038b8273864f53ce8b1e0f"
+      },
+      {
+        "path": "src/views/back/Address.vue",
+        "bytes": 6861,
+        "sha256": "3d710e8b36ac19a9b64c2614f557baf39e9402eb94cdb91b932b6bcb4b9b3ac6"
+      },
+      {
+        "path": "src/views/back/Admin.vue",
+        "bytes": 7508,
+        "sha256": "a86f9945436a7326741f810d826640e11f64e2161acc2ee0327db0684c304846"
+      },
+      {
+        "path": "src/views/back/AdminPerson.vue",
+        "bytes": 3932,
+        "sha256": "0597d212a15c4ed4d5514899a55f921c7aef37ef2c1574291265314374a131fa"
+      },
+      {
+        "path": "src/views/back/AfterSales.vue",
+        "bytes": 14433,
+        "sha256": "84f9d1eaeb98d2e706b25674b1313c68969c2c8f811bc34c6a305d71ddfc27cb"
+      },
+      {
+        "path": "src/views/back/Banner.vue",
+        "bytes": 7767,
+        "sha256": "03da5fa5b49207c8518714ad12804914664a3c50b2a1752078994adce713874d"
+      },
+      {
+        "path": "src/views/back/Cart.vue",
+        "bytes": 7922,
+        "sha256": "fb6c42d09f96abd39faa2a063f2834c291401a530434f800332e31a4ab957df3"
+      },
+      {
+        "path": "src/views/back/Collect.vue",
+        "bytes": 6012,
+        "sha256": "d290e065a1b4d425897d1622cb2dd8ba168dcac72576b5c532557cdfa0f2d929"
+      },
+      {
+        "path": "src/views/back/Credit.vue",
+        "bytes": 19730,
+        "sha256": "f1807ebbc91bd0cf2e4f52f71d2010ad83880eeff536d40a2d636a7881b46a7e"
+      },
+      {
+        "path": "src/views/back/Echarts.vue",
+        "bytes": 5382,
+        "sha256": "fd3e634c7fb9fe9b282bd66b825da8d6bbc3e2d3240ecf2a19b1394c3a37b70a"
+      },
+      {
+        "path": "src/views/back/Goods.vue",
+        "bytes": 13553,
+        "sha256": "d3fbe005e2a0ad9eb79cce00c02acccc098938c1f6d53ff9998f58dc2fbbdb15"
+      },
+      {
+        "path": "src/views/back/Home.vue",
+        "bytes": 1415,
+        "sha256": "e37bf64a858ae328fd0dcbaf89e508b29fad64df090d834654c39ea967035873"
+      },
+      {
+        "path": "src/views/back/Integrations.vue",
+        "bytes": 4306,
+        "sha256": "0e5e97b9c72721c5c5e764cfecc65afe9a528494a73a930d0c9defc1f861aaea"
+      },
+      {
+        "path": "src/views/back/Notice.vue",
+        "bytes": 5727,
+        "sha256": "77a10639f7c02c4e216b861aed9b8bfe942e416fd0532e5339aba47ee8f72ba2"
+      },
+      {
+        "path": "src/views/back/Orders.vue",
+        "bytes": 12217,
+        "sha256": "f1f86b75224061c4988f21e65152df8125932c9f8a06739ad2032a8be4264da1"
+      },
+      {
+        "path": "src/views/back/Password.vue",
+        "bytes": 397,
+        "sha256": "f30471da37003cc453d561ad628539e895268e3d418f53378de23930372851c2"
+      },
+      {
+        "path": "src/views/back/ServiceSettings.vue",
+        "bytes": 43404,
+        "sha256": "89b3b4ac8b8c556c648ecbb1f81d611f0bdee19228b7b3aa94365298c3d89d0d"
+      },
+      {
+        "path": "src/views/back/SupportWorkspace.vue",
+        "bytes": 52544,
+        "sha256": "26806640fa92bdef7429844cec6987ac8cba973b8c4b1b4f6989c8a0fc68dd7d"
+      },
+      {
+        "path": "src/views/back/Tag.vue",
+        "bytes": 5962,
+        "sha256": "397f4bdda875a95ee73400006348bc0207a643a0bca862ab436a81900252172a"
+      },
+      {
+        "path": "src/views/back/Type.vue",
+        "bytes": 7564,
+        "sha256": "0a3fe70208bda8c570c5e54e1dc5f68611609db1b93a9c8b79f1786ce25bd433"
+      },
+      {
+        "path": "src/views/back/Unit.vue",
+        "bytes": 8955,
+        "sha256": "d2bff8f7d24235c5b6b393413229ea287d7d381f3aef8bb108754f36c2279676"
+      },
+      {
+        "path": "src/views/back/UnitPerson.vue",
+        "bytes": 4138,
+        "sha256": "9ded1cae6edbd4b9ac2bd58dbe02f2ea28c9d91dd9743d3ed483139e16dd94d8"
+      },
+      {
+        "path": "src/views/back/User.vue",
+        "bytes": 7504,
+        "sha256": "93a7df7e2877959eccfcc99820abb6dd83e6a1cb6d4840105d3fbccba8964f2d"
+      },
+      {
+        "path": "src/views/front/Address.vue",
+        "bytes": 5446,
+        "sha256": "521d139a768df768cfa02cca3a0a7582d90a05d5b1823216d573d5572386b238"
+      },
+      {
+        "path": "src/views/front/Cart.vue",
+        "bytes": 8484,
+        "sha256": "01da59b9cda24fe601f054f9989decf7f615e2a587913d682ad774d0d2c1f4ab"
+      },
+      {
+        "path": "src/views/front/Collect.vue",
+        "bytes": 3919,
+        "sha256": "b68959b26fb8e9d4465ef5f3248106dbf18382b8aec0f0be5715d6854c99c5bc"
+      },
+      {
+        "path": "src/views/front/Goods.vue",
+        "bytes": 6028,
+        "sha256": "44932538fc4acded6e35c84b6ecc358167afc86ec16db92c2244a499c18ad58a"
+      },
+      {
+        "path": "src/views/front/GoodsDetail.vue",
+        "bytes": 13559,
+        "sha256": "0e470df6c8e9ddd6b24e887cd418553d59ecef868992ac83ed02b99eb81756ff"
+      },
+      {
+        "path": "src/views/front/Home.vue",
+        "bytes": 12597,
+        "sha256": "eec07480581aeb6531eeb9f6988939017ae4a379156f418d1178cdc6af364174"
+      },
+      {
+        "path": "src/views/front/Orders.vue",
+        "bytes": 13644,
+        "sha256": "b83242093b828af8fdb7331ccf6c3aca4aefc9b70dae43859d6dfd6a3578d6fe"
+      },
+      {
+        "path": "src/views/front/Password.vue",
+        "bytes": 397,
+        "sha256": "f30471da37003cc453d561ad628539e895268e3d418f53378de23930372851c2"
+      },
+      {
+        "path": "src/views/front/Person.vue",
+        "bytes": 3716,
+        "sha256": "f7a7e2b75d746470556fb9996c2dfb10a5d78d19993ca96030331b6d1a013d1d"
+      },
+      {
+        "path": "src/views/front/Search.vue",
+        "bytes": 5946,
+        "sha256": "4be2e60ae43477948233fc82d85a16fe2f468efb525e199770c8a9c4001841ed"
+      },
+      {
+        "path": "src/views/front/Unit.vue",
+        "bytes": 4560,
+        "sha256": "64c17f59564637d8538bafc80c084679de8166bff6d3ca09b2924f3e0b65f6ee"
+      },
+      {
+        "path": "tests/adapter.test.cjs",
+        "bytes": 6086,
+        "sha256": "51d0dd1c873e40624696b7e2707b7ad58d83717905807eb3ac67c8fd534a0878"
+      },
+      {
+        "path": "tests/after-sales.test.mjs",
+        "bytes": 8263,
+        "sha256": "522f6e81d65734e4ca7459636a44b23d57a56f8d192068bd425eafb5c11b0ecb"
+      },
+      {
+        "path": "tests/backend-resource-ui.test.mjs",
+        "bytes": 22313,
+        "sha256": "c3a485475841b0afdcf5961dae15dd0275ab4fb6f4efbcb274c604864d200e69"
+      },
+      {
+        "path": "tests/backend-support-ui.test.mjs",
+        "bytes": 10548,
+        "sha256": "daa320e833e5f9e819a282850b758251e355475c77e7986e1b16d093c5244d6c"
+      },
+      {
+        "path": "tests/brand-navigation.test.mjs",
+        "bytes": 11730,
+        "sha256": "c5443500876dac9d98ab45f37319f0de5be98e636b6e2d61c967e322d52c2c51"
+      },
+      {
+        "path": "tests/build-ui-harness.mjs",
+        "bytes": 467,
+        "sha256": "849b264948227f3ca7934daff8085b2689d29bcef6f4047fddb9a562119a065b"
+      },
+      {
+        "path": "tests/credit-contract.test.mjs",
+        "bytes": 10339,
+        "sha256": "b36a17fcae5e41b02ad45ea1febb5951de0819c8aaf877cb4ecd691cd84c0bd4"
+      },
+      {
+        "path": "tests/credit-integration.test.mjs",
+        "bytes": 8705,
+        "sha256": "9b404e8ce1fcb2761118afc0cd700c27d7384d3d6ae8676deda37bb927d9803b"
+      },
+      {
+        "path": "tests/customer-races.test.mjs",
+        "bytes": 13640,
+        "sha256": "355e97fdb8a57eb4490f9c99adae719469b83337246a036587d55c59d299d5f8"
+      },
+      {
+        "path": "tests/feedback-ui.test.mjs",
+        "bytes": 9155,
+        "sha256": "6515c42ae60e19d913ea9e5d04c59e2413f96f0082370f53c56982400f91ca9c"
+      },
+      {
+        "path": "tests/fixtures/short-demo.mp4",
+        "bytes": 1847,
+        "sha256": "09621818b512c29f61f8eaa1dd90cdfbf418ec9d30d319bc6d77acaed6ce2aeb"
+      },
+      {
+        "path": "tests/local-service-resources.test.mjs",
+        "bytes": 12928,
+        "sha256": "870a9461e829a440ab288fc501f7d6d9a5a07aa3d4932696e15626eaa63a5d85"
+      },
+      {
+        "path": "tests/mode-lock-race.test.mjs",
+        "bytes": 4547,
+        "sha256": "6260babecfbe8228a61b6c2da3f849b9e27bcb864540aec78d9b6ee4ac5b923b"
+      },
+      {
+        "path": "tests/request-test-globals.mjs",
+        "bytes": 627,
+        "sha256": "0f669f6eda53f0d73207b1b83459a4a60b3110042a544e3bad0a080a201f0939"
+      },
+      {
+        "path": "tests/responsive-css-policy.test.mjs",
+        "bytes": 7828,
+        "sha256": "6d209a93b92a44e8a7ccb41a1854c0c4b4833e8ea94e2afdbd8e99d4e5903fc6"
+      },
+      {
+        "path": "tests/responsive-routes.test.mjs",
+        "bytes": 12314,
+        "sha256": "57c6933fe8e8a3d87d541fa36ec7e1cf37c7bdfdeaae2142e74fd7d3c2171928"
+      },
+      {
+        "path": "tests/results/adapter.txt",
+        "bytes": 1500,
+        "sha256": "f8badfa91d79740e6f7c8906f0409b69529edcdfb49bfcce35b91a3e6d1ba35f"
+      },
+      {
+        "path": "tests/results/credit-contract.txt",
+        "bytes": 1140,
+        "sha256": "8808256e91a6e87960a31c4c7b350981e2a1030ce1803bb8e8d7095d0c81a023"
+      },
+      {
+        "path": "tests/results/credit-integration.txt",
+        "bytes": 609,
+        "sha256": "a02262a820239bfaf8cbf19379a2f8b230245cacd0bf56966053046e96b13d64"
+      },
+      {
+        "path": "tests/results/responsive-css-policy.txt",
+        "bytes": 383,
+        "sha256": "5e10b733b37b7048fef748db56c056c33a52fe82f259ac8dbf48e65bedd3fb47"
+      },
+      {
+        "path": "tests/results/responsive-qa.json",
+        "bytes": 3606,
+        "sha256": "15e101fcc629bca00792892d52c2daaf189daa4c76f71ba6f90e5a25a11c0596"
+      },
+      {
+        "path": "tests/results/responsive-routes.txt",
+        "bytes": 1069,
+        "sha256": "593d096312b30dec6c8c19856084883d80fc69c672545201ea74c9980533c651"
+      },
+      {
+        "path": "tests/results/routes.txt",
+        "bytes": 60,
+        "sha256": "ff886d431b138a386448e55085bed641634322d6793d122916a10c99d325fd87"
+      },
+      {
+        "path": "tests/routes.test.cjs",
+        "bytes": 2389,
+        "sha256": "45cb63657a770443be8076001a6ca759a1a9774b150c2ca3a57a7d463d8df456"
+      },
+      {
+        "path": "tests/service-history-components.test.mjs",
+        "bytes": 4937,
+        "sha256": "aab6b5bb25ac666acfbc70256452f88dd6ea1de78149e45d5f59ad7b3e33dac9"
+      },
+      {
+        "path": "tests/service-history.test.mjs",
+        "bytes": 1263,
+        "sha256": "abe68d6ad4e9a892e1b1f23f95590e78de9937ea8312c7ded64005cd991c868b"
+      },
+      {
+        "path": "tests/service-http.test.mjs",
+        "bytes": 2294,
+        "sha256": "dfabd11e5f7c2bc353d3d5b5a3129018dd54ded5c592352ded2f3ecb7c4d6d69"
+      },
+      {
+        "path": "tests/service-mode-races.test.mjs",
+        "bytes": 5173,
+        "sha256": "e53ee99efadaf19f3c2d703126993e609c787b5c4ea73a927fd279ae94ec2e6c"
+      },
+      {
+        "path": "tests/support-adapter.test.mjs",
+        "bytes": 2647,
+        "sha256": "7305e758050cd81cdf22d81ded48bd418e313b7b5bcbbf9254054fba12382738"
+      },
+      {
+        "path": "tests/support-service.test.mjs",
+        "bytes": 18373,
+        "sha256": "3bb63d4994538325a49ba3bef274a4c6c0b2f4cbceec2daef6c8a86c9b908e29"
+      },
+      {
+        "path": "tests/support-ui.test.mjs",
+        "bytes": 17040,
+        "sha256": "8c8f4edeb68673c1e4b0262fc1344a2ad841f147cfaa36df360c61392e1af464"
+      },
+      {
+        "path": "tests/ui-harness-entry.js",
+        "bytes": 595,
+        "sha256": "936376761cbd56ef274baf3c467182020289ea52300cdc2104a3b307202c0d70"
+      },
+      {
+        "path": "vite.config.js",
+        "bytes": 374,
+        "sha256": "15beb73555ae1f4fd5391a3e9c11ea8c13ee0e05421f768efb35892ac206f278"
+      }
+    ]
+  },
+  "java_verified_inputs": [
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/CommerceModule.java",
+      "sha256": "53123bd3c9dc2e122692007958e8dbce8fed88e9b02d3428d24b3cd9f13a489c"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/ContractCatalog.java",
+      "sha256": "0db639d330c0e48bc11b27391efc4fa71cfcf45a7f5b28ea5c34f62f9489b3c3"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/FinanceModule.java",
+      "sha256": "be938b3bb5bf25f529d65ea6646a254104de100b9fb9407adac9bf243813603c"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/IdentityModule.java",
+      "sha256": "534a1b2f980dfd69cadc3d07a2b5505bcbbe84b18ab3ffd5db24c6830c56279c"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/JdbcSimStore.java",
+      "sha256": "acc9c500ec039afda81ad5cda3ecbc18530e0c56a96d9efeea3ff2381d61c02b"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/MerchantModule.java",
+      "sha256": "67abcdbe6257304b331a2618c8d8f8b44270c57b51970f11058ee7d1673580aa"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/MockKeyRegistry.java",
+      "sha256": "ec93174c00a287f8f602f1184a8d8b24d2e979fae653cd21128f5e27044dd4aa"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/NotificationModule.java",
+      "sha256": "789189f5f89435c3976cb73b76643cf8f3ce2b592675a9b5579860c8f4a109b6"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/ReconciliationModule.java",
+      "sha256": "46ff0bfa78499ee980308e5e95412da2b33cadd50145d35bdcd346c1ee934dd8"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimContext.java",
+      "sha256": "14e336b8f726de5713e3e3a6e9ebb2369f30c42b8e7fee191889cc6720bcab32"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimException.java",
+      "sha256": "b72ad8318ebfdbcd4c8b17429aaf6473ca90cfcffa19666c08ec798ed44a7a39"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimModule.java",
+      "sha256": "89e11c79e5e492a608402a94853164620d20840efd4d4b48f003a53766c8a7e9"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimState.java",
+      "sha256": "12c9ad649072bb569a27f0d792f5d18d556d04a00c006a51e8a034ce9f0ae041"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimStore.java",
+      "sha256": "92616aa38cf4bb7830affd330c5a472306e0bd4ef608fb36d6cd6f77276ee261"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationApiFilter.java",
+      "sha256": "b1747a2c1d799fecca16a646e3f9494ae53d632caa9b82f22685f40e2796ad2d"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationConfiguration.java",
+      "sha256": "5fb88cd87946982ae995231d223823a4d9ce37243339a4c988dfc56ef5c173a8"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationEngine.java",
+      "sha256": "4886b265a6b03d39ac7fcbebb5f82beefaf9c53db4d258e5e9ca898b9cb1dba6"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationSeed.java",
+      "sha256": "e9df8bde4bbfae05b8354c7661029e6bf2020cc5042ef9e4cce9e837ed63db27"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SimulationWorkspace.java",
+      "sha256": "70b30eb121be86c168de4386c6e58f6b41b082ea07f7267a86500015e42c4df9"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SupplementalCatalog.java",
+      "sha256": "75cbc17cd361bc5812e0a11e7d4bc1c91d4a1b907a3e6c837869216068a8c52c"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SupportAttachments.java",
+      "sha256": "2ac069bc07548811d20c2c3caefa9a970ec39d3655725b9e0eac3027c78250d6"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SupportCatalog.java",
+      "sha256": "fa03240cf2de4e51bc2a178bf80feca4f664a8880dc5195910c1f21f914965d1"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SupportManualAssets.java",
+      "sha256": "9bcb6731d11d6d42b2ffa73864904a419330b277cf7e4b79acb8d4093ea778f2"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SupportModule.java",
+      "sha256": "c0d8c8f23d26ce3107837588398a14cd7077989f0993b2ae451f36fba6dfa631"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SupportProfileModule.java",
+      "sha256": "1b27bf0e0ebb3f94bc8c53db6fddebfec144dd4521fe244aa116f765dfd19032"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/java/cn/iocoder/yudao/server/simulation/SupportResources.java",
+      "sha256": "1ef29a73c83fcbb00e1f680ddee29b1ac64740290922e957e22949d730bdd4b4"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/api_operations.json",
+      "sha256": "f528195b4db93d39067157c14308d8d45b7c821bfa6360704b699b2e6948f525"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/customer-manual-page-1.png",
+      "sha256": "6e94465cdd0a4626edfdc214eaa860aaf4ace4d0086508ac8519ea8b9a082722"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/customer-manual-page-2.png",
+      "sha256": "297c00bd280d035f0e3aa896e3818acd782bf3fb35a02568705ed1ca6d04f754"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/customer-manual.pdf",
+      "sha256": "c58625413b54492c7037cec4d4ee1bebc1f3702a5b89ee39cf1abd1cfa8ee71e"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/manifest.json",
+      "sha256": "f9c94144abb94896d5191dfa2fe45341f4c46eeeda1d4331d13a6b637d1aaa84"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/merchant-manual-page-1.png",
+      "sha256": "dfab4a5e004efee3ca96794a32b197217bcf56a3d0690591a5c4defc5406fb25"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/merchant-manual-page-2.png",
+      "sha256": "89a97e606339b7021dce8fa29e253f77231c9bbceaa272ce05ef2925d13ea191"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/merchant-manual.pdf",
+      "sha256": "534d07f2d32eeaae977f2b3362de908da298a363afeb96f7de117b2984f7f192"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/platform-manual-page-1.png",
+      "sha256": "80bf4162bd10c779990423fd7da51d3724dd051190e0bc6cdbb8a63755daed75"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/platform-manual-page-2.png",
+      "sha256": "a655076c514b84a2ae99eb54b5965dcb758cc79d938f5af20acf05b0bfb83bbb"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/platform-manual.pdf",
+      "sha256": "d6913fd148ad97cdb56d2ebeb058bd5c11428e43fa4b18001d4fb11ce4c70c6c"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/openapi.json",
+      "sha256": "4516127e19b04fe4d2c72823e6d46a673b556f83756a8a01e6100f8c5c1c9207"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/main/resources/simulation/schema_simulation.sql",
+      "sha256": "b788e44daaa60dda33297d1b8f31799352897af31d611805ee30e980dbe42cc3"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/AppendOnlyRecoveryTest.java",
+      "sha256": "58140e596232812b5e0618fc5ae839fb17961f34d5e90dc1e679ae71b56913e0"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/CommerceFinanceInvariantTest.java",
+      "sha256": "02f21dde79c73ab476f1f7b64c4fa935dc547cfd92ce7b920b96adf84684dce5"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/CommerceFinanceJUnitTest.java",
+      "sha256": "57a0a77f0a32bf18d9e5901afb33acbddaa2a7d9be6fea0b412c6be6bdf8eee0"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/EngineContractTest.java",
+      "sha256": "cbbc6a7e836037c9a57fdce7cb3aa774d92f78b02b73d5c24c84b6861a549742"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/IndependentSecurityTest.java",
+      "sha256": "6534c4c62670e05a917fe15d3ff56f1200ae8dc6d885f6f596c9b732be54b2a2"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/LegacyApplicationRecoveryTest.java",
+      "sha256": "1a4db6dc41644ec8d171739c0955003b42f2c0722df63d037b423e73094d0022"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/MerchantLifecycleTest.java",
+      "sha256": "e75cf7fb5651a22de955f0c4a59afdf376aa09e74d043d5dda0f4d705a0b6fc6"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/NotificationOutboxTest.java",
+      "sha256": "f01819008776f369f7d6b83b0cae671c87648bd27a7b4aa7c8460dd1945adf4c"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/PaginationRecoveryTest.java",
+      "sha256": "e15f0806cac6a7468affd710df1b163ea605c9cbfe74492b1fee88f276f5714a"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/ShopSupportTest.java",
+      "sha256": "29e649f1675dc25a748ecf191b103f27cf95dbe794c8a5a9617755c32f4b8b92"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/SimulationSeedRecoveryTest.java",
+      "sha256": "fa390807b8c09e1d59aa57932d63de5524f92dd7851aadd139ea9ff6d5a6995e"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/SupportAttachmentContractTest.java",
+      "sha256": "d9288e36012fe60843d0ad9971d890364d3d28c2995e9cf625fe9695e5db9e16"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/SupportHttpFixture.java",
+      "sha256": "79b30166b7de21d0a3d15341c6d54c5157eb82b1c438f015ae44d7d9243693e0"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/SupportHttpIntegrationTest.java",
+      "sha256": "f5010aef23c62cf4e30097ec7a561e8f2d2f86a36276e97f66c60e9d032e8a57"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/SupportManualAssetContractTest.java",
+      "sha256": "590889418ccb1f0ec5bc849cbbdde6691539c0a9e095b0f202643378a13631c7"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/SupportProfileTest.java",
+      "sha256": "d75a689f830060694e87cbc58e4572b7756ac189e275e141815221146907d9a0"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/SupportResourceContractTest.java",
+      "sha256": "efeccbc2ec1ad598544cc0e3820d6a7c87db28e0db230dd9a635537a814598d6"
+    },
+    {
+      "path": "upstream/backend/yudao-server/src/test/java/cn/iocoder/yudao/server/simulation/WorkspaceBoundaryTest.java",
+      "sha256": "eb76deacefbb78c3dc3e1734d795aacd76375401075f3a029aa09a89908fd8e4"
+    },
+    {
+      "path": "verification/pom-with-guard.xml",
+      "sha256": "f28d158df503e96f90f7ffe7a72b5341fe03f56a04fb998d04c98257d84630cd"
+    }
+  ],
+  "java_evidence": {
+    "suites": 17,
+    "tests": 95,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "Frontend source bytes match the fixed brand/navigation snapshot; Java input hashes match the prior 95-test run. This is source identity, not production certification.",
+  "frontend_hosting": {
+    "url": "https://mall-original-ui.lijunjie050307.chatgpt.site",
+    "source_commit": "a85d8757294ba72095938257960b4be0f6d5e6fd",
+    "site_version": 7,
+    "deployment_status": "succeeded",
+    "verified_at_utc": "2026-10-05T10:32:28.254814Z",
+    "note": "Static frontend only; default browser-local simulation. No hosted Java backend."
+  }
+}

@@ -8,9 +8,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "npm run test:logic && npm run test:dom",
-    "test:logic": "node tests/adapter.test.cjs && node tests/routes.test.cjs && node tests/credit-contract.test.mjs && node tests/credit-integration.test.mjs && node tests/after-sales.test.mjs",
-    "test:dom": "node tests/build-ui-harness.mjs && node tests/feedback-ui.test.mjs",
-    "verify": "npm test && npm run build"
+    "test:logic": "node tests/adapter.test.cjs && node tests/routes.test.cjs && node tests/credit-contract.test.mjs && node tests/credit-integration.test.mjs && node tests/after-sales.test.mjs && node --test tests/support-service.test.mjs tests/local-service-resources.test.mjs && node tests/support-adapter.test.mjs && node tests/service-http.test.mjs && node tests/service-history.test.mjs && node tests/mode-lock-race.test.mjs && node tests/service-mode-races.test.mjs && node tests/service-history-components.test.mjs && node tests/customer-races.test.mjs && node tests/responsive-css-policy.test.mjs",
+    "test:dom": "node tests/build-ui-harness.mjs && node tests/feedback-ui.test.mjs && node tests/support-ui.test.mjs && node tests/responsive-routes.test.mjs && node tests/brand-navigation.test.mjs",
+    "verify": "npm test && npm run build",
+    "test:http:support": "node tests/backend-support-ui.test.mjs",
+    "test:http:resources": "node tests/backend-resource-ui.test.mjs"
   },
   "dependencies": {
     "@wangeditor/editor": "^5.1.23",

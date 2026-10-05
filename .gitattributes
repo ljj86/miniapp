@@ -1,0 +1,9 @@
+# Reviewed manual assets are binary; preserve bytes and avoid line-ending transforms.
+upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/*.pdf binary
+upstream/backend/yudao-server/src/main/resources/simulation/manual-assets/*.png binary
+apps/dining-mall/public/manual-assets/*.pdf binary
+apps/dining-mall/public/manual-assets/*.png binary
+apps/dining-mall/public/*.ico binary
+apps/dining-mall/tests/fixtures/*.mp4 binary
+# Keep the generated asset index byte-identical to the validated frontend snapshot.
+apps/dining-mall/src/utils/manual-assets.js whitespace=-blank-at-eof

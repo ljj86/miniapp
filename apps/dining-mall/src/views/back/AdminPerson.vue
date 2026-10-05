@@ -4,6 +4,7 @@ import { ref, reactive } from 'vue'
 import { Plus } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { serverHost } from '../../../config/config.default'
+import {isBackendMode} from '@/utils/service-mode'
 import request from '@/utils/request'
 
 // 表单数据
@@ -33,6 +34,7 @@ const emit = defineEmits(['updateAccount'])
 const save = () => {
   request.post('/admin', form).then(res => {
     if (res.code === '200') {
+      Object.assign(form,res.data||{});Object.assign(account.value,res.data||{})
       ElMessage.success('保存成功')
 
       // 只更新昵称和头像到 account 对象，其他属性保持不变
@@ -65,11 +67,11 @@ const handleAvatarSuccess = (res) => {
 
       <el-form label-width="80px">
         <div class="avatar-container">
-          <el-upload :http-request="localUpload" :action="`${serverHost}/web/upload`" :show-file-list="false" :on-success="handleAvatarSuccess">
+          <el-upload :disabled="isBackendMode()" :http-request="localUpload" :action="`${serverHost}/web/upload`" :show-file-list="false" :on-success="handleAvatarSuccess">
             <img v-if="form.avatarUrl" :src="form.avatarUrl" class="avatar">
             <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
           </el-upload>
-          <div class="avatar-tip">点击上传头像</div>
+          <div class="avatar-tip">{{isBackendMode()?'后端当前使用默认头像':'点击上传头像'}}</div>
         </div>
         <el-form-item label="用户名">
           <el-input v-model="form.username" disabled autocomplete="off"></el-input>

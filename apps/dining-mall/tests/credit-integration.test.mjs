@@ -1,12 +1,13 @@
+import {requestTestGlobals} from './request-test-globals.mjs'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import vm from 'node:vm'
 import * as credit from '../src/utils/credit-service.js'
 import * as feedback from '../src/utils/feedback-service.js'
-const source=fs.readFileSync(new URL('../src/utils/request.js',import.meta.url),'utf8').replace(/^import.*$/mg,'').replace('export const resetDemo','const resetDemo').replace('export default','globalThis.api=')
+const source=fs.readFileSync(new URL('../src/utils/request.js',import.meta.url),'utf8').replace(/^import.*$/mg,'').replace(/export const /g,'const ').replace('export default','globalThis.api=')
 const seed=JSON.parse(fs.readFileSync(new URL('../src/utils/seed.json',import.meta.url)))
 const shared=new Map(),storage=map=>({getItem:key=>map.get(key)||null,setItem:(key,value)=>map.set(key,value),removeItem:key=>map.delete(key)})
-function client(){const session=new Map(),ctx={...credit,...feedback,seed,localStorage:storage(shared),sessionStorage:storage(session),sanitizeHTML:s=>s,location:{}};vm.createContext(ctx);vm.runInContext(source,ctx);return {api:ctx.api,session}}
+function client(){const session=new Map(),ctx={...requestTestGlobals,...credit,...feedback,seed,localStorage:storage(shared),sessionStorage:storage(session),sanitizeHTML:s=>s,location:{}};vm.createContext(ctx);vm.runInContext(source,ctx);return {api:ctx.api,session}}
 const customer=client(),merchant=client(),platform=client(),otherMerchant=client()
 async function login(c,role){const r=await c.api.post('/web/login',{username:'111',password:'111',role});assert.equal(r.code,'200');c.session.set('account',JSON.stringify(r.data));}
 const api=customer.api

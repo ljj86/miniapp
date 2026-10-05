@@ -21,3 +21,5 @@ app.mount('#app')
 import './style/adapt.css'
 
 import './style/native-mall.css'
+
+import './style/customer-responsive.css'

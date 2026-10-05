@@ -1,0 +1,2 @@
+PASS CSS declaration/media policy at 390x844, 430x932, 480x599, 767x600, 768x1024, 820x1180, 1024x768, 1440x900, 844x390, 568x320, 768x599, 768x600; customer shell legacy !important overrides and independently scrolling chat structure
+Scope: parsed CSS source declarations and media conditions; no browser geometry, visible controls, font metrics, safe-area, or touch-target claims.

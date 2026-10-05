@@ -14,7 +14,8 @@ assert.equal(go('ROLE_UNIT','/platform/orders'),'/merchant/home')
 assert.equal(go('ROLE_ADMIN','/platform/notice'),'ALLOW')
 assert.equal(go('ROLE_ADMIN','/merchant/goods'),'/platform/home')
 assert.equal(go('ROLE_ADMIN','/back/goods'),'/platform/goods')
-for(const page of ['orderService','afterSales','afterSale']){assert.equal(go('ROLE_USER','/mall/'+page),'ALLOW');assert.equal(go(null,'/mall/'+page),'/login');assert.equal(go('ROLE_UNIT','/mall/'+page),'/login')}
+for(const page of ['orderService','afterSales','afterSale','supportChat','supportTickets','supportNew','supportTicket']){assert.equal(go('ROLE_USER','/mall/'+page),'ALLOW');assert.equal(go(null,'/mall/'+page),'/login');assert.equal(go('ROLE_UNIT','/mall/'+page),'/login')}
 for(const page of ['paymentManagement','payWechat','payBank','payAlipay','aiManagement','aiConfiguration','aiSessions']){assert.equal(go('ROLE_ADMIN','/platform/'+page),'ALLOW');assert.equal(go('ROLE_UNIT','/merchant/'+page),'/merchant/home');assert.equal(go('ROLE_USER','/platform/'+page),'/login')}
 assert.equal(go('ROLE_UNIT','/merchant/afterSales'),'ALLOW');assert.equal(go('ROLE_ADMIN','/platform/afterSales'),'ALLOW')
-console.log('PASS: 42 customer/merchant/platform route-separation checks including feedback, refunds, payment and AI management')
+assert.equal(go('ROLE_UNIT','/merchant/support'),'ALLOW');assert.equal(go('ROLE_ADMIN','/platform/support'),'ALLOW');assert.equal(go(null,'/front/service'),'/mall/support');assert.equal(go('ROLE_USER','/front/message'),'/mall/supportTickets')
+console.log('PASS: 58 customer/merchant/platform route-separation checks including feedback, refunds, payment and AI management')

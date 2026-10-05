@@ -4,15 +4,21 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { House, Grid, ShoppingCart, User, Search, ArrowLeft, ArrowRight, Plus, Minus, Star, Location, Document, Wallet, Setting, Shop, Clock, Collection, SwitchButton, ChatDotRound, Edit, Delete } from '@element-plus/icons-vue'
 import request from '@/utils/request'
+import {isBackendMode,useDemoMode} from '@/utils/service-mode'
 import CreditCustomer from '@/components/CreditCustomer.vue'
 import PurchaseFeedback from '@/components/PurchaseFeedback.vue'
 import AfterSalesCustomer from '@/components/AfterSalesCustomer.vue'
+import SupportCustomer from '@/components/SupportCustomer.vue'
+import HelpCustomer from '@/components/HelpCustomer.vue'
 import { BASE_RULE } from '@/utils/credit-service'
 import { sanitizeHTML } from '@/utils/sanitize'
 import { readLocalImage } from '@/utils/local-upload'
 
 const route = useRoute()
 const router = useRouter()
+const remoteMode=computed(()=>isBackendMode())
+const backendUnsupported=computed(()=>remoteMode.value&&!['support','supportChat','supportTickets','supportNew','supportTicket','profile','manuals','manual','materials','updates','notFound'].includes(view.value))
+function returnDemo(){useDemoMode();router.push('/login')}
 const view = computed(() => route.params.view || 'home')
 const products = ref([])
 const creditData = ref(null)
@@ -48,8 +54,8 @@ const profileForm = ref({})
 const submitting = ref(false)
 const acc = ref(JSON.parse(sessionStorage.getItem('account') || '{}'))
 const orderTabs = ['所有订单', '待商家发布', '待顾客确认', '待商家核销', '待支付', '待发货', '待收货', '待评价', '已完成', '待退款', '已退款', '已取消']
-const title = computed(() => ({ home:'鲜食好店', category:route.query.favorites?'我的收藏':'全部餐品', detail:'餐品详情', cart:'购物车', orders:'我的订单', mine:'我的', checkout:'确认订单', bill:'先吃后付', deferredOrder:'先吃后付订单', orderService:'评价与售后', afterSales:'售后 / 退款', afterSale:'售后进度', address:'收货地址', profile:'个人资料', notFound:'页面不存在', support:'客户服务', shops:'商家列表', shop:'店铺详情', orderDetail:'订单详情' }[view.value] || '商城'))
-const go = (page, id) => router.push({ path:'/mall/' + page, query:id ? { id } : undefined })
+const title = computed(() => ({ home:'鲜食好店', category:route.query.favorites?'我的收藏':'全部餐品', detail:'餐品详情', cart:'购物车', orders:'我的订单', mine:'我的', checkout:'确认订单', bill:'先吃后付', deferredOrder:'先吃后付订单', orderService:'评价与售后', afterSales:'售后 / 退款', afterSale:'售后进度', address:'收货地址', profile:'个人资料', notFound:'页面不存在', support:'服务中心', supportChat:'店铺客服', supportTickets:'我的留言', supportNew:'填写留言', supportTicket:'留言详情', manuals:'资料与使用说明', manual:'使用说明', materials:'资料中心', updates:'更新记录', shops:'商家列表', shop:'店铺详情', orderDetail:'订单详情' }[view.value] || '商城'))
+const go = (page, id) => router.push({ path:'/mall/' + (remoteMode.value&&['home','mine'].includes(page)?'support':page), query:id ? { id } : undefined })
 const money = value => Number(value || 0).toFixed(2)
 const activeAddress = computed(() => addresses.value.find(a => a.id === addressId.value) || null)
 const shop = computed(() => shops.value.find(s => s.id === Number(view.value === 'shop' ? route.query.id : detail.value?.unitId)))
@@ -74,6 +80,7 @@ const filtered = computed(() => {
 let requestVersion = 0
 async function load() {
   const version = ++requestVersion
+  if(remoteMode.value){if(view.value==='profile'){const r=await request.get('/web/userInfo');if(version===requestVersion&&r.code==='200')profileForm.value=r.data;else if(r.code!=='200')ElMessage.error(r.msg)}return}
   const response = await Promise.all([
     request.get(route.query.favorites ? '/goods/collect/page' : '/goods/front/page', {params:{pageSize:100}}),
     request.get('/type'), request.get('/cart'), request.get('/orders/front/page',{params:{pageSize:100}}),
@@ -114,7 +121,7 @@ onMounted(()=>window.addEventListener('storage',syncBusiness))
 onUnmounted(()=>window.removeEventListener('storage',syncBusiness))
 function login() { router.push({path:'/login',query:{returnTo:route.fullPath}}) }
 function backMobile() {
- const parents={detail:'category',shop:'shops',shops:'home',cart:'home',checkout:'cart',orders:'mine',orderDetail:'orders',orderService:'orders',afterSales:'mine',afterSale:'afterSales',deferredOrder:'bill',bill:'mine',profile:'mine',support:'mine',address:route.query.select?'checkout':'mine',notFound:'home',category:'home'}
+ const parents={detail:'category',shop:'shops',shops:'home',cart:'home',checkout:'cart',orders:'mine',orderDetail:'orders',orderService:'orders',afterSales:'mine',afterSale:'afterSales',deferredOrder:'bill',bill:'mine',profile:'mine',support:'mine',supportChat:'support',supportTickets:'support',supportNew:'supportTickets',supportTicket:'supportTickets',manuals:'support',manual:'manuals',materials:'support',updates:'support',address:route.query.select?'checkout':'mine',notFound:'home',category:'home'}
  go(parents[view.value]||'home')
 }
 function requireUser() {
@@ -213,7 +220,7 @@ async function saveProfile() {
   if(r.code!=='200')return ElMessage.error(r.msg)
   acc.value={...acc.value,...r.data,role:'ROLE_USER'}
   sessionStorage.setItem('account',JSON.stringify(acc.value))
-  ElMessage.success('本机资料已保存');go('mine')
+  ElMessage.success(remoteMode.value?'服务端显示资料已保存':'本机资料已保存');go(remoteMode.value?'support':'mine')
 }
 async function changeAvatar(event) {
   const file=event.target.files?.[0]
@@ -224,7 +231,7 @@ async function changeAvatar(event) {
 <template>
 <div class="native-stage">
 <div class="native-device">
-<main class="native-app">
+<main class="native-app" :class="'view-'+view" :data-customer-view="view">
 <div v-if="view==='home'||view==='mine'" class="mall-app-brand"><img src="/brand/dining-logo-v5.svg" alt="鲜食好店标志"/><strong>鲜食好店</strong><span>好好吃饭 · 轻松生活</span></div>
 <header v-if="view!=='home' && view!=='mine'" class="native-header">
 <button aria-label="返回" @click="backMobile">
@@ -235,7 +242,8 @@ async function changeAvatar(event) {
 <House/>
 </button>
 </header>
-<template v-if="view==='home'">
+<template v-if="backendUnsupported"><section class="native-card"><h3>此页面尚未接入Java服务</h3><p class="support-disclaimer">当前后端模式覆盖客服、留言、附件、资料和显示配置。商城与先吃后付本机体验保留；不会把本地订单或额度当作服务端记录。</p><button class="primary-pill full" @click="go('support')">回服务中心</button><button class="primary-pill full" @click="returnDemo">切回本机商城体验</button></section></template>
+<template v-else-if="view==='home'">
 <div class="home-top">
 <div class="store-location">
 <Location/>
@@ -255,7 +263,8 @@ async function changeAvatar(event) {
 <span>公告</span>
 <span>{{notices.map(n=>n.name).join(' · ')}}</span>
 </div>
-<el-carousel v-if="banners.length" class="native-banner-carousel" height="198px" :interval="5000" arrow="hover">
+<div class="home-feature-grid">
+<el-carousel v-if="banners.length" class="native-banner-carousel" height="var(--customer-hero-height,198px)" :interval="5000" arrow="hover">
   <el-carousel-item v-for="banner in banners" :key="banner.id">
     <div class="food-hero" @click="banner.goodsId ? go('detail',banner.goodsId) : go('category')">
       <img :src="banner.img" :alt="banner.name"/>
@@ -289,6 +298,7 @@ async function changeAvatar(event) {
 <span class="shortcut-3">
 <Shop/>
 </span>全部商家</button>
+</div>
 </div>
 <div class="credit-strip" @click="go('bill')">
 <div>
@@ -358,6 +368,7 @@ async function changeAvatar(event) {
 </div>
 </template>
 <template v-else-if="view==='detail' && detail">
+<div class="detail-intro"><div class="detail-gallery">
 <div class="detail-photo">
 <img :src="mainPhoto" :alt="detail.name"/>
 </div>
@@ -366,6 +377,7 @@ async function changeAvatar(event) {
 <img :src="img" :alt="detail.name+' 图片'+(index+1)"/>
 </button>
 </div>
+</div><div class="detail-summary">
 <section class="native-card detail-info">
 <div class="food-price-row">
 <strong>¥{{money(detail.price)}}</strong>
@@ -391,6 +403,7 @@ async function changeAvatar(event) {
 </div>
 <ArrowRight/>
 </section>
+</div></div>
 <section class="native-card">
 <h3 class="accent-title">餐品详情</h3>
 <div class="native-rich-content" v-html="sanitizeHTML(detail.content)">
@@ -538,6 +551,7 @@ async function changeAvatar(event) {
 <div class="catalog-tabs">
 <button v-for="t in orderTabs" :key="t" :class="{active:tab===t}" @click="tab=t">{{t==='所有订单'?'全部':t}}</button>
 </div>
+<div class="customer-order-grid">
 <section v-for="o in visibleOrders" :key="o.id" class="native-card order-card">
 <div class="order-top">
 <span>订单号：{{o.no}}</span>
@@ -562,6 +576,7 @@ async function changeAvatar(event) {
 <button @click="o.creditOrderId?go('deferredOrder',o.creditOrderId):o.creditRequestId?go('bill'):go('orderDetail',o.id)">订单详情</button>
 </div>
 </section>
+</div>
 <div v-if="!visibleOrders.length" class="native-empty">暂无该状态的示例订单</div>
 </template>
 <template v-else-if="view==='mine'">
@@ -650,10 +665,10 @@ async function changeAvatar(event) {
   <section class="native-card profile-editor">
 <label class="profile-avatar">
 <img :src="profileForm.avatarUrl||'/avatar.svg'" alt="头像"/>
-<span>更换头像</span>
-<input type="file" accept="image/png,image/jpeg,image/webp" @change="changeAvatar"/>
+<span>{{remoteMode?'服务端暂用默认头像':'更换头像'}}</span>
+<input v-if="!remoteMode" type="file" accept="image/png,image/jpeg,image/webp" @change="changeAvatar"/>
 </label>
-<label>体验账号<input value="111" disabled/>
+<label>{{remoteMode?'服务端账号（只读）':'体验账号'}}<input :value="profileForm.username||'111'" disabled/>
 </label>
 <label>昵称<input v-model="profileForm.nickname" placeholder="请输入昵称" maxlength="30"/>
 </label>
@@ -661,14 +676,14 @@ async function changeAvatar(event) {
 </label>
 <label>电话（示例）<input v-model="profileForm.phone" placeholder="00000000000"/>
 </label>
-<p class="muted">资料仅保存在当前浏览器，建议不要填写真实个人信息</p>
-<button class="primary-pill full" @click="saveProfile">保存本机资料</button>
+<p class="muted">{{remoteMode?'这里只修改显示资料，登录身份和密码保持服务端控制':'资料仅保存在当前浏览器，建议不要填写真实个人信息'}}</p>
+<button class="primary-pill full" @click="saveProfile">{{remoteMode?'保存服务端资料':'保存本机资料'}}</button>
 </section>
 </template>
 <template v-else-if="view==='shops'">
   <div class="native-list-heading">入驻商家<span>{{shops.length}}家 · 示例资料</span></div>
-  <section v-for="store in shops" :key="store.id" class="native-card shop-summary" @click="go('shop',store.id)"><img :src="store.avatarUrl||'/avatar.svg'" alt="店铺头像"/><div><h3>{{store.nickname}}</h3><p>{{store.info}}</p><p>{{products.filter(g=>g.unitId===store.id).length}}款在售餐品</p></div><ArrowRight/></section>
-  <p v-if="!shops.length" class="native-empty">暂无入驻商家</p>
+  <div class="customer-shop-grid"><section v-for="store in shops" :key="store.id" class="native-card shop-summary" @click="go('shop',store.id)"><img :src="store.avatarUrl||'/avatar.svg'" alt="店铺头像"/><div><h3>{{store.nickname}}</h3><p>{{store.info}}</p><p>{{products.filter(g=>g.unitId===store.id).length}}款在售餐品</p></div><ArrowRight/></section>
+  </div><p v-if="!shops.length" class="native-empty">暂无入驻商家</p>
 </template>
 <template v-else-if="view==='shop'">
   <section v-if="shop" class="native-card shop-summary">
@@ -696,7 +711,7 @@ async function changeAvatar(event) {
 </div>
 </article>
 </div>
-<section v-if="shop" class="native-card"><h3 class="accent-title">店铺信息</h3><div class="native-line"><span>商家名称</span><strong>{{shop.nickname}}</strong></div><div class="native-line"><span>门店地址</span><span>{{shop.address||'尚未填写'}}</span></div><div class="native-line"><span>联系电话</span><span>{{shop.phone||'尚未填写'}}</span></div></section>
+<section v-if="shop" class="native-card"><button class="native-line full" @click="router.push({path:'/mall/support',query:{unitId:shop.id}})"><ChatDotRound/><span>联系本店客服</span><ArrowRight/></button><button class="native-line full" @click="router.push({path:'/mall/supportNew',query:{unitId:shop.id}})"><Document/><span>给本店留言</span><ArrowRight/></button><h3 class="accent-title">店铺信息</h3><div class="native-line"><span>商家名称</span><strong>{{shop.nickname}}</strong></div><div class="native-line"><span>门店地址</span><span>{{shop.address||'尚未填写'}}</span></div><div class="native-line"><span>联系电话</span><span>{{shop.phone||'尚未填写'}}</span></div></section>
 <section class="native-card"><h3 class="accent-title">店铺评价（{{shopComments.length}}）</h3><article v-for="comment in shopComments" :key="comment.id" class="native-review"><div><img :src="users.find(u=>u.id===comment.userId)?.avatarUrl||'/avatar.svg'" alt="头像"/><strong>{{users.find(u=>u.id===comment.userId)?.nickname||'示例用户'}}</strong><span>{{'★'.repeat(comment.rate||0)}}</span></div><small class="muted">{{comment.name}} · 示例订单评价</small><div class="native-rich-content" v-html="sanitizeHTML(comment.comment)"></div><p v-if="comment.reply" class="review-reply">商家回复：<span v-html="sanitizeHTML(comment.reply)"></span></p></article><p v-if="!shopComments.length" class="muted">暂无示例评价</p></section>
 </template>
 <template v-else-if="view==='orderDetail' && currentOrder">
@@ -727,6 +742,7 @@ async function changeAvatar(event) {
 <span>{{currentOrder.remark||'无'}}</span>
 </div>
 </section>
+  <section class="native-card"><button class="native-line full" data-testid="order-contact-shop" @click="router.push({path:'/mall/support',query:{unitId:currentOrder.unitId,orderId:currentOrder.id}})"><ChatDotRound/><span>联系本店客服</span><ArrowRight/></button><button class="native-line full" @click="router.push({path:'/mall/supportNew',query:{unitId:currentOrder.unitId,orderId:currentOrder.id}})"><Document/><span>向本店咨询此订单</span><ArrowRight/></button></section>
   <PurchaseFeedback :order-id="currentOrder.id" @updated="load" />
 <p class="checkout-disclaimer">该订单为本机界面示例，不会实际付款或配送。</p>
 </template>
@@ -734,7 +750,8 @@ async function changeAvatar(event) {
 <div class="native-empty">记录不存在或已移除<button class="primary-pill full" @click="go('home')">返回商城</button>
 </div>
 </template>
-<template v-else-if="view==='support'"><section class="native-card"><h3>客户服务</h3><p>本版本尚未连接真人客服。店铺、订单和售后入口可以继续体验，所有信息均保存在本机。</p><button class="native-line full" @click="go('shops')"><span>查看商家信息</span><ArrowRight/></button><button class="native-line full" @click="go('orders')"><span>我的订单与评价</span><ArrowRight/></button><button class="native-line full" @click="go('afterSales')"><span>售后 / 退款进度</span><ArrowRight/></button><button class="native-line full" @click="go('bill')"><span>先吃后付与账单</span><ArrowRight/></button></section></template>
+<template v-else-if="['manuals','manual','materials','updates'].includes(view)"><HelpCustomer :mode="view" :resource-id="String(route.query.id||'')"/></template>
+<template v-else-if="['support','supportChat','supportTickets','supportNew','supportTicket'].includes(view)"><SupportCustomer :mode="view" /></template>
 <template v-else-if="view==='notFound'"><div class="native-empty"><h3>这个页面暂不可用</h3><p>请从商城导航继续浏览</p><button class="primary-pill" @click="go('home')">返回首页</button></div></template>
 <footer v-if="['home','category','cart','mine'].includes(view)" class="native-tabbar">
 <button v-for="(v,i) in ['home','category','cart','mine']" :key="v" :class="{active:view===v}" @click="go(v)">

@@ -1,0 +1,9 @@
+[Vue Router warn]: No match found for location with path "/front/service?id=1&keyword=route-check&trace=keep"
+[Vue Router warn]: No match found for location with path "/front/chat?id=1&keyword=route-check&trace=keep"
+[Vue Router warn]: No match found for location with path "/front/message?id=1&keyword=route-check&trace=keep"
+[Vue Router warn]: No match found for location with path "/front/manual?id=1&keyword=route-check&trace=keep"
+[Vue Router warn]: No match found for location with path "/front/updateLog?id=1&keyword=route-check&trace=keep"
+[Vue Router warn]: No match found for location with path "/front/updatelog?id=1&keyword=route-check&trace=keep"
+[Vue Router warn]: No match found for location with path "/front/unknown"
+PASS 44 real customer/legacy route renders, tab navigation, detail→checkout→address, review/refund editors, real manual assets, login returnTo, and customer/management route isolation
+Scope: Vue DOM structure and handlers only. JSDOM does not verify 9:16, breakpoint geometry, visible controls, touch targets, or landscape layout.

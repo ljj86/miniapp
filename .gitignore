@@ -28,3 +28,9 @@ contract/qa/
 release-artifacts/
 
 .venv-contract/
+
+# Synthetic HTTP fixture state (never publish session tokens)
+verification/support-http-data/
+
+# Private host bindings must not be published
+**/.openai/

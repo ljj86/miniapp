@@ -1,0 +1,115 @@
+{
+  "status": "PASS",
+  "scope": "Vue/JSDOM route and rendered control structure plus parsed CSS declaration/media/cascade policy; not browser geometry or visual QA",
+  "routeChecks": {
+    "test": "tests/responsive-routes.test.mjs",
+    "exitCode": 0,
+    "customerAndLegacyRenders": 44,
+    "coverage": [
+      "customer route family and management isolation",
+      "legacy deep-link query preservation",
+      "customer tabs",
+      "detail to checkout to address",
+      "review and refund editors",
+      "checked-in manual PNG assets",
+      "login returnTo"
+    ],
+    "log": "tests/results/responsive-routes.txt"
+  },
+  "cssPolicyChecks": {
+    "test": "tests/responsive-css-policy.test.mjs",
+    "exitCode": 0,
+    "viewports": [
+      {
+        "width": 390,
+        "height": 844,
+        "expectedMode": "portrait",
+        "status": "PASS"
+      },
+      {
+        "width": 430,
+        "height": 932,
+        "expectedMode": "portrait",
+        "status": "PASS"
+      },
+      {
+        "width": 480,
+        "height": 599,
+        "expectedMode": "portrait",
+        "status": "PASS"
+      },
+      {
+        "width": 767,
+        "height": 600,
+        "expectedMode": "portrait",
+        "status": "PASS"
+      },
+      {
+        "width": 768,
+        "height": 1024,
+        "expectedMode": "wide",
+        "status": "PASS"
+      },
+      {
+        "width": 820,
+        "height": 1180,
+        "expectedMode": "wide",
+        "status": "PASS"
+      },
+      {
+        "width": 1024,
+        "height": 768,
+        "expectedMode": "wide",
+        "status": "PASS"
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "expectedMode": "wide",
+        "status": "PASS"
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "expectedMode": "landscape",
+        "status": "PASS"
+      },
+      {
+        "width": 568,
+        "height": 320,
+        "expectedMode": "landscape",
+        "status": "PASS"
+      },
+      {
+        "width": 768,
+        "height": 599,
+        "expectedMode": "landscape",
+        "status": "PASS"
+      },
+      {
+        "width": 768,
+        "height": 600,
+        "expectedMode": "wide",
+        "status": "PASS"
+      }
+    ],
+    "coverage": [
+      "effective shell width, height, aspect ratio against legacy important rules",
+      "portrait boundary and small landscape mode",
+      "independent message scrolling and in-flow composer",
+      "header-height plus bottom margin equals chat offset",
+      "late-loaded compiled scoped styles do not override wide login, credit or help padding and manual grid"
+    ],
+    "log": "tests/results/responsive-css-policy.txt"
+  },
+  "remainingLimit": "Real browser geometry, control visibility, touch targets, safe-area and screenshots were not verified by these tests",
+  "evidence_revision": "Original responsive snapshot; current aggregate also reruns these tests after subsequent branding/navigation edits.",
+  "sourceSha256AtResponsiveSnapshot": {
+    "src/style/customer-responsive.css": "207df9c9a2f43374cabcfc4ab1cd2a93ad42fc38df753a7e8e48d584328d3873",
+    "src/views/Mall.vue": "f92aa26a4ac55c77065bf90e0f120f5bbaeee40dede588f9903a557fcc5aabd6",
+    "src/App.vue": "0d2c176c3d15409ec1626696469f764937bbef8e95350af05b4c1c4d1a2bc1f2",
+    "src/components/SupportCustomer.vue": "0c07d02a6e5595a8a8740e00d69e6b647eec040b46b12904504e2449ff1bd8ef",
+    "tests/responsive-routes.test.mjs": "57c6933fe8e8a3d87d541fa36ec7e1cf37c7bdfdeaae2142e74fd7d3c2171928",
+    "tests/responsive-css-policy.test.mjs": "6d209a93b92a44e8a7ccb41a1854c0c4b4833e8ea94e2afdbd8e99d4e5903fc6"
+  }
+}

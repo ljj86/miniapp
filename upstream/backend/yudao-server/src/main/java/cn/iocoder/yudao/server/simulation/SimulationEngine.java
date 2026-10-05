@@ -13,12 +13,15 @@ import static cn.iocoder.yudao.server.simulation.SimContext.*;
 public final class SimulationEngine {
     public final ContractCatalog catalog=new ContractCatalog();
     public final SupplementalCatalog supplementalCatalog=new SupplementalCatalog(catalog);
+    public final SupportCatalog supportCatalog=new SupportCatalog(catalog);
     private final SimStore store;private final Clock clock;private final MockKeyRegistry keys;
     private final List<SimModule> modules=Arrays.asList(new IdentityModule(),new MerchantModule(),new CommerceModule(),new FinanceModule(),new ReconciliationModule());
     public SimulationEngine(SimStore store,Clock clock){this(store,clock,new MockKeyRegistry());}
     public SimulationEngine(SimStore store,Clock clock,MockKeyRegistry keys){this.store=store;this.clock=clock;this.keys=keys;}
     public Object request(String method,String path,Map<String,Object> body,Map<String,String> params,Map<String,String> headers,byte[] raw,String requestId){
-        ContractCatalog.Operation operation=supplementalCatalog.match(method,path,params);
+        ContractCatalog.Operation operation=supportCatalog.match(method,path);
+        if(operation!=null){supportCatalog.validate(operation,body,params);return execute(operation,path,body,params,headers,raw,requestId);}
+        operation=supplementalCatalog.match(method,path,params);
         if(operation==null){operation=catalog.match(method,path,params);catalog.request(operation,body,params);}
         else supplementalCatalog.validate(operation,body,params);
         return execute(operation,path,body,params,headers,raw,requestId);
@@ -39,11 +42,12 @@ public final class SimulationEngine {
                 if(operation.idempotency){
                     String key=headers.get("idempotency-key");c.check(key!=null && key.length()>=16 && key.length()<=128,422,"VALIDATION_FAILED","本操作需要16至128字符的Idempotency-Key");
                     idempotencyId=c.hash((actor==null?"ANON":actor)+"|"+operation.id+"|"+key);record=state.table("idempotency").get(idempotencyId);
-                    if(record!=null){c.check(scopeHash.equals(s(record,"scopeHash")),403,"SCOPE_DENIED","授权范围已变化，不能重放旧结果");c.check(requestHash.equals(s(record,"requestHash")),409,"IDEMPOTENCY_CONFLICT","同一幂等键不能提交不同内容");return new Outcome(record.get("response"),null);}
+                    if(record!=null){c.check(scopeHash.equals(s(record,"scopeHash")),403,"SCOPE_DENIED","授权范围已变化，不能重放旧结果");c.check(requestHash.equals(s(record,"requestHash")),409,"IDEMPOTENCY_CONFLICT","同一幂等键不能提交不同内容");if(supportCatalog.supports(operation.id))supportCatalog.authorizeReplay(operation.id,c,body,record.get("response"));return new Outcome(record.get("response"),null);}
                 }
                 Object data=null;boolean found=false;
                 try{
-                    if(supplementalCatalog.supports(operation.id)){data=supplementalCatalog.execute(operation.id,c,body,params);found=true;}
+                    if(supportCatalog.supports(operation.id)){data=supportCatalog.execute(operation.id,c,body,params);found=true;}
+                    else if(supplementalCatalog.supports(operation.id)){data=supplementalCatalog.execute(operation.id,c,body,params);found=true;}
                     else for(SimModule module:modules)if(module.supports(operation.id)){data=module.execute(operation.id,c,body,params);found=true;break;}
                     c.check(found,503,"SERVICE_UNAVAILABLE","该模拟功能尚未实现");
                 }catch(SimException e){if(e.commitSecurityState){securityAudit(c,operation.id,e.code);return new Outcome(null,e);}throw e;}

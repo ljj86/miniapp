@@ -2,12 +2,15 @@
 import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import {User, Lock, SwitchButton, House, UserFilled,Notification,Picture,Star,Stamp,Location,Document,Goods,Setting,PieChart,Wallet} from '@element-plus/icons-vue'
+import {isBackendMode,useDemoMode} from '@/utils/service-mode'
 import { ElMessage } from 'element-plus'
 import { projectName } from '../../config/config.default'
 
 // 路由实例
 const router = useRouter()
 const route = useRoute()
+const unsupportedBackend=computed(()=>isBackendMode()&&!['support','materials','paymentManagement','payWechat','payBank','payAlipay','aiManagement','aiConfiguration','aiSessions','adminPerson','unitPerson'].includes(route.path.split('/')[2]))
+function returnDemo(){useDemoMode();router.push('/login')}
 
 // 用户信息
 const account = ref(
@@ -123,8 +126,10 @@ const handleUpdateAccount = (updatedAccount) => {
         >
 
           <!--后台菜单-->
-          <el-sub-menu v-if="account.role==='ROLE_ADMIN'" index="payment-group"><template #title><el-icon><Wallet/></el-icon><span>系统支付管理</span></template><el-menu-item :index="backBase+'/paymentManagement'">支付接入概览</el-menu-item><el-menu-item :index="backBase+'/payWechat'">微信支付接入</el-menu-item><el-menu-item :index="backBase+'/payBank'">银行卡支付接入</el-menu-item><el-menu-item :index="backBase+'/payAlipay'">支付宝支付接入</el-menu-item></el-sub-menu>
-          <el-sub-menu v-if="account.role==='ROLE_ADMIN'" index="ai-group"><template #title><el-icon><Document/></el-icon><span>AI管理系统</span></template><el-menu-item :index="backBase+'/aiManagement'">AI管理概览</el-menu-item><el-menu-item :index="backBase+'/aiConfiguration'">AI配置与连接</el-menu-item><el-menu-item :index="backBase+'/aiSessions'">客服会话与消息</el-menu-item></el-sub-menu>
+          <el-sub-menu v-if="account.role==='ROLE_ADMIN'" index="payment-group" data-testid="payment-nav-group"><template #title><el-icon><Wallet/></el-icon><span>支付接入</span></template><el-menu-item :index="backBase+'/paymentManagement'">支付接入概览</el-menu-item><el-menu-item :index="backBase+'/payWechat'">微信支付接入</el-menu-item><el-menu-item :index="backBase+'/payBank'">银行卡支付接入</el-menu-item><el-menu-item :index="backBase+'/payAlipay'">支付宝支付接入</el-menu-item></el-sub-menu>
+          <el-sub-menu v-if="account.role==='ROLE_ADMIN'" index="ai-group" data-testid="ai-nav-group"><template #title><el-icon><Document/></el-icon><span>AI客服管理</span></template><el-menu-item :index="backBase+'/aiManagement'">管理概览</el-menu-item><el-menu-item :index="backBase+'/aiConfiguration'">AI配置与连接</el-menu-item><el-menu-item :index="backBase+'/aiSessions'">客服会话与消息</el-menu-item></el-sub-menu>
+          <el-menu-item v-if="account.role==='ROLE_ADMIN'" :index="backBase + '/materials'"><el-icon><Document /></el-icon><template #title>资料管理</template></el-menu-item>
+          <el-menu-item :index="backBase + '/support'"><el-icon><Document /></el-icon><template #title>客服与留言</template></el-menu-item>
           <el-menu-item :index="backBase + '/afterSales'"><el-icon><Document /></el-icon><template #title>售后与评价</template></el-menu-item>
           <el-menu-item :index="backBase + '/credit'"><el-icon><Wallet /></el-icon><template #title>先吃后付工作台</template></el-menu-item>
 
@@ -207,15 +212,13 @@ const handleUpdateAccount = (updatedAccount) => {
 
 
           <!--后台菜单-->
-          <el-sub-menu v-if="account.role==='ROLE_ADMIN'" index="payment-group"><template #title><el-icon><Wallet/></el-icon><span>系统支付管理</span></template><el-menu-item :index="backBase+'/paymentManagement'">支付接入概览</el-menu-item><el-menu-item :index="backBase+'/payWechat'">微信支付接入</el-menu-item><el-menu-item :index="backBase+'/payBank'">银行卡支付接入</el-menu-item><el-menu-item :index="backBase+'/payAlipay'">支付宝支付接入</el-menu-item></el-sub-menu>
-          <el-sub-menu v-if="account.role==='ROLE_ADMIN'" index="ai-group"><template #title><el-icon><Document/></el-icon><span>AI管理系统</span></template><el-menu-item :index="backBase+'/aiManagement'">AI管理概览</el-menu-item><el-menu-item :index="backBase+'/aiConfiguration'">AI配置与连接</el-menu-item><el-menu-item :index="backBase+'/aiSessions'">客服会话与消息</el-menu-item></el-sub-menu>
 
         </el-menu>
       </aside>
 
       <!-- 主要内容区域 -->
       <main class="admin-content">
-        <router-view :key="$route.fullPath" @update-account="handleUpdateAccount"></router-view>
+        <section v-if="unsupportedBackend" class="native-card"><h2>该模块尚未接入当前Java服务模式</h2><p>当前连接覆盖客服、留言、附件、资料和显示配置。本机商城与先吃后付体验保留，两种模式不会混写数据。</p><el-button @click="router.push(backBase+'/support')">回客服工作台</el-button><el-button @click="returnDemo">切回本机体验</el-button></section><router-view v-else :key="$route.fullPath" @update-account="handleUpdateAccount"></router-view>
       </main>
     </div>
 
