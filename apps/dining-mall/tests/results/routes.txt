@@ -1,0 +1,1 @@
+PASS: 10 customer/merchant/platform route-separation checks

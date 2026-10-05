@@ -1,0 +1,1 @@
+<template><div style="padding:24px"><el-card><h2>体验账号</h2><el-alert title="所有身份均使用 111 / 111" description="这是商城界面体验入口，没有接入真实账号或密码修改。请勿输入真实密码。" type="info" :closable="false"/><el-button style="margin-top:20px" type="primary" @click="$router.push('/login')">切换身份</el-button></el-card></div></template>

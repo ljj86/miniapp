@@ -15,7 +15,7 @@ public final class MerchantModule implements SimModule {
             case "createStore":return createStore(c,b);
             case "listStores":{
                 c.requireRoles("USER","OWNER","CLERK");List<Map<String,Object>> result=new ArrayList<>();
-                for(Map<String,Object> r:c.all("stores"))if(visibleStore(c,r))result.add(storeDto(c,r));return c.page(result,p);}
+                for(Map<String,Object> r:c.all("stores"))if(visibleStore(c,r))result.add(storeDto(c,r));return c.page(result,p,"stores");}
             case "updateStore":{
                 Map<String,Object> r=c.get("stores",p.get("id"));c.requireScope(s(r,"merchantUid"),s(r,"id"),null,"OWNER");c.version(r,b);
                 if(b.containsKey("name"))r.put("name",b.get("name"));if(b.containsKey("active"))r.put("active",b.get("active"));c.bump(r);return storeDto(c,r);}
@@ -25,7 +25,7 @@ public final class MerchantModule implements SimModule {
             case "listProducts":{
                 c.requireRoles("USER","OWNER","CLERK");List<Map<String,Object>> result=new ArrayList<>();for(Map<String,Object> r:c.all("products")){
                     Map<String,Object> store=c.get("stores",s(r,"storeId"));if(visibleStore(c,store) && (bool(r,"active") || c.inScope(s(store,"merchantUid"),s(store,"id"),null,"OWNER","CLERK")) && (p.get("storeId")==null || p.get("storeId").equals(s(r,"storeId"))))result.add(productDto(c,r));}
-                return c.page(result,p);}
+                return c.page(result,p,"products");}
             case "updateProduct":{
                 Map<String,Object> r=c.get("products",p.get("id"));c.requireScope(s(r,"merchantUid"),s(r,"storeId"),null,"OWNER");c.version(r,b);
                 for(String key:Arrays.asList("name","priceMinor","active"))if(b.containsKey(key))r.put(key,b.get(key));c.bump(r);return productDto(c,r);}
@@ -44,6 +44,7 @@ public final class MerchantModule implements SimModule {
     private Object review(SimContext c,Map<String,Object> b,Map<String,String> p){
         c.requireRoles("MERCHANT_REVIEWER");Map<String,Object> r=c.get("applications",p.get("id"));reviewer(c,r);c.version(r,b);c.independent(s(r,"applicantId"));
         c.check("SUBMITTED".equals(s(r,"status")),409,"STATE_CONFLICT","此申请当前不可复核");c.check(s(b,"reason")!=null && !s(b,"reason").trim().isEmpty(),422,"VALIDATION_FAILED","必须记录复核理由");
+        adaptLegacy(c,r);
         boolean approve="APPROVE".equals(s(b,"decision"));r.put("status",approve?"APPROVED":"REJECTED");r.put("checkerId",c.actorId());r.put("reviewReason",s(b,"reason"));r.put("evidenceIds",list(b,"evidenceIds"));c.bump(r);
         Map<String,Object> m=c.get("merchants",s(r,"merchantId"));m.put("status",approve?"APPROVED":"DRAFT");c.bump(m);
         if(approve){c.create("grants",map("userId",s(m,"ownerId"),"role","OWNER","merchantUid",s(m,"uid"),"status","ACTIVE","validFrom",c.now().toString(),"approvalId",s(r,"id")));c.state.meta.put("grantVersion",n(c.state.meta,"grantVersion")+1);}
@@ -63,6 +64,7 @@ public final class MerchantModule implements SimModule {
         if("requestMerchantApplicationInformation".equals(op)){
             reviewer(c,r);c.version(r,b);c.independent(s(r,"applicantId"));
             c.check("SUBMITTED".equals(s(r,"status")),409,"STATE_CONFLICT","仅待复核申请可要求补充资料");
+            adaptLegacy(c,r);
             r.put("status","NEEDS_INFO");r.put("reviewReason",s(b,"reason"));r.put("checkerId",c.actorId());c.bump(r);history(c,r,"NEEDS_INFO",s(b,"reason"));
             c.notify(s(r,"applicantId"),"模拟商家申请需要补充资料","merchantApplication",s(r,"id"),"MERCHANT_NEEDS_INFO",n(r,"materialVersion"));
             return detail(c,r);
@@ -73,10 +75,12 @@ public final class MerchantModule implements SimModule {
         c.version(r,b);c.check(Arrays.asList("DRAFT","NEEDS_INFO").contains(s(r,"status")),409,"STATE_CONFLICT","审核中或终态申请不可改写资料");
         if("editMerchantApplicationDraft".equals(op)){
             c.check(b.size()>1,422,"VALIDATION_FAILED","至少修改一个资料字段");
+            adaptLegacy(c,r);
             Map<String,Object> materials=materials(r);for(String field:MATERIAL_FIELDS)if(b.containsKey(field))materials.put(field,b.get(field));
             r.put("draftMaterials",materials);c.bump(r);history(c,r,"DRAFT_UPDATED",null);return detail(c,r);
         }
         if("submitMerchantApplicationDraft".equals(op)){
+            adaptLegacy(c,r);
             Map<String,Object> materials=materials(r);for(String field:MATERIAL_FIELDS)c.check(s(materials,field)!=null&&!s(materials,field).trim().isEmpty(),422,"VALIDATION_FAILED","提交前请补全"+field);
             long prior=n(r,"submittedMaterialVersion");if(prior==0&&r.get("submittedMaterialVersion")==null)prior=n(r,"materialVersion");
             c.check(prior==0||!Objects.equals(s(r,"materialHash"),c.hashObject(materials)),409,"STATE_CONFLICT","补件后需修改资料才能重新提交");
@@ -92,6 +96,38 @@ public final class MerchantModule implements SimModule {
         Map<String,Object> result=new LinkedHashMap<>();Object draft=r.get("draftMaterials");
         if(draft instanceof Map)result.putAll((Map<String,Object>)draft);else for(String field:MATERIAL_FIELDS)if(r.containsKey(field))result.put(field,r.get(field));return result;
     }
+    /** Old checkpoints retain a digest of the exact original four-field request, not a material snapshot. */
+    private static boolean legacy(SimContext c,Map<String,Object> r){
+        if(r.containsKey("draftMaterials")||r.containsKey("submittedMaterialVersion"))return false;
+        for(Map<String,Object> snapshot:c.all("applicationMaterials"))if(s(r,"id").equals(s(snapshot,"applicationId")))return false;
+        return true;
+    }
+    private static Map<String,Object> provenLegacyMaterials(SimContext c,Map<String,Object> r){
+        Map<String,Object> merchant=c.get("merchants",s(r,"merchantId")),result=new LinkedHashMap<>();
+        result.put("merchantName",r.containsKey("merchantName")?r.get("merchantName"):merchant.get("name"));
+        result.put("regionCode",r.containsKey("regionCode")?r.get("regionCode"):merchant.get("regionCode"));
+        result.put("contractVersion",r.get("contractVersion"));result.put("materialSummary",r.get("materialSummary"));
+        boolean valid=n(r,"materialVersion")==1&&s(r,"createdAt")!=null&&s(r,"applicantId")!=null;
+        for(Object value:result.values())valid=valid&&value instanceof String;
+        try{java.time.Instant.parse(s(r,"createdAt"));}catch(Exception e){valid=false;}
+        c.check(valid&&Objects.equals(s(r,"materialHash"),c.hashObject(result)),409,"APPLICATION_HISTORY_UNAVAILABLE","历史申请资料无法通过原始哈希校验；请保留原申请并核查恢复证据，不可补写或重新提交");
+        return result;
+    }
+    private static void adaptLegacy(SimContext c,Map<String,Object> r){
+        if(!legacy(c,r))return;
+        Map<String,Object> materials=provenLegacyMaterials(c,r);String originalCreatedAt=s(r,"createdAt");
+        Map<String,Object> snapshot=c.create("applicationMaterials",map("applicationId",s(r,"id"),"applicantId",s(r,"applicantId"),
+                "materialVersion",n(r,"materialVersion"),"materials",new LinkedHashMap<>(materials),"materialHash",s(r,"materialHash"),
+                "submittedBy",s(r,"applicantId"),"submittedAt",originalCreatedAt,"originalCreatedAt",originalCreatedAt,
+                "legacyAdapted",true,"adaptedBy",c.actorId(),"adaptedAt",c.now().toString()));
+        r.put("draftMaterials",new LinkedHashMap<>(materials));r.put("submittedMaterialVersion",n(r,"materialVersion"));
+        c.create("applicationHistory",map("applicationId",s(r,"id"),"applicantId",s(r,"applicantId"),"action","LEGACY_SNAPSHOT_ADAPTED",
+                "status",s(r,"status"),"applicationVersion",n(r,"version"),"materialVersion",n(r,"materialVersion"),"materialHash",s(r,"materialHash"),
+                "actorId",c.actorId(),"requestId",c.state.meta.get("requestId"),"occurredAt",c.now().toString(),
+                "originalCreatedAt",originalCreatedAt,"legacyAdapted",true,"snapshotId",s(snapshot,"id")));
+        c.audit("LEGACY_APPLICATION_SNAPSHOT_ADAPTED","applications",s(r,"id"),map("snapshotId",s(snapshot,"id"),
+                "materialVersion",n(r,"materialVersion"),"materialHash",s(r,"materialHash"),"originalCreatedAt",originalCreatedAt,"legacyAdapted",true));
+    }
     private static void noOpenApplication(SimContext c){
         for(Map<String,Object> a:c.all("applications"))c.check(!c.actorId().equals(s(a,"applicantId"))||!Arrays.asList("DRAFT","SUBMITTED","NEEDS_INFO").contains(s(a,"status")),409,"STATE_CONFLICT","已有草稿或待处理申请，请继续原申请");
     }
@@ -106,6 +142,7 @@ public final class MerchantModule implements SimModule {
     private Map<String,Object> detail(SimContext c,Map<String,Object> r){
         Map<String,Object> dto=appDto(c,r);dto.put("applicantId",s(r,"applicantId"));dto.put("submittedMaterialVersion",n(r,"submittedMaterialVersion"));dto.put("merchantUid",s(c.get("merchants",s(r,"merchantId")),"uid"));Map<String,Object> visibleMaterials=materials(r);
         if(!c.actorId().equals(s(r,"applicantId"))){visibleMaterials=new LinkedHashMap<>();for(String field:MATERIAL_FIELDS)if(r.containsKey(field))visibleMaterials.put(field,r.get(field));for(Map<String,Object> item:c.all("applicationMaterials"))if(s(r,"id").equals(s(item,"applicationId"))&&n(r,"materialVersion")==n(item,"materialVersion"))visibleMaterials=new LinkedHashMap<>((Map<String,Object>)item.get("materials"));}
+        if(legacy(c,r)){visibleMaterials=provenLegacyMaterials(c,r);dto.put("submittedMaterialVersion",n(r,"materialVersion"));dto.put("legacyMaterialsVerified",true);dto.put("historyAdaptationPending",true);}
         dto.put("materials",visibleMaterials);dto.put("simulationOnly",true);
         List<Map<String,Object>> versions=new ArrayList<>(),events=new ArrayList<>();
         for(Map<String,Object> item:c.all("applicationMaterials"))if(s(r,"id").equals(s(item,"applicationId")))versions.add(new LinkedHashMap<>(item));

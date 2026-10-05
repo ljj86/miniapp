@@ -1,0 +1,14 @@
+PASS Source fixture values and exact reserve → principal → partial/full repayment
+PASS Only customer confirms; only matching merchant publishes/redeems
+PASS Confirmation requires active consent and matching snapshot; replay holds once
+PASS Cancellation/expiry release exactly once and old code cannot redeem
+PASS Reissued fulfillment code invalidates previous code; fulfillment is idempotent
+PASS Cross-merchant reservations share one user limit, while merchant projection hides it
+PASS Submission does not repay; timeout is unknown; late success waits for independent review
+PASS Overpayment is unallocated/refundable, never extra user quota
+PASS Wrong callback identity fields rejected and no user can inject success
+PASS Rule independent approval, occupied limit guard, and immutable old-order term
+PASS Dispute and overdue block new confirmations but allow repayment
+PASS Original rule bounds reject every out-of-range parameter
+PASS Success after UNKNOWN clears its display marker and changed-event payload rejects
+{"passed":13,"scope":"Pure local contract-state tests; integer cents, source fixture parameters; no real payments"}

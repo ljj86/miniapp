@@ -1,0 +1,172 @@
+[
+  {
+    "version": "0.1",
+    "title": "基线冻结与可复现骨架",
+    "checks": 14,
+    "cumulative_items": 14,
+    "base_person_days": [
+      5,
+      8
+    ],
+    "additional_person_days": [
+      2,
+      3
+    ],
+    "entry": "PR-01/02和DEC-13-SOURCE：正式源码复用前批准；文档静态样例不冒充源码复用",
+    "responsible_roles": "项目/技术/独立测试",
+    "status": "NOT_RUN"
+  },
+  {
+    "version": "0.2",
+    "title": "账户Mock线/真机身份线",
+    "checks": 16,
+    "cumulative_items": 30,
+    "base_person_days": [
+      8,
+      12
+    ],
+    "additional_person_days": [
+      1,
+      2
+    ],
+    "entry": "0.1通过；0.2a：Mock隔离＋DEC-13-UID；0.2b：PR-03/04/08、DEC-12-A、PR-09-A及最小体验授权",
+    "responsible_roles": "账户后端/小程序/主体管理员/隐私",
+    "status": "NOT_RUN"
+  },
+  {
+    "version": "0.3",
+    "title": "商家审核、门店和套餐",
+    "checks": 12,
+    "cumulative_items": 42,
+    "base_person_days": [
+      8,
+      12
+    ],
+    "additional_person_days": [
+      0,
+      0
+    ],
+    "entry": "0.2a通过；PR-05模拟资料模板与相应参与授权；0.2b可继续受阻",
+    "responsible_roles": "商家后端/PC后台/运营审核",
+    "status": "NOT_RUN"
+  },
+  {
+    "version": "0.4",
+    "title": "逐笔确认、额度与预占",
+    "checks": 16,
+    "cumulative_items": 58,
+    "base_person_days": [
+      12,
+      18
+    ],
+    "additional_person_days": [
+      1,
+      2
+    ],
+    "entry": "0.3通过；DEC-11/13及RV-SIM-001签批；无新增支付商户申请",
+    "responsible_roles": "后端/小程序/产品与规则复核",
+    "status": "NOT_RUN"
+  },
+  {
+    "version": "0.5",
+    "title": "履约、应收、子账和业务日",
+    "checks": 17,
+    "cumulative_items": 75,
+    "base_person_days": [
+      10,
+      16
+    ],
+    "additional_person_days": [
+      4,
+      6
+    ],
+    "entry": "0.4通过；PR-06及J模板/业务日关闭重开规则独立签审",
+    "responsible_roles": "账务后端/独立财务/测试",
+    "status": "NOT_RUN"
+  },
+  {
+    "version": "0.6",
+    "title": "模拟还款与线下复核",
+    "checks": 16,
+    "cumulative_items": 91,
+    "base_person_days": [
+      12,
+      18
+    ],
+    "additional_person_days": [
+      1,
+      1
+    ],
+    "entry": "0.5通过；PR-07自建Mock消息与账单验证，不依赖真实支付申请",
+    "responsible_roles": "账务后端/Mock测试/独立复核",
+    "status": "NOT_RUN"
+  },
+  {
+    "version": "0.7",
+    "title": "退款、异议与更正",
+    "checks": 14,
+    "cumulative_items": 105,
+    "base_person_days": [
+      12,
+      18
+    ],
+    "additional_person_days": [
+      0,
+      0
+    ],
+    "entry": "0.6通过；退款/差错权限矩阵签审",
+    "responsible_roles": "账务后端/客服/独立复核",
+    "status": "NOT_RUN"
+  },
+  {
+    "version": "0.8",
+    "title": "对账、查询与审计",
+    "checks": 14,
+    "cumulative_items": 119,
+    "base_person_days": [
+      10,
+      16
+    ],
+    "additional_person_days": [
+      1,
+      2
+    ],
+    "entry": "0.7通过；标准模拟文件与业务日重关流程冻结",
+    "responsible_roles": "后端/测试/审计",
+    "status": "NOT_RUN"
+  },
+  {
+    "version": "0.9",
+    "title": "安全、恢复与性能验证",
+    "checks": 17,
+    "cumulative_items": 136,
+    "base_person_days": [
+      10,
+      16
+    ],
+    "additional_person_days": [
+      2,
+      3
+    ],
+    "entry": "0.8通过；测试方案、隔离数据、监控、独立恢复环境批准；PR-09-B/DEC-12-B退出前完整签审",
+    "responsible_roles": "安全/测试/运维/独立验收",
+    "status": "NOT_RUN"
+  },
+  {
+    "version": "1.0",
+    "title": "完整微信模拟闭环验收",
+    "checks": 14,
+    "cumulative_items": 150,
+    "base_person_days": [
+      5,
+      8
+    ],
+    "additional_person_days": [
+      0,
+      1
+    ],
+    "entry": "0.1—0.9全部检查通过（含0.2b）；PR-10完整授权及前序关键回归，尚无真实业务许可",
+    "responsible_roles": "项目/产品/测试/老师指定评审方",
+    "status": "NOT_RUN"
+  }
+]

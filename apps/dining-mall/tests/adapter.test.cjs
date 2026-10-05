@@ -1,0 +1,29 @@
+;(async()=>{
+const feedback=await import('../src/utils/feedback-service.js')
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict')
+const source=fs.readFileSync('src/utils/request.js','utf8').replace(/^import.*$/mg,'').replace('export const resetDemo','const resetDemo').replace('export default','globalThis.api=')
+const memory=new Map()
+const ctx={...feedback,seed:JSON.parse(fs.readFileSync('src/utils/seed.json')),sanitizeHTML:s=>s,localStorage:{getItem:k=>memory.get(k),setItem:(k,v)=>memory.set(k,v),removeItem:k=>memory.delete(k)},location:{},console}
+ctx.sessionStorage=ctx.localStorage;vm.createContext(ctx);vm.runInContext(source,ctx)
+const api=ctx.api,passes=[]
+async function role(r){const result=await api.post('/web/login',{username:'111',password:'111',role:r});assert.equal(result.code,'200');memory.set('account',JSON.stringify(result.data));return result.data}
+async function test(name,fn){await fn();passes.push(name);console.log('PASS',name)}
+;await (async()=>{
+ await test('All three fixed-code identities and invalid-login rejection',async()=>{for(const r of ['ROLE_USER','ROLE_UNIT','ROLE_ADMIN'])assert.equal((await role(r)).role,r);assert.equal((await api.post('/web/login',{username:'bad',password:'111',role:'ROLE_USER'})).code,'400')})
+ await role('ROLE_USER')
+ await test('Cart quantity validation and merging',async()=>{assert.equal((await api.post('/cart',{goodsId:1,num:0})).code,'400');await api.post('/cart',{goodsId:1,num:1});await api.post('/cart',{goodsId:1,num:2});assert.equal((await api.get('/cart')).data[0].num,3);assert.equal((await api.post('/cart',{goodsId:1,num:100000})).code,'400')})
+ await test('Favorite toggle and current-user collection',async()=>{await api.post('/collect',{itemId:1,userId:1});assert.equal((await api.get('/goods/collect/page')).data.total,1);assert.equal((await api.post('/collect',{itemId:1,userId:1})).code,'605');assert.equal((await api.get('/goods/collect/page')).data.total,0)})
+ await test('Partial checkout failure is atomic and leaves both carts intact',async()=>{await api.post('/cart',{goodsId:2,num:1});const carts=(await api.get('/cart')).data;const count=(await api.get('/orders/front/page',{params:{pageSize:100}})).data.total;const result=await api.post('/orders/fromCart/1',carts.map((c,i)=>({id:c.id,goodsId:c.goodsId,num:i?100000:1})));assert.equal(result.code,'400');assert.equal((await api.get('/orders/front/page',{params:{pageSize:100}})).data.total,count);assert.equal((await api.get('/cart')).data.length,2)})
+ let placed
+ await test('Selected address, note, payment choice and amount survive checkout',async()=>{const address=await api.post('/address',{name:'回归示例',phone:'00000000000',address:'测试地址二'});const c=(await api.get('/cart')).data[0];const result=await api.post('/orders/fromCart/'+address.data.id,[{id:c.id,goodsId:c.goodsId,num:2,remark:'少辣，不要餐具',paymentMode:'now'}]);assert.equal(result.code,'200');placed=result.data[0];assert.equal(placed.userAddress,'测试地址二');assert.equal(placed.remark,'少辣，不要餐具');assert.equal(placed.paymentMode,'now');assert.equal(placed.price,64);assert.equal((await api.get('/cart')).data.length,1)})
+ await test('Payment remains blocked without mutating state',async()=>{assert.equal((await api.get('/orders/pay/'+placed.id)).code,'400');assert.equal((await api.get('/orders/'+placed.id)).data.status,'待支付')})
+ await test('Invalid shipment transition is rejected; cancel is idempotent',async()=>{assert.equal((await api.get('/orders/send/'+placed.id)).code,'400');assert.equal((await api.get('/orders/cancel/'+placed.id)).code,'200');assert.equal((await api.get('/orders/cancel/'+placed.id)).code,'200');const list=(await api.get('/orders/front/page',{params:{pageSize:100}})).data.records;assert.equal(list.filter(o=>o.paymentMode==='later'&&!['已取消','已退款'].includes(o.status)).length,0)})
+ await test('Merchant charts only include that merchant’s goods',async()=>{await role('ROLE_ADMIN');await api.post('/goods',{name:'另一个店铺的餐品',unitId:2,price:99,inventory:20,sales:77,typeId:1});await role('ROLE_UNIT');assert.equal((await api.get('/echarts/count2')).data.some(g=>g.name==='另一个店铺的餐品'),false)})
+ await test('Removed merchandise has a readable cart state and cannot be ordered',async()=>{await role('ROLE_USER');const cart=(await api.get('/cart')).data[0];await role('ROLE_ADMIN');await api.delete('/goods/'+cart.goodsId);await role('ROLE_USER');const item=(await api.get('/cart')).data.find(c=>c.id===cart.id);assert.equal(item.unavailable,true);assert.equal(item.goodsName,'餐品已移除');assert.equal((await api.post('/orders/fromCart/1',[{id:item.id,goodsId:item.goodsId,num:1}])).code,'400')})
+ await test('Banner and notice mutations are visible through the consumer API',async()=>{await role('ROLE_ADMIN');await api.post('/banner',{id:1,name:'回归活动',info:'测试联动',img:'/food/banner.jpg',goodsId:1});await api.post('/notice',{id:1,name:'回归公告'});assert.equal((await api.get('/banner')).data[0].name,'回归活动');assert.equal((await api.get('/notice')).data[0].name,'回归公告')})
+ await test('User ID follows the active customer instead of being fixed to 1',async()=>{memory.set('account',JSON.stringify({id:2,role:'ROLE_USER'}));const a=await api.post('/address',{name:'第二体验用户',phone:'00000000000',address:'示例二'});const result=await api.post('/orders',{goodsId:1,num:1,addressId:a.data.id});assert.equal(result.data.userId,2)})
+ await test('Reload preserves saved local state',async()=>{const reload={...ctx};vm.createContext(reload);vm.runInContext(source,reload);assert.equal((await reload.api.get('/notice')).data[0].name,'回归公告')})
+ console.log(JSON.stringify({passed:passes.length,tests:passes,scope:'Node VM local adapter; no live browser or backend'}))
+})().catch(error=>{console.error(error);process.exit(1)})
+
+})().catch(error=>{console.error(error);process.exit(1)})

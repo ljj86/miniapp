@@ -1,0 +1,13 @@
+PASS All three fixed-code identities and invalid-login rejection
+PASS Cart quantity validation and merging
+PASS Favorite toggle and current-user collection
+PASS Partial checkout failure is atomic and leaves both carts intact
+PASS Selected address, note, payment choice and amount survive checkout
+PASS Payment remains blocked without mutating state
+PASS Invalid shipment transition is rejected; cancel is idempotent
+PASS Merchant charts only include that merchant’s goods
+PASS Removed merchandise has a readable cart state and cannot be ordered
+PASS Banner and notice mutations are visible through the consumer API
+PASS User ID follows the active customer instead of being fixed to 1
+PASS Reload preserves saved local state
+{"passed":12,"tests":["All three fixed-code identities and invalid-login rejection","Cart quantity validation and merging","Favorite toggle and current-user collection","Partial checkout failure is atomic and leaves both carts intact","Selected address, note, payment choice and amount survive checkout","Payment remains blocked without mutating state","Invalid shipment transition is rejected; cancel is idempotent","Merchant charts only include that merchant’s goods","Removed merchandise has a readable cart state and cannot be ordered","Banner and notice mutations are visible through the consumer API","User ID follows the active customer instead of being fixed to 1","Reload preserves saved local state"],"scope":"Node VM local adapter; no live browser or backend"}

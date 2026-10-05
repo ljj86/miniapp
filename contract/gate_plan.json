@@ -1,0 +1,78 @@
+{
+  "scope": "Dependency planning only, approvals stay pending. No gate evaluated as passed.",
+  "nodes": {
+    "0.1": [
+      "DEC-13-SOURCE",
+      "PR-01",
+      "PR-02"
+    ],
+    "0.2a": [
+      "0.1",
+      "DEC-13-UID"
+    ],
+    "0.2b": [
+      "0.2a",
+      "PR-03",
+      "PR-04",
+      "PR-08",
+      "DEC-12-A",
+      "PR-09-A",
+      "PEOPLE-WHITELIST"
+    ],
+    "0.2": [
+      "0.2a",
+      "0.2b"
+    ],
+    "0.3": [
+      "0.2a",
+      "PR-05"
+    ],
+    "0.4": [
+      "0.3",
+      "DEC-11",
+      "DEC-13",
+      "RV-SIM-001"
+    ],
+    "0.5": [
+      "0.4",
+      "PR-06"
+    ],
+    "0.6": [
+      "0.5",
+      "PR-07"
+    ],
+    "0.7": [
+      "0.6",
+      "REFUND-MATRIX"
+    ],
+    "0.8": [
+      "0.7",
+      "BILL-FORMAT"
+    ],
+    "0.9-execution": [
+      "0.8",
+      "PERFORMANCE-PLAN",
+      "RECOVERY-PLAN"
+    ],
+    "0.9": [
+      "0.9-execution",
+      "DEC-12-B",
+      "PR-09-B"
+    ],
+    "1.0": [
+      "0.2",
+      "0.9",
+      "PR-10"
+    ],
+    "DEC-13": [
+      "DEC-13-SOURCE",
+      "DEC-13-UID"
+    ],
+    "RV-SIM-001": [
+      "DEC-11",
+      "DEC-13"
+    ]
+  },
+  "unapproved_business_gates": "BLOCKED_OR_PENDING; do not infer PASS from acyclic plan",
+  "review_rule": "External approvals are recorded evidence leaf nodes; no self-issued approval. DEC-12-B/PR-09-B validated after 0.9-execution, not required before running those tests."
+}

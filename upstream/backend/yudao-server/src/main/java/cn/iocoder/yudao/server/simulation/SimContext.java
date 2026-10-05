@@ -101,24 +101,62 @@ public final class SimContext {
     public Map<String,Object> project(Map<String,Object> value,String... fields) {
         Map<String,Object> out=new LinkedHashMap<>();for(String f:fields)if(value.containsKey(f) && value.get(f)!=null)out.put(f,value.get(f));return out;
     }
-    @SuppressWarnings("unchecked")
     public Map<String,Object> page(List<?> values,Map<String,String> params) {
+        return page(values,params,null);
+    }
+    /** Keyset pagination follows server creation time, with a stable numeric ID tiebreaker. */
+    @SuppressWarnings("unchecked")
+    public Map<String,Object> page(List<?> values,Map<String,String> params,String sourceKind) {
         int size=positive(params.get("limit"),20);check(size<=100,422,"VALIDATION_FAILED","limit最多100");
-        List<Map<String,Object>> rows=new ArrayList<>();for(Object x:values)rows.add((Map<String,Object>)x);
+        LocalDate from=pageDate(params.get("dateFrom")),to=pageDate(params.get("dateTo"));
+        check(from==null||to==null||!from.isAfter(to),422,"VALIDATION_FAILED","起始日期不能晚于结束日期");
+        ZoneId zone=ZoneId.of("Asia/Shanghai");
+        Instant lower=from==null?null:from.atStartOfDay(zone).toInstant();
+        Instant upper=to==null?null:to.plusDays(1).atStartOfDay(zone).toInstant();
+        List<Map<String,Object>> rows=new ArrayList<>();Map<String,Instant> times=new HashMap<>();
+        for(Object value:values){
+            Map<String,Object> row=(Map<String,Object>)value;String id=s(row,"id");
+            Map<String,Object> origin=sourceKind==null?row:state.table(sourceKind).get(id);
+            if(origin==null||origin.get("createdAt")==null)throw new IllegalStateException("Pagination source creation time is missing");
+            Instant time=Instant.parse(s(origin,"createdAt"));times.put(id,time);
+            if((lower==null||!time.isBefore(lower))&&(upper==null||time.isBefore(upper)))rows.add(row);
+        }
         boolean ascending="createdAt_asc".equals(params.get("sort"));
-        rows.sort((a,b)->ascending?Long.compare(n(a,"id"),n(b,"id")):Long.compare(n(b,"id"),n(a,"id")));
-        Map<String,String> filters=new TreeMap<>(params);filters.remove("cursor");
-        String scope=hashObject(map("actor",userId,"filters",filters,"grantVersion",state.meta.get("grantVersion")));
-        String cursor=params.get("cursor");long last=ascending?0:Long.MAX_VALUE;
-        if(cursor!=null && !cursor.isEmpty())try{
-            String[] parts=cursor.split("\\.",-1);check(parts.length==2 && MessageDigest.isEqual(parts[1].getBytes(StandardCharsets.UTF_8),mac(parts[0]).getBytes(StandardCharsets.UTF_8)),422,"VALIDATION_FAILED","游标签名无效");
+        Comparator<Map<String,Object>> compare=(a,b)->{
+            int byTime=times.get(s(a,"id")).compareTo(times.get(s(b,"id")));
+            return byTime!=0?byTime:Long.compare(n(a,"id"),n(b,"id"));
+        };
+        rows.sort(ascending?compare:compare.reversed());
+        Map<String,String> filters=new TreeMap<>();
+        for(Map.Entry<String,String> e:params.entrySet())if(!e.getKey().startsWith("_")&&!"cursor".equals(e.getKey()))filters.put(e.getKey(),e.getValue());
+        List<Map<String,Object>> grants=new ArrayList<>();
+        for(Map<String,Object> g:all("grants"))if(Objects.equals(userId,s(g,"userId"))&&"ACTIVE".equals(s(g,"status"))&&(g.get("validFrom")==null||!now().isBefore(Instant.parse(s(g,"validFrom"))))&&(g.get("validTo")==null||now().isBefore(Instant.parse(s(g,"validTo")))))grants.add(g);
+        String scope=hashObject(map("actor",userId,"operation",params.get("_operation"),"sourceKind",sourceKind,"filters",filters,"grantVersion",state.meta.get("grantVersion"),"activeGrants",grants));
+        String cursor=params.get("cursor");Instant lastTime=null;long lastId=0;
+        if(cursor!=null&&!cursor.isEmpty())try{
+            String[] parts=cursor.split("\\.",-1);
+            check(parts.length==2&&MessageDigest.isEqual(parts[1].getBytes(StandardCharsets.UTF_8),mac(parts[0]).getBytes(StandardCharsets.UTF_8)),422,"VALIDATION_FAILED","游标签名无效");
             Map<String,Object> data=JSON.readValue(Base64.getUrlDecoder().decode(parts[0]),Map.class);
-            check(scope.equals(s(data,"scope")) && n(data,"expires")>now().getEpochSecond(),422,"VALIDATION_FAILED","游标已过期或授权范围已变化");last=n(data,"last");
+            check(n(data,"v")==2&&scope.equals(s(data,"scope"))&&n(data,"expires")>now().getEpochSecond(),422,"VALIDATION_FAILED","游标已过期或授权、筛选范围已变化，请重新查询");
+            lastTime=Instant.parse(s(data,"lastTime"));lastId=n(data,"lastId");
         }catch(SimException e){throw e;}catch(Exception e){throw new SimException(422,"VALIDATION_FAILED","无效分页游标");}
-        List<Map<String,Object>> selected=new ArrayList<>();for(Map<String,Object> row:rows)if(ascending?n(row,"id")>last:n(row,"id")<last)selected.add(row);
+        List<Map<String,Object>> selected=new ArrayList<>();
+        for(Map<String,Object> row:rows){
+            int cmp=lastTime==null?0:times.get(s(row,"id")).compareTo(lastTime);
+            if(lastTime!=null&&cmp==0)cmp=Long.compare(n(row,"id"),lastId);
+            if(lastTime==null||(ascending?cmp>0:cmp<0))selected.add(row);
+        }
         boolean more=selected.size()>size;List<Map<String,Object>> items=new ArrayList<>(selected.subList(0,Math.min(size,selected.size())));String next="";
-        if(more)try{String body=Base64.getUrlEncoder().withoutPadding().encodeToString(JSON.writeValueAsBytes(map("last",n(items.get(items.size()-1),"id"),"scope",scope,"expires",now().plusSeconds(900).getEpochSecond())));next=body+"."+mac(body);}catch(Exception e){throw new IllegalStateException(e);}
+        if(more)try{
+            Map<String,Object> last=items.get(items.size()-1);
+            String body=Base64.getUrlEncoder().withoutPadding().encodeToString(JSON.writeValueAsBytes(map("v",2,"lastTime",times.get(s(last,"id")).toString(),"lastId",n(last,"id"),"scope",scope,"expires",now().plusSeconds(900).getEpochSecond())));
+            next=body+"."+mac(body);
+        }catch(Exception e){throw new IllegalStateException(e);}
         return map("items",items,"nextCursor",next,"hasMore",more);
+    }
+    private LocalDate pageDate(String value){
+        if(value==null)return null;
+        try{return LocalDate.parse(value);}catch(Exception e){throw new SimException(422,"VALIDATION_FAILED","无效的查询日期");}
     }
     private String mac(String value){
         try{javax.crypto.Mac mac=javax.crypto.Mac.getInstance("HmacSHA256");mac.init(new javax.crypto.spec.SecretKeySpec(s(state.meta,"cursorSecret").getBytes(StandardCharsets.UTF_8),"HmacSHA256"));return Base64.getUrlEncoder().withoutPadding().encodeToString(mac.doFinal(value.getBytes(StandardCharsets.UTF_8)));}catch(Exception e){throw new IllegalStateException(e);}

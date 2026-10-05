@@ -22,12 +22,12 @@ public final class CommerceModule implements SimModule {
         if ("listOrders".equals(op)) {
             c.requireRoles("USER","OWNER","CLERK"); List<Map<String,Object>> result = new ArrayList<Map<String,Object>>();
             for(Map<String,Object> o:c.all("orders")) if(canRead(c,o,"OWNER","CLERK") && matches(o,p)) result.add(orderDto(c,o));
-            sort(result,p); return c.page(result,p);
+            return c.page(result,p);
         }
         if ("listReceivables".equals(op)) {
             c.requireRoles("USER","OWNER","LEDGER_CHECKER"); List<Map<String,Object>> result = new ArrayList<Map<String,Object>>();
             for(Map<String,Object> r:c.all("receivables")) if(canRead(c,r,"OWNER","LEDGER_CHECKER") && matches(r,p)) result.add(receivableDto(c,r));
-            sort(result,p); return c.page(result,p);
+            return c.page(result,p,"receivables");
         }
         if ("getReceivable".equals(op)) {
             Map<String,Object> r=c.get("receivables",p.get("id")); requireRead(c,r,"OWNER","LEDGER_CHECKER"); return receivableDto(c,r);
@@ -215,7 +215,6 @@ public final class CommerceModule implements SimModule {
     @SuppressWarnings("unchecked") public static <T> List<T> values(Map<String,Object> r,String key) {Object v=r.get(key); return v instanceof List?(List<T>)v:Collections.<T>emptyList();}
     private static boolean matches(Map<String,Object> r,Map<String,String> p) {
         if(p.get("status")!=null && !p.get("status").equals(s(r,"status"))) return false;
-        String date=s(r,"createdAt").substring(0,10); return (p.get("dateFrom")==null || date.compareTo(p.get("dateFrom"))>=0) && (p.get("dateTo")==null || date.compareTo(p.get("dateTo"))<=0);
+        return true; // Creation-date filtering is centralized with Asia/Shanghai boundaries in page().
     }
-    private static void sort(List<Map<String,Object>> records,final Map<String,String> p) {Collections.sort(records,new Comparator<Map<String,Object>>() {public int compare(Map<String,Object> a,Map<String,Object> b) {int order=Long.compare(n(a,"id"),n(b,"id"));return "createdAt_asc".equals(p.get("sort"))?order:-order;}});}
 }

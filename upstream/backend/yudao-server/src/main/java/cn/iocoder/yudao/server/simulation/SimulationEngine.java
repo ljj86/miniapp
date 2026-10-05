@@ -31,7 +31,7 @@ public final class SimulationEngine {
             Outcome outcome=store.transaction(state->{
                 state.meta.put("requestId",requestId);SimContext anon=new SimContext(state,null,clock.instant());String actor=IdentityModule.authenticate(anon,headers.get("authorization"));
                 if(operation.callback){validateSignature(anon,headers,raw);actor="900";}
-                SimContext c=new SimContext(state,actor,clock.instant());params.put("_actorId",actor);params.put("_accessHash",headers.get("authorization")==null?null:c.hash(headers.get("authorization")));
+                SimContext c=new SimContext(state,actor,clock.instant());params.put("_actorId",actor);params.put("_operation",operation.id);params.put("_accessHash",headers.get("authorization")==null?null:c.hash(headers.get("authorization")));
                 if(!operation.anonymous && !operation.callback)c.requireRoles(operation.roles.toArray(new String[0]));
                 Map<String,String> semanticParams=new TreeMap<>();for(Map.Entry<String,String> entry:params.entrySet())if(!entry.getKey().startsWith("_"))semanticParams.put(entry.getKey(),entry.getValue());
                 String requestHash=c.hashObject(map("path",path,"parameters",semanticParams,"body",body)),idempotencyId=null;Map<String,Object> record=null;

@@ -1,0 +1,36 @@
+{
+  "name": "miniapp-dining-mall",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "npm run test:logic && npm run test:dom",
+    "test:logic": "node tests/adapter.test.cjs && node tests/routes.test.cjs && node tests/credit-contract.test.mjs && node tests/credit-integration.test.mjs && node tests/after-sales.test.mjs",
+    "test:dom": "node tests/build-ui-harness.mjs && node tests/feedback-ui.test.mjs",
+    "verify": "npm test && npm run build"
+  },
+  "dependencies": {
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-vue": "^5.1.12",
+    "axios": "^1.9.0",
+    "echarts": "^5.6.0",
+    "element-plus": "^2.9.9",
+    "sass": "^1.87.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "@element-plus/icons-vue": "2.3.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "vite": "^6.2.4",
+    "vite-plugin-vue-devtools": "^7.7.2",
+    "jsdom": "26.1.0"
+  },
+  "packageManager": "npm@11.9.0",
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

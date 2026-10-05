@@ -1,0 +1,3909 @@
+[
+  {
+    "name": "sim_user",
+    "desc": "平台自然人账户，不以手机号为主键；UID格式为DEC-13待签批候选，不能宣称已批准",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "uid",
+        "CHAR(9)",
+        "NOT NULL",
+        "y+8位数字"
+      ],
+      [
+        "phone_cipher",
+        "VARBINARY(512)",
+        "NOT NULL",
+        "加密手机号；合成账户使用专用Mock标识"
+      ],
+      [
+        "phone_lookup",
+        "CHAR(64)",
+        "NOT NULL",
+        "规范化手机号的带密钥检索标记"
+      ],
+      [
+        "display_name",
+        "VARCHAR(64)",
+        "NOT NULL",
+        "用户昵称，不用于账号合并"
+      ],
+      [
+        "status",
+        "ENUM('ACTIVE','SUSPENDED','CLOSED')",
+        "NOT NULL DEFAULT 'ACTIVE'",
+        "状态"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "乐观锁"
+      ]
+    ],
+    "unique": [
+      "uid",
+      "phone_lookup"
+    ],
+    "indexes": [
+      "status, id"
+    ],
+    "checks": [],
+    "fks": [],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "UserStatus"
+    }
+  },
+  {
+    "name": "sim_identity",
+    "desc": "微信身份绑定",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "所属平台用户"
+      ],
+      [
+        "provider",
+        "VARCHAR(32)",
+        "NOT NULL",
+        "WECHAT_MINIAPP"
+      ],
+      [
+        "app_id",
+        "VARCHAR(64)",
+        "NOT NULL",
+        "身份应用范围"
+      ],
+      [
+        "subject_cipher",
+        "VARBINARY(512)",
+        "NOT NULL",
+        "加密OpenID"
+      ],
+      [
+        "subject_lookup",
+        "CHAR(64)",
+        "NOT NULL",
+        "带密钥检索标记"
+      ]
+    ],
+    "unique": [
+      "provider, app_id, subject_lookup",
+      "user_id, provider, app_id"
+    ],
+    "indexes": [],
+    "checks": [],
+    "fks": [
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_session",
+    "desc": "用户会话；不保存原始刷新令牌",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "所属用户"
+      ],
+      [
+        "refresh_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "刷新令牌摘要"
+      ],
+      [
+        "family_id",
+        "CHAR(36)",
+        "NOT NULL",
+        "重用检测会话族"
+      ],
+      [
+        "expires_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "到期"
+      ],
+      [
+        "revoked_at",
+        "DATETIME(3)",
+        "NULL",
+        "撤销时刻"
+      ]
+    ],
+    "unique": [
+      "refresh_hash"
+    ],
+    "indexes": [
+      "user_id, expires_at",
+      "family_id"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "会话到期清理；安全审计仅保留最小事件和撤销证据",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_sms_challenge",
+    "desc": "验证码与用途",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "challenge_id",
+        "CHAR(36)",
+        "NOT NULL",
+        "对外UUID"
+      ],
+      [
+        "phone_lookup",
+        "CHAR(64)",
+        "NOT NULL",
+        "绑定手机号"
+      ],
+      [
+        "purpose",
+        "ENUM('REGISTER','LOGIN','REBIND')",
+        "NOT NULL",
+        "用途不可串用"
+      ],
+      [
+        "code_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "验证码摘要"
+      ],
+      [
+        "attempts",
+        "SMALLINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "失败计数"
+      ],
+      [
+        "expires_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "有效期"
+      ],
+      [
+        "consumed_at",
+        "DATETIME(3)",
+        "NULL",
+        "单次消费"
+      ]
+    ],
+    "unique": [
+      "challenge_id"
+    ],
+    "indexes": [
+      "phone_lookup, purpose, expires_at"
+    ],
+    "checks": [],
+    "fks": [],
+    "life": "有效5分钟；验证码摘要最长24小时清理；不留短信正文",
+    "enum_refs": {
+      "environment": "Environment",
+      "purpose": "SmsChallengePurpose"
+    }
+  },
+  {
+    "name": "sim_consent",
+    "desc": "模拟协议和个人信息告知记录",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "本人"
+      ],
+      [
+        "purpose",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "REGISTER/SIMULATION/EXPORT等"
+      ],
+      [
+        "document_version",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "协议版本"
+      ],
+      [
+        "accepted_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "主动选择时刻"
+      ],
+      [
+        "withdrawn_at",
+        "DATETIME(3)",
+        "NULL",
+        "撤回"
+      ],
+      [
+        "document_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "展示内容摘要"
+      ]
+    ],
+    "unique": [],
+    "indexes": [
+      "user_id, purpose, accepted_at"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_merchant",
+    "desc": "模拟经营主体；UID格式为DEC-13待签批候选，不能宣称已批准",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "uid",
+        "CHAR(8)",
+        "NOT NULL",
+        "s+7位数字"
+      ],
+      [
+        "owner_user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "老板账户"
+      ],
+      [
+        "name",
+        "VARCHAR(128)",
+        "NOT NULL",
+        "显示名"
+      ],
+      [
+        "status",
+        "ENUM('DRAFT','APPROVED','SUSPENDED','EXITING','EXITED')",
+        "NOT NULL",
+        "经营状态"
+      ],
+      [
+        "contract_version",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "模拟参与协议"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "并发版本"
+      ]
+    ],
+    "unique": [
+      "uid"
+    ],
+    "indexes": [
+      "owner_user_id, status"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "owner_user_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "MerchantStatus"
+    }
+  },
+  {
+    "name": "sim_merchant_application",
+    "desc": "入驻申请与独立审核",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "待审核主体"
+      ],
+      [
+        "applicant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "发起用户"
+      ],
+      [
+        "material_version",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "资料版本"
+      ],
+      [
+        "material_summary",
+        "JSON",
+        "NOT NULL",
+        "仅模拟主体资料，不放真实证件"
+      ],
+      [
+        "status",
+        "ENUM('DRAFT','SUBMITTED','NEEDS_INFO','APPROVED','REJECTED')",
+        "NOT NULL",
+        "流程"
+      ],
+      [
+        "reviewer_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "独立审核人"
+      ],
+      [
+        "review_reason",
+        "VARCHAR(500)",
+        "NULL",
+        "结论理由"
+      ]
+    ],
+    "unique": [
+      "merchant_id, material_version"
+    ],
+    "indexes": [
+      "status, created_at"
+    ],
+    "checks": [
+      "reviewer_id IS NULL OR reviewer_id <> applicant_id",
+      "status NOT IN ('APPROVED','REJECTED','NEEDS_INFO') OR reviewer_id IS NOT NULL"
+    ],
+    "fks": [
+      [
+        "merchant_id",
+        "sim_merchant",
+        "id"
+      ],
+      [
+        "applicant_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "reviewer_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "MerchantApplicationStatus"
+    }
+  },
+  {
+    "name": "sim_store",
+    "desc": "经营地点",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "主体"
+      ],
+      [
+        "name",
+        "VARCHAR(100)",
+        "NOT NULL",
+        "门店名称"
+      ],
+      [
+        "region_code",
+        "VARCHAR(16)",
+        "NOT NULL",
+        "手动地区码，无用户GPS"
+      ],
+      [
+        "address_text",
+        "VARCHAR(200)",
+        "NOT NULL",
+        "模拟地址"
+      ],
+      [
+        "active",
+        "BOOLEAN",
+        "NOT NULL DEFAULT TRUE",
+        "停用保留历史"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "版本"
+      ]
+    ],
+    "unique": [
+      "id, merchant_id"
+    ],
+    "indexes": [
+      "merchant_id, active"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "merchant_id",
+        "sim_merchant",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_role_assignment",
+    "desc": "权限范围，不与账户身份混同",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "被授权人"
+      ],
+      [
+        "scope_key",
+        "VARCHAR(100)",
+        "NOT NULL",
+        "PLATFORM或MERCHANT:id或STORE:id；服务端规范化"
+      ],
+      [
+        "role_code",
+        "ENUM('OWNER','CLERK','MERCHANT_REVIEWER','LEDGER_MAKER','LEDGER_CHECKER','SUPPORT','SECURITY','SIM_CONTROLLER')",
+        "NOT NULL",
+        "角色"
+      ],
+      [
+        "expires_at",
+        "DATETIME(3)",
+        "NULL",
+        "授权期限"
+      ],
+      [
+        "revoked_at",
+        "DATETIME(3)",
+        "NULL",
+        "撤销"
+      ]
+    ],
+    "unique": [
+      "user_id, scope_key, role_code"
+    ],
+    "indexes": [
+      "scope_key, role_code"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "role_code": "RoleAssignmentRoleCode"
+    }
+  },
+  {
+    "name": "sim_product",
+    "desc": "单门店套餐/商品，无复杂SKU库存",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "商家"
+      ],
+      [
+        "store_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "门店"
+      ],
+      [
+        "name",
+        "VARCHAR(128)",
+        "NOT NULL",
+        "套餐名"
+      ],
+      [
+        "price_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "CNY分"
+      ],
+      [
+        "active",
+        "BOOLEAN",
+        "NOT NULL DEFAULT TRUE",
+        "在架"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "价格快照版本"
+      ]
+    ],
+    "unique": [],
+    "indexes": [
+      "store_id, active, id"
+    ],
+    "checks": [
+      "price_minor > 0"
+    ],
+    "fks": [
+      [
+        "merchant_id",
+        "sim_merchant",
+        "id"
+      ],
+      [
+        "store_id, merchant_id",
+        "sim_store",
+        "id, merchant_id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_rule_version",
+    "desc": "模拟规则快照；通过后不可编辑",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "code",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "RV-SIM-001等"
+      ],
+      [
+        "status",
+        "ENUM('DRAFT','APPROVED','RETIRED')",
+        "NOT NULL",
+        "版本流程"
+      ],
+      [
+        "quota_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "初始10000分"
+      ],
+      [
+        "transaction_max_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "单笔2000分"
+      ],
+      [
+        "term_days",
+        "SMALLINT UNSIGNED",
+        "NOT NULL",
+        "30天"
+      ],
+      [
+        "credential_ttl_seconds",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "确认凭证300秒"
+      ],
+      [
+        "reservation_ttl_seconds",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "预占900秒"
+      ],
+      [
+        "maker_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "提交者"
+      ],
+      [
+        "checker_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "复核者"
+      ]
+    ],
+    "unique": [
+      "code"
+    ],
+    "indexes": [],
+    "checks": [
+      "transaction_max_minor <= quota_minor",
+      "checker_id IS NULL OR checker_id <> maker_id",
+      "status = 'DRAFT' OR checker_id IS NOT NULL"
+    ],
+    "fks": [
+      [
+        "maker_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "checker_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "RuleVersionStatus"
+    }
+  },
+  {
+    "name": "sim_order",
+    "desc": "订单与履约状态分字段，非支付成功状态",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "所属商家"
+      ],
+      [
+        "store_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "所属门店"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "确认后绑定消费者"
+      ],
+      [
+        "maker_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "创建者"
+      ],
+      [
+        "rule_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "快照规则"
+      ],
+      [
+        "total_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "由服务端计算"
+      ],
+      [
+        "currency",
+        "CHAR(3)",
+        "NOT NULL DEFAULT 'CNY'",
+        "固定人民币模拟单位"
+      ],
+      [
+        "status",
+        "ENUM('DRAFT','PUBLISHED','CONFIRMED','FULFILLED','CANCELLED','EXPIRED')",
+        "NOT NULL",
+        "订单状态"
+      ],
+      [
+        "fulfillment_status",
+        "ENUM('NOT_READY','READY','FULFILLED','VOID')",
+        "NOT NULL",
+        "履约状态"
+      ],
+      [
+        "snapshot_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "内容摘要"
+      ],
+      [
+        "published_expires_at",
+        "DATETIME(3)",
+        "NULL",
+        "发布确认截止"
+      ],
+      [
+        "confirmed_at",
+        "DATETIME(3)",
+        "NULL",
+        "确认时刻"
+      ],
+      [
+        "fulfilled_at",
+        "DATETIME(3)",
+        "NULL",
+        "履约时刻"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "If-MatchVersion"
+      ]
+    ],
+    "unique": [
+      "id, merchant_id"
+    ],
+    "indexes": [
+      "user_id, created_at, id",
+      "merchant_id, status, created_at"
+    ],
+    "checks": [
+      "total_minor > 0",
+      "currency = 'CNY'"
+    ],
+    "fks": [
+      [
+        "merchant_id",
+        "sim_merchant",
+        "id"
+      ],
+      [
+        "store_id, merchant_id",
+        "sim_store",
+        "id, merchant_id"
+      ],
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "maker_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "rule_id",
+        "sim_rule_version",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "OrderStatus",
+      "fulfillment_status": "FulfillmentStatus"
+    }
+  },
+  {
+    "name": "sim_order_item",
+    "desc": "商品价格不可变快照",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "order_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "订单"
+      ],
+      [
+        "line_no",
+        "SMALLINT UNSIGNED",
+        "NOT NULL",
+        "行序号"
+      ],
+      [
+        "product_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "商品引用"
+      ],
+      [
+        "product_name",
+        "VARCHAR(128)",
+        "NOT NULL",
+        "名称快照"
+      ],
+      [
+        "quantity",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "整数数量"
+      ],
+      [
+        "unit_price_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "单价快照"
+      ],
+      [
+        "subtotal_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "数量乘单价"
+      ]
+    ],
+    "unique": [
+      "order_id, line_no"
+    ],
+    "indexes": [],
+    "checks": [
+      "quantity > 0",
+      "subtotal_minor = quantity * unit_price_minor"
+    ],
+    "fks": [
+      [
+        "order_id",
+        "sim_order",
+        "id"
+      ],
+      [
+        "product_id",
+        "sim_product",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_credential",
+    "desc": "确认/核销短时凭证，仅存摘要",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "order_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "所属订单"
+      ],
+      [
+        "purpose",
+        "ENUM('CONFIRM','FULFILL')",
+        "NOT NULL",
+        "不可跨用途"
+      ],
+      [
+        "nonce_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "随机凭证摘要"
+      ],
+      [
+        "bound_user_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "确认后核销凭证绑定本人"
+      ],
+      [
+        "order_version",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "快照版本"
+      ],
+      [
+        "expires_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "到期"
+      ],
+      [
+        "consumed_at",
+        "DATETIME(3)",
+        "NULL",
+        "已使用"
+      ]
+    ],
+    "unique": [
+      "nonce_hash"
+    ],
+    "indexes": [
+      "order_id, purpose, expires_at"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "order_id",
+        "sim_order",
+        "id"
+      ],
+      [
+        "bound_user_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "摘要保留到订单验证和争议期结束；不记录明文nonce",
+    "enum_refs": {
+      "environment": "Environment",
+      "purpose": "CredentialPurpose"
+    }
+  },
+  {
+    "name": "sim_limit_account",
+    "desc": "用户全平台模拟额度投影",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "全平台用户"
+      ],
+      [
+        "rule_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "额度规则"
+      ],
+      [
+        "total_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "总模拟额度"
+      ],
+      [
+        "reserved_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "有效预占"
+      ],
+      [
+        "principal_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "未还本金"
+      ],
+      [
+        "blocked",
+        "BOOLEAN",
+        "NOT NULL DEFAULT FALSE",
+        "仅暂停新增"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "原子更新"
+      ]
+    ],
+    "unique": [
+      "user_id"
+    ],
+    "indexes": [],
+    "checks": [
+      "reserved_minor + principal_minor <= total_minor"
+    ],
+    "fks": [
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "rule_id",
+        "sim_rule_version",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_reservation",
+    "desc": "预占记录",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "order_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "订单唯一预占"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "额度主体"
+      ],
+      [
+        "amount_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "预占金额"
+      ],
+      [
+        "status",
+        "ENUM('HELD','CONSUMED','RELEASED','EXPIRED')",
+        "NOT NULL",
+        "状态"
+      ],
+      [
+        "expires_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "服务端到期"
+      ]
+    ],
+    "unique": [
+      "order_id"
+    ],
+    "indexes": [
+      "status, expires_at"
+    ],
+    "checks": [
+      "amount_minor > 0"
+    ],
+    "fks": [
+      [
+        "order_id",
+        "sim_order",
+        "id"
+      ],
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "ReservationStatus"
+    }
+  },
+  {
+    "name": "sim_receivable",
+    "desc": "模拟应收，只记录商家场景义务，不是平台真实资产",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "order_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "履约订单"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "模拟消费者"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "模拟应收所属商家"
+      ],
+      [
+        "issued_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "原始本金"
+      ],
+      [
+        "outstanding_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "当前剩余本金"
+      ],
+      [
+        "due_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "履约后30天"
+      ],
+      [
+        "status",
+        "ENUM('OPEN','PARTIAL','SETTLED')",
+        "NOT NULL",
+        "与期限/争议分离"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "并发版本"
+      ]
+    ],
+    "unique": [
+      "order_id",
+      "id, merchant_id"
+    ],
+    "indexes": [
+      "user_id, due_at, id",
+      "merchant_id, status, due_at"
+    ],
+    "checks": [
+      "outstanding_minor <= issued_minor"
+    ],
+    "fks": [
+      [
+        "order_id, merchant_id",
+        "sim_order",
+        "id, merchant_id"
+      ],
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "ReceivableStatus"
+    }
+  },
+  {
+    "name": "sim_repayment",
+    "desc": "模拟在线或线下还款单",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "消费者"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "同一商家分配范围"
+      ],
+      [
+        "amount_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "拟还金额"
+      ],
+      [
+        "received_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "已核实金额"
+      ],
+      [
+        "unallocated_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "待分配/待退"
+      ],
+      [
+        "method",
+        "ENUM('MOCK_ONLINE','MOCK_OFFLINE')",
+        "NOT NULL",
+        "仅模拟渠道"
+      ],
+      [
+        "status",
+        "ENUM('CREATED','PENDING','CONFIRMED','FAILED','CLOSED','EXCEPTION')",
+        "NOT NULL",
+        "状态"
+      ],
+      [
+        "reference",
+        "VARCHAR(80)",
+        "NOT NULL",
+        "模拟渠道业务号"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "版本"
+      ]
+    ],
+    "unique": [
+      "reference",
+      "id, merchant_id"
+    ],
+    "indexes": [
+      "user_id, created_at",
+      "merchant_id, status"
+    ],
+    "checks": [
+      "amount_minor > 0",
+      "unallocated_minor <= received_minor"
+    ],
+    "fks": [
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "merchant_id",
+        "sim_merchant",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "method": "RepaymentMethod",
+      "status": "RepaymentStatus"
+    }
+  },
+  {
+    "name": "sim_repayment_allocation",
+    "desc": "实际核销分配，不得超出原金额",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "repayment_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "还款单"
+      ],
+      [
+        "receivable_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "应收"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "同一商家"
+      ],
+      [
+        "amount_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "实际核销本金"
+      ],
+      [
+        "event_key",
+        "VARCHAR(100)",
+        "NOT NULL",
+        "事件去重"
+      ]
+    ],
+    "unique": [
+      "event_key"
+    ],
+    "indexes": [
+      "receivable_id, id"
+    ],
+    "checks": [
+      "amount_minor > 0"
+    ],
+    "fks": [
+      [
+        "repayment_id, merchant_id",
+        "sim_repayment",
+        "id, merchant_id"
+      ],
+      [
+        "receivable_id, merchant_id",
+        "sim_receivable",
+        "id, merchant_id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_offline_review",
+    "desc": "模拟线下登记及独立复核",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "repayment_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "线下还款单"
+      ],
+      [
+        "maker_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "登记人"
+      ],
+      [
+        "checker_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "用户或独立复核员"
+      ],
+      [
+        "evidence_refs",
+        "JSON",
+        "NOT NULL",
+        "已核验私有文件ID列表"
+      ],
+      [
+        "occurred_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "模拟收款时间"
+      ],
+      [
+        "status",
+        "ENUM('SUBMITTED','VERIFIED','REJECTED')",
+        "NOT NULL",
+        "状态"
+      ],
+      [
+        "reason",
+        "VARCHAR(500)",
+        "NULL",
+        "复核原因"
+      ]
+    ],
+    "unique": [
+      "repayment_id"
+    ],
+    "indexes": [],
+    "checks": [
+      "checker_id IS NULL OR checker_id <> maker_id",
+      "status = 'SUBMITTED' OR checker_id IS NOT NULL"
+    ],
+    "fks": [
+      [
+        "repayment_id",
+        "sim_repayment",
+        "id"
+      ],
+      [
+        "maker_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "checker_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "OfflineReviewStatus"
+    }
+  },
+  {
+    "name": "sim_refund",
+    "desc": "退款审批、应收冲减与模拟款项退回分离",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "order_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "原订单"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "所属商家"
+      ],
+      [
+        "reference",
+        "VARCHAR(80)",
+        "NOT NULL",
+        "模拟退款业务号"
+      ],
+      [
+        "requested_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "退货总额"
+      ],
+      [
+        "principal_reduction_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "批准时锁定冲本金"
+      ],
+      [
+        "return_payable_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "批准时应退用户"
+      ],
+      [
+        "maker_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "发起人"
+      ],
+      [
+        "checker_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "独立审核"
+      ],
+      [
+        "status",
+        "ENUM('REQUESTED','APPROVED','REJECTED','PROCESSING','SUCCEEDED','FAILED','EXCEPTION')",
+        "NOT NULL",
+        "退款状态"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "并发版本"
+      ]
+    ],
+    "unique": [
+      "reference"
+    ],
+    "indexes": [
+      "order_id, status"
+    ],
+    "checks": [
+      "requested_minor > 0",
+      "principal_reduction_minor + return_payable_minor <= requested_minor",
+      "checker_id IS NULL OR checker_id <> maker_id",
+      "status = 'REQUESTED' OR checker_id IS NOT NULL"
+    ],
+    "fks": [
+      [
+        "order_id, merchant_id",
+        "sim_order",
+        "id, merchant_id"
+      ],
+      [
+        "maker_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "checker_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "RefundStatus"
+    }
+  },
+  {
+    "name": "sim_dispute",
+    "desc": "异议工单不与应收状态混同",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "order_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "原订单"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "本人"
+      ],
+      [
+        "reason",
+        "VARCHAR(1000)",
+        "NOT NULL",
+        "异议内容"
+      ],
+      [
+        "evidence_refs",
+        "JSON",
+        "NOT NULL",
+        "证据ID"
+      ],
+      [
+        "assignee_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "处理者"
+      ],
+      [
+        "status",
+        "ENUM('OPEN','REVIEWING','RESOLVED','APPEALED','CLOSED')",
+        "NOT NULL",
+        "独立状态"
+      ],
+      [
+        "resolution",
+        "VARCHAR(1000)",
+        "NULL",
+        "结论，不在此直接改金额"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "版本"
+      ]
+    ],
+    "unique": [],
+    "indexes": [
+      "user_id, created_at",
+      "status, created_at"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "order_id",
+        "sim_order",
+        "id"
+      ],
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "assignee_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "DisputeStatus"
+    }
+  },
+  {
+    "name": "sim_book",
+    "desc": "按商家隔离的模拟运行子账",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "模拟商家"
+      ],
+      [
+        "book_code",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "SIM-OP-商家号"
+      ],
+      [
+        "currency",
+        "CHAR(3)",
+        "NOT NULL DEFAULT 'CNY'",
+        "币种"
+      ],
+      [
+        "last_sequence",
+        "BIGINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "账簿内单调序号，入账事务持锁分配"
+      ],
+      [
+        "closed_through",
+        "DATE",
+        "NULL",
+        "已连续关闭到的上海业务日，派生缓存，不替代日状态"
+      ]
+    ],
+    "unique": [
+      "book_code",
+      "merchant_id"
+    ],
+    "indexes": [],
+    "checks": [
+      "currency = 'CNY'"
+    ],
+    "fks": [
+      [
+        "merchant_id",
+        "sim_merchant",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_journal",
+    "desc": "不可变分录批次",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "book_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "账簿"
+      ],
+      [
+        "event_key",
+        "VARCHAR(100)",
+        "NOT NULL",
+        "可追溯业务事件"
+      ],
+      [
+        "template_code",
+        "VARCHAR(20)",
+        "NOT NULL",
+        "J-01等"
+      ],
+      [
+        "source_type",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "ORDER/REPAYMENT/REFUND/ADJUSTMENT"
+      ],
+      [
+        "source_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "来源单据ID；服务层校验"
+      ],
+      [
+        "occurred_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "业务时刻"
+      ],
+      [
+        "posted_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "入账时刻"
+      ],
+      [
+        "debit_total_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "借方合计"
+      ],
+      [
+        "credit_total_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "贷方合计"
+      ],
+      [
+        "reversal_of",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "全额冲回原分录，可为空"
+      ],
+      [
+        "business_day_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "当前入账日；不能由客户端回填历史关闭日"
+      ],
+      [
+        "sequence_no",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "账簿内单调序号"
+      ],
+      [
+        "occurred_business_date",
+        "DATE",
+        "NOT NULL",
+        "原业务日期，按Asia/Shanghai由occurred_at换算"
+      ],
+      [
+        "posting_date",
+        "DATE",
+        "NOT NULL",
+        "本次入账日期，当前可写业务日"
+      ]
+    ],
+    "unique": [
+      "book_id, event_key",
+      "book_id, sequence_no"
+    ],
+    "indexes": [
+      "source_type, source_id",
+      "book_id, posted_at",
+      "book_id, posting_date, sequence_no"
+    ],
+    "checks": [
+      "debit_total_minor = credit_total_minor",
+      "debit_total_minor > 0",
+      "sequence_no > 0",
+      "posting_date >= occurred_business_date"
+    ],
+    "fks": [
+      [
+        "book_id",
+        "sim_book",
+        "id"
+      ],
+      [
+        "reversal_of",
+        "sim_journal",
+        "id"
+      ],
+      [
+        "business_day_id, book_id, posting_date",
+        "sim_business_day",
+        "id, book_id, business_date"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_journal_line",
+    "desc": "不可变分录行；数量与汇总由同事务服务校验",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "journal_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "分录批次"
+      ],
+      [
+        "line_no",
+        "SMALLINT UNSIGNED",
+        "NOT NULL",
+        "序号"
+      ],
+      [
+        "account_code",
+        "ENUM('SIM_AR','SIM_RECEIPT','SIM_SALES_CTRL','SIM_REFUND_CTRL','SIM_RETURN_PAYABLE')",
+        "NOT NULL",
+        "模拟科目"
+      ],
+      [
+        "side",
+        "ENUM('DR','CR')",
+        "NOT NULL",
+        "借贷方向"
+      ],
+      [
+        "amount_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "正数"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "用户维度"
+      ],
+      [
+        "order_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "订单维度"
+      ]
+    ],
+    "unique": [
+      "journal_id, line_no"
+    ],
+    "indexes": [
+      "user_id, account_code"
+    ],
+    "checks": [
+      "amount_minor > 0"
+    ],
+    "fks": [
+      [
+        "journal_id",
+        "sim_journal",
+        "id"
+      ],
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "order_id",
+        "sim_order",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "account_code": "JournalLineAccountCode",
+      "side": "JournalLineSide"
+    }
+  },
+  {
+    "name": "sim_adjustment",
+    "desc": "金额更正申请；首期限定下调和重复事件纠错",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "original_journal_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "原事件"
+      ],
+      [
+        "receivable_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "应收"
+      ],
+      [
+        "kind",
+        "ENUM('DOWNWARD','DUPLICATE_REVERSAL')",
+        "NOT NULL",
+        "不允许任意新增长期债务"
+      ],
+      [
+        "amount_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "拟调整正数"
+      ],
+      [
+        "reason",
+        "VARCHAR(1000)",
+        "NOT NULL",
+        "原因与影响"
+      ],
+      [
+        "maker_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "发起人"
+      ],
+      [
+        "checker_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "复核人"
+      ],
+      [
+        "status",
+        "ENUM('REQUESTED','APPROVED','REJECTED','POSTED')",
+        "NOT NULL",
+        "状态"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "版本"
+      ]
+    ],
+    "unique": [],
+    "indexes": [
+      "status, created_at"
+    ],
+    "checks": [
+      "amount_minor > 0",
+      "checker_id IS NULL OR checker_id <> maker_id",
+      "status = 'REQUESTED' OR checker_id IS NOT NULL"
+    ],
+    "fks": [
+      [
+        "original_journal_id",
+        "sim_journal",
+        "id"
+      ],
+      [
+        "receivable_id",
+        "sim_receivable",
+        "id"
+      ],
+      [
+        "maker_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "checker_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "kind": "AdjustmentKind",
+      "status": "AdjustmentStatus"
+    }
+  },
+  {
+    "name": "sim_inbox",
+    "desc": "模拟外部消息验签后持久化去重",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "provider_event_id",
+        "VARCHAR(100)",
+        "NOT NULL",
+        "事件唯一号"
+      ],
+      [
+        "key_id",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "签名密钥版本"
+      ],
+      [
+        "body_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "原始UTF8正文摘要"
+      ],
+      [
+        "reference",
+        "VARCHAR(80)",
+        "NOT NULL",
+        "模拟业务号"
+      ],
+      [
+        "amount_minor",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "核实金额"
+      ],
+      [
+        "event_type",
+        "ENUM('PAYMENT_CONFIRMED','REFUND_CONFIRMED')",
+        "NOT NULL",
+        "事件"
+      ],
+      [
+        "status",
+        "ENUM('RECEIVED','APPLIED','EXCEPTION')",
+        "NOT NULL",
+        "入站状态"
+      ],
+      [
+        "payload",
+        "JSON",
+        "NOT NULL",
+        "最小合成数据"
+      ]
+    ],
+    "unique": [
+      "provider_event_id"
+    ],
+    "indexes": [
+      "reference"
+    ],
+    "checks": [],
+    "fks": [],
+    "life": "合成消息随批次保留；真实渠道以后另建适用留存策略",
+    "enum_refs": {
+      "environment": "Environment",
+      "event_type": "InboxEventType",
+      "status": "InboxStatus"
+    }
+  },
+  {
+    "name": "sim_idempotency",
+    "desc": "同主体+路由+键唯一",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "actor_key",
+        "VARCHAR(80)",
+        "NOT NULL",
+        "服务端身份，不接受前端角色"
+      ],
+      [
+        "operation_id",
+        "VARCHAR(64)",
+        "NOT NULL",
+        "固定契约操作ID"
+      ],
+      [
+        "key_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "幂等键摘要"
+      ],
+      [
+        "request_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "规范化业务请求摘要"
+      ],
+      [
+        "status",
+        "ENUM('PROCESSING','COMPLETED','FAILED')",
+        "NOT NULL",
+        "执行状态"
+      ],
+      [
+        "response_status",
+        "SMALLINT UNSIGNED",
+        "NULL",
+        "原HTTP状态"
+      ],
+      [
+        "response_body",
+        "JSON",
+        "NULL",
+        "不存原始token/验证码"
+      ],
+      [
+        "resource_id",
+        "VARCHAR(64)",
+        "NULL",
+        "业务资源"
+      ]
+    ],
+    "unique": [
+      "actor_key, operation_id, key_hash"
+    ],
+    "indexes": [],
+    "checks": [],
+    "fks": [],
+    "life": "首期覆盖完整试验与审计期；清理后仍由业务唯一键保障不重复，不用于存登录凭证响应",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "IdempotencyStatus"
+    }
+  },
+  {
+    "name": "sim_outbox",
+    "desc": "事务性消息出站表",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "event_key",
+        "VARCHAR(100)",
+        "NOT NULL",
+        "事件唯一"
+      ],
+      [
+        "aggregate_type",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "聚合名"
+      ],
+      [
+        "aggregate_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "聚合ID"
+      ],
+      [
+        "payload",
+        "JSON",
+        "NOT NULL",
+        "最小消息"
+      ],
+      [
+        "status",
+        "ENUM('PENDING','SENT','DEAD')",
+        "NOT NULL",
+        "投递状态"
+      ],
+      [
+        "attempts",
+        "SMALLINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "重试计数"
+      ],
+      [
+        "next_attempt_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "下次尝试"
+      ]
+    ],
+    "unique": [
+      "event_key"
+    ],
+    "indexes": [
+      "status, next_attempt_at"
+    ],
+    "checks": [],
+    "fks": [],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "OutboxStatus"
+    }
+  },
+  {
+    "name": "sim_file",
+    "desc": "私有证据文件元数据",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "owner_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "上传人"
+      ],
+      [
+        "purpose",
+        "ENUM('SIM_EVIDENCE','RECON_IMPORT','EXPORT')",
+        "NOT NULL",
+        "用途"
+      ],
+      [
+        "object_key",
+        "VARCHAR(255)",
+        "NOT NULL",
+        "私有存储key，不接收任意URL"
+      ],
+      [
+        "mime_type",
+        "VARCHAR(80)",
+        "NOT NULL",
+        "类型"
+      ],
+      [
+        "size_bytes",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "大小"
+      ],
+      [
+        "sha256",
+        "CHAR(64)",
+        "NOT NULL",
+        "内容摘要"
+      ],
+      [
+        "status",
+        "ENUM('QUARANTINED','READY','REJECTED','DELETED')",
+        "NOT NULL",
+        "检测后可用"
+      ],
+      [
+        "expires_at",
+        "DATETIME(3)",
+        "NULL",
+        "到期"
+      ]
+    ],
+    "unique": [
+      "object_key"
+    ],
+    "indexes": [
+      "owner_id, purpose"
+    ],
+    "checks": [
+      "size_bytes <= 10485760"
+    ],
+    "fks": [
+      [
+        "owner_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "purpose": "FilePurpose",
+      "status": "FileStatus"
+    }
+  },
+  {
+    "name": "sim_reconciliation",
+    "desc": "按商家和业务日对账",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "merchant_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "商家"
+      ],
+      [
+        "business_date",
+        "DATE",
+        "NOT NULL",
+        "Asia/Shanghai业务日"
+      ],
+      [
+        "file_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "模拟文件"
+      ],
+      [
+        "file_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "原文件摘要"
+      ],
+      [
+        "status",
+        "ENUM('CREATED','RUNNING','MATCHED','DIFFERENCE','RESOLVED','FAILED')",
+        "NOT NULL",
+        "状态"
+      ],
+      [
+        "rule_version",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "对账规则版本"
+      ],
+      [
+        "difference_count",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "差异条数"
+      ]
+    ],
+    "unique": [
+      "merchant_id, business_date, file_hash"
+    ],
+    "indexes": [
+      "status, business_date"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "merchant_id",
+        "sim_merchant",
+        "id"
+      ],
+      [
+        "file_id",
+        "sim_file",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "ReconciliationStatus"
+    }
+  },
+  {
+    "name": "sim_recon_difference",
+    "desc": "不可通过改原文件消差",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "reconciliation_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "对账批次"
+      ],
+      [
+        "difference_type",
+        "ENUM('MISSING_LOCAL','MISSING_CHANNEL','AMOUNT','DUPLICATE','LATE','SCOPE')",
+        "NOT NULL",
+        "差异类型"
+      ],
+      [
+        "reference",
+        "VARCHAR(80)",
+        "NOT NULL",
+        "业务号"
+      ],
+      [
+        "severity",
+        "ENUM('S0','S1','S2')",
+        "NOT NULL",
+        "严重度"
+      ],
+      [
+        "status",
+        "ENUM('OPEN','ASSIGNED','RESOLVED','CLOSED')",
+        "NOT NULL",
+        "状态"
+      ],
+      [
+        "assignee_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "处理人"
+      ],
+      [
+        "checker_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "独立关闭人"
+      ],
+      [
+        "due_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "处理期限"
+      ],
+      [
+        "resolution",
+        "VARCHAR(1000)",
+        "NULL",
+        "证据与处理单号"
+      ]
+    ],
+    "unique": [],
+    "indexes": [
+      "status, due_at"
+    ],
+    "checks": [
+      "checker_id IS NULL OR assignee_id IS NULL OR checker_id <> assignee_id"
+    ],
+    "fks": [
+      [
+        "reconciliation_id",
+        "sim_reconciliation",
+        "id"
+      ],
+      [
+        "assignee_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "checker_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "difference_type": "ReconDifferenceDifferenceType",
+      "severity": "ReconDifferenceSeverity",
+      "status": "ReconDifferenceStatus"
+    }
+  },
+  {
+    "name": "sim_export",
+    "desc": "受控导出任务",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "requester_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "申请人"
+      ],
+      [
+        "scope_key",
+        "VARCHAR(100)",
+        "NOT NULL",
+        "服务端授权范围"
+      ],
+      [
+        "filters_json",
+        "JSON",
+        "NOT NULL",
+        "允许的过滤字段"
+      ],
+      [
+        "status",
+        "ENUM('REQUESTED','APPROVED','RUNNING','READY','REJECTED','EXPIRED')",
+        "NOT NULL",
+        "状态"
+      ],
+      [
+        "file_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "水印后私有文件"
+      ],
+      [
+        "expires_at",
+        "DATETIME(3)",
+        "NULL",
+        "下载到期"
+      ]
+    ],
+    "unique": [],
+    "indexes": [
+      "requester_id, created_at"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "requester_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "file_id",
+        "sim_file",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "ExportStatus"
+    }
+  },
+  {
+    "name": "sim_notification",
+    "desc": "首期仅站内业务结果",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "user_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "收件用户"
+      ],
+      [
+        "event_key",
+        "VARCHAR(100)",
+        "NOT NULL",
+        "业务事件"
+      ],
+      [
+        "template_version",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "模板版本"
+      ],
+      [
+        "payload",
+        "JSON",
+        "NOT NULL",
+        "最少展示字段"
+      ],
+      [
+        "read_at",
+        "DATETIME(3)",
+        "NULL",
+        "已读"
+      ]
+    ],
+    "unique": [
+      "user_id, event_key, template_version"
+    ],
+    "indexes": [
+      "user_id, created_at, id"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "user_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_admin_request",
+    "desc": "权限变更及用户权利工单；最小通用复核",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "request_type",
+        "ENUM('SCOPE_GRANT','PRIVACY')",
+        "NOT NULL",
+        "工单类型"
+      ],
+      [
+        "maker_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "申请人"
+      ],
+      [
+        "checker_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "独立处理人"
+      ],
+      [
+        "request_payload",
+        "JSON",
+        "NOT NULL",
+        "按类型校验，不含证件原文"
+      ],
+      [
+        "status",
+        "ENUM('REQUESTED','APPROVED','REJECTED','DONE')",
+        "NOT NULL",
+        "状态"
+      ],
+      [
+        "resolution",
+        "VARCHAR(1000)",
+        "NULL",
+        "处理依据"
+      ]
+    ],
+    "unique": [],
+    "indexes": [
+      "request_type, status, created_at"
+    ],
+    "checks": [
+      "checker_id IS NULL OR checker_id <> maker_id",
+      "status = 'REQUESTED' OR checker_id IS NOT NULL"
+    ],
+    "fks": [
+      [
+        "maker_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "checker_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟数据：试验结束后30天清理/匿名化，争议保全另审；不可变账本按批次归档，禁止逐行改删",
+    "enum_refs": {
+      "environment": "Environment",
+      "request_type": "AdminRequestRequestType",
+      "status": "AdminRequestStatus"
+    }
+  },
+  {
+    "name": "sim_audit",
+    "desc": "脱敏审计，不记录业务凭证秘密",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "actor_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "用户或服务主体"
+      ],
+      [
+        "action",
+        "VARCHAR(80)",
+        "NOT NULL",
+        "动作"
+      ],
+      [
+        "resource_type",
+        "VARCHAR(40)",
+        "NOT NULL",
+        "对象类"
+      ],
+      [
+        "resource_id",
+        "VARCHAR(64)",
+        "NOT NULL",
+        "对象ID"
+      ],
+      [
+        "request_id",
+        "CHAR(36)",
+        "NOT NULL",
+        "串联请求"
+      ],
+      [
+        "reason",
+        "VARCHAR(500)",
+        "NULL",
+        "用途"
+      ],
+      [
+        "redacted_detail",
+        "JSON",
+        "NOT NULL",
+        "前后摘要与决定，不含敏感原文"
+      ]
+    ],
+    "unique": [],
+    "indexes": [
+      "request_id",
+      "resource_type, resource_id",
+      "actor_id, created_at"
+    ],
+    "checks": [],
+    "fks": [
+      [
+        "actor_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "建议测试审计180天后复核；真实人员涉及的日志按法律义务/目的另核定，不能一律永久",
+    "enum_refs": {
+      "environment": "Environment"
+    }
+  },
+  {
+    "name": "sim_business_day",
+    "desc": "商家账簿业务日控制与报告版本，不重开原始分录",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "book_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "所属模拟账簿"
+      ],
+      [
+        "business_date",
+        "DATE",
+        "NOT NULL",
+        "Asia/Shanghai业务日"
+      ],
+      [
+        "status",
+        "ENUM('OPEN','CLOSING','CLOSED','REOPENED_REVIEW')",
+        "NOT NULL",
+        "已关闭后只允许复核性重开"
+      ],
+      [
+        "cutoff_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "本业务日结束的UTC时刻"
+      ],
+      [
+        "high_watermark",
+        "BIGINT UNSIGNED",
+        "NOT NULL DEFAULT 0",
+        "关账快照采用的最大账簿序号"
+      ],
+      [
+        "report_revision",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "报告修订号"
+      ],
+      [
+        "snapshot_hash",
+        "CHAR(64)",
+        "NULL",
+        "不可变报告摘要"
+      ],
+      [
+        "closed_at",
+        "DATETIME(3)",
+        "NULL",
+        "首次完成关账时刻"
+      ]
+    ],
+    "unique": [
+      "book_id, business_date",
+      "id, book_id, business_date"
+    ],
+    "indexes": [
+      "book_id, status, business_date"
+    ],
+    "checks": [
+      "report_revision > 0",
+      "status NOT IN ('CLOSED','REOPENED_REVIEW') OR (snapshot_hash IS NOT NULL AND closed_at IS NOT NULL)"
+    ],
+    "fks": [
+      [
+        "book_id",
+        "sim_book",
+        "id"
+      ]
+    ],
+    "life": "模拟批次按批准的清理/归档策略处理；关账报告与审批不可覆盖。法定账期重开不适用。",
+    "enum_refs": {
+      "environment": "Environment",
+      "status": "BusinessDayStatus"
+    }
+  },
+  {
+    "name": "sim_business_day_request",
+    "desc": "关账、复核性重开和重关申请；独立双人批准、限定有效期",
+    "fields": [
+      [
+        "id",
+        "BIGINT UNSIGNED",
+        "PK AUTO_INCREMENT",
+        "内部键；API用十进制字符串"
+      ],
+      [
+        "environment",
+        "ENUM('SIMULATION')",
+        "NOT NULL DEFAULT 'SIMULATION'",
+        "仅模拟；不可由请求切换真实"
+      ],
+      [
+        "created_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "updated_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "UTC，服务端生成"
+      ],
+      [
+        "version",
+        "INT UNSIGNED",
+        "NOT NULL DEFAULT 1",
+        "对象版本；不可变事件固定为1"
+      ],
+      [
+        "day_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "关联业务日"
+      ],
+      [
+        "action",
+        "ENUM('CLOSE','REOPEN_REVIEW','RECLOSE')",
+        "NOT NULL",
+        "请求动作"
+      ],
+      [
+        "expected_day_version",
+        "INT UNSIGNED",
+        "NOT NULL",
+        "批准和执行时都检查"
+      ],
+      [
+        "maker_id",
+        "BIGINT UNSIGNED",
+        "NOT NULL",
+        "发起主体"
+      ],
+      [
+        "checker_id",
+        "BIGINT UNSIGNED",
+        "NULL",
+        "复核主体"
+      ],
+      [
+        "status",
+        "ENUM('REQUESTED','APPROVED','REJECTED','EXECUTING','EXECUTED','FAILED','EXPIRED')",
+        "NOT NULL",
+        "请求生命周期"
+      ],
+      [
+        "reason",
+        "VARCHAR(1000)",
+        "NOT NULL",
+        "必须说明原因"
+      ],
+      [
+        "evidence_refs",
+        "JSON",
+        "NOT NULL",
+        "证据ID列表"
+      ],
+      [
+        "reconciliation_refs",
+        "JSON",
+        "NOT NULL",
+        "有范围核验的对账批次ID列表"
+      ],
+      [
+        "impact_summary",
+        "VARCHAR(2000)",
+        "NOT NULL",
+        "跨日差异/影响范围"
+      ],
+      [
+        "expires_at",
+        "DATETIME(3)",
+        "NOT NULL",
+        "最多申请后24小时的候选参数"
+      ],
+      [
+        "execution_key",
+        "VARCHAR(100)",
+        "NOT NULL",
+        "dayId+action+expectedVersion+requestId唯一"
+      ],
+      [
+        "result_summary",
+        "JSON",
+        "NULL",
+        "执行结果/新旧报告哈希，不存支付秘密"
+      ]
+    ],
+    "unique": [
+      "execution_key"
+    ],
+    "indexes": [
+      "day_id, status",
+      "maker_id, created_at"
+    ],
+    "checks": [
+      "checker_id IS NULL OR checker_id <> maker_id",
+      "status NOT IN ('APPROVED','REJECTED','EXECUTING','EXECUTED','FAILED') OR checker_id IS NOT NULL",
+      "expected_day_version > 0"
+    ],
+    "fks": [
+      [
+        "day_id",
+        "sim_business_day",
+        "id"
+      ],
+      [
+        "maker_id",
+        "sim_user",
+        "id"
+      ],
+      [
+        "checker_id",
+        "sim_user",
+        "id"
+      ]
+    ],
+    "life": "模拟批次按批准的清理/归档策略处理；关账报告与审批不可覆盖。法定账期重开不适用。",
+    "enum_refs": {
+      "environment": "Environment",
+      "action": "BusinessDayAction",
+      "status": "BusinessDayRequestStatus"
+    }
+  }
+]

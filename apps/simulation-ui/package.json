@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5174 --strictPort",
     "build": "vite build",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "contract:sync": "node scripts/sync-contract.mjs",
+    "contract:check": "node scripts/sync-contract.mjs --check"
   },
   "dependencies": {
     "vue": "3.5.34"

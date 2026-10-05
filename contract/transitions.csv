@@ -1,0 +1,37 @@
+﻿id,domain,transition,actor,guard,idempotency,journal,quota,notification
+SM-01,订单,DRAFT→PUBLISHED,商家发布,审核通过/商品在架/金额快照固定,orderId+publishVersion,无,无,待确认
+SM-02,订单/履约/预占,PUBLISHED→CONFIRMED; NOT_READY→READY; 新建HELD,用户确认,凭证有效、快照一致、余额足够,confirmationNonce+orderId,无资金分录,新增预占,已确认
+SM-03,订单,PUBLISHED→CANCELLED/EXPIRED,用户拒绝/商家取消/系统到期,尚未确认,orderId+close,无,无,结果
+SM-04,订单/履约/预占,CONFIRMED→CANCELLED/EXPIRED; READY→VOID; HELD→RELEASED/EXPIRED,取消/到期任务,尚未履约；锁定同订单,reservationId+release,无,释放一次,取消/到期
+SM-05,订单/履约/预占/应收,CONFIRMED→FULFILLED; READY→FULFILLED; HELD→CONSUMED; 新建OPEN,核销员履约,核销nonce有效、预占未到期,orderId+fulfill,J-01,预占转本金，总占用不变,账单生成
+SM-06,应收,OPEN→PARTIAL/SETTLED; PARTIAL→PARTIAL/SETTLED,确认还款,入账后剩余本金计算,paymentEventId+allocationId,J-02/J-03,按核销本金释放,还款结果
+SM-07,应收,OPEN/PARTIAL→PARTIAL/SETTLED,退款审批,退款上限和独立审批通过,refundId+apply,J-04,仅冲本金部分释放,退款结果
+SM-08,还款,CREATED→PENDING,模拟渠道受理,SIM_ONLY，收款商家一致,repaymentId+submit,无,无,处理中
+SM-09,还款,PENDING→CONFIRMED,模拟结果/核实,验签/金额/商家/环境一致,providerEventId,J-02/J-03,实际分配本金释放,结果
+SM-10,还款,CREATED/PENDING→FAILED/CLOSED,明确失败/关单,失败已查询；不把未知当失败,repaymentId+close,无,无,结果
+SM-11,还款,CLOSED/FAILED→EXCEPTION,迟到成功,验证通过但原单已关闭/已被其他事件替代,providerEventId,J-03（暂存）,待复核不释放,差异工单
+SM-12,还款,EXCEPTION→CONFIRMED,独立差异复核,再次校验可分配本金/应退余额,differenceId+resolve,J-07,仅新分配本金释放,复核结果
+SM-13,退款,REQUESTED→APPROVED/REJECTED,独立审核,不是发起人/可退额足够,refundId+decisionVersion,通过J-04,本金冲减一次,审批结果
+SM-14,退款,APPROVED→SUCCEEDED,系统,仅冲本金无需模拟现金退回,refundId+complete,无新增,无,完成
+SM-15,退款,APPROVED→PROCESSING,模拟退回,存在应退金额,refundId+submit,无,无,处理中
+SM-16,退款,PROCESSING→SUCCEEDED,模拟退回结果,验签+一致核对,providerEventId,J-05,无,完成
+SM-17,退款,PROCESSING→FAILED/EXCEPTION,明确失败/不一致,已批准冲减不撤销；应退仍保留,refundId+failure,无,无,失败/待处理
+SM-18,退款,FAILED/EXCEPTION→PROCESSING,独立重试审批,查原单避免重复退回,refundId+retryAttempt,无,无,重试
+SM-19,争议,新建OPEN→REVIEWING,用户/客服,本人交易/任务分配,disputeId+start,无,不释放；可冻结新增资格,工单结果
+SM-20,争议,REVIEWING→RESOLVED,处理人,证据、理由、可申诉结果,disputeId+resolutionVersion,无；金额变更另开调整单,无,结论
+SM-21,争议,RESOLVED→APPEALED→REVIEWING,用户申诉/复核人,在告知窗口内，复核人独立,disputeId+appealVersion,无,无,受理
+SM-22,争议,RESOLVED→CLOSED,用户确认/系统截止,用户已被告知结果及申诉入口,disputeId+close,无,无,关闭
+SM-23,更正,REQUESTED→APPROVED/REJECTED,账务复核员,双人、原事件、影响分析,adjustmentId+decisionVersion,无,无,结果
+SM-24,更正,APPROVED→POSTED,账务服务,限定下调/重复事件纠错；余额校验,adjustmentId+post,J-06,仅确认的本金差额释放,更正结果
+SM-25,对账,CREATED→RUNNING,对账任务,文件校验/批次唯一,date+merchant+fileHash,无,无,可查进度
+SM-26,对账,RUNNING→MATCHED/DIFFERENCE/FAILED,核对任务,规则执行/差异行/解析异常,reconciliationId+runVersion,无,无,任务结果
+SM-27,对账,DIFFERENCE→RESOLVED,独立复核,全部差异逐条有结果，不改原文件,reconciliationId+close,无；纠错由独立单据入账,无,汇总
+SM-28,结算,NOT_APPLICABLE→NOT_APPLICABLE,无首期动作,首期不结算,不适用,无,无,不显示操作按钮
+SM-29,保证金,NOT_APPLICABLE→NOT_APPLICABLE,无首期动作,首期不收保证金,不适用,无,无,不显示操作按钮
+SM-30,业务日,OPEN→CLOSING,账务任务执行获批CLOSE,已到日截止、独立批准、无阻断差异、版本一致,dayId+requestId+close,无新增分录；固定截止水位,不释放,关账处理中
+SM-31,业务日,CLOSING→CLOSED,关账任务,借贷/投影/对账一致，快照和hash已保存,requestId+snapshotRevision,无；报告只读,不释放,关账完成
+SM-32,业务日,CLOSING→OPEN,关账任务失败恢复,仅控制状态恢复，保留失败证据；历史日仍禁止回填,requestId+failure,无,不释放,受阻/重新申请
+SM-33,业务日,CLOSED→REOPENED_REVIEW,执行独立批准的复核性重开,请求有效、影响范围和原报告hash一致,dayId+reopenRequestId,不得改原分录；调整在当前日,不释放,复核窗口开启
+SM-34,业务日,REOPENED_REVIEW→CLOSED,执行获批重关,复核证据齐全，新revision和新旧hash并存,dayId+recloseRequestId,无直接分录,不释放,新报告可查
+SM-35,关账请求,REQUESTED→APPROVED/REJECTED,独立账务复核员,maker与checker不同且不为空，未到期，对象版本一致,requestId+decisionVersion,无,不释放,批准/驳回
+SM-36,关账请求,APPROVED→EXECUTING→EXECUTED/FAILED；APPROVED→EXPIRED,账务任务,执行前验证有效期/对象版本；任务成功保存报告才EXECUTED；过期只阻止启动，不打断已提交入账,requestId+execute,动作本身不新增金额,不释放,执行结果

@@ -17,7 +17,7 @@ public final class ReconciliationModule implements SimModule {
         if("uploadFile".equals(op))return upload(c,b);
         if("createReconciliation".equals(op))return reconcile(c,b);
         if("getReconciliation".equals(op)){Map<String,Object> r=c.get("reconciliations",p.get("id"));reconScope(c,r);return reconDto(c,r);}
-        if("listDifferences".equals(op)){Map<String,Object> r=c.get("reconciliations",p.get("id"));reconScope(c,r);List<Map<String,Object>> out=new ArrayList<>();for(Map<String,Object> d:c.all("differences"))if(s(r,"id").equals(s(d,"reconciliationId")))out.add(differenceDto(c,d));return c.page(out,p);}
+        if("listDifferences".equals(op)){Map<String,Object> r=c.get("reconciliations",p.get("id"));reconScope(c,r);List<Map<String,Object>> out=new ArrayList<>();for(Map<String,Object> d:c.all("differences"))if(s(r,"id").equals(s(d,"reconciliationId")))out.add(differenceDto(c,d));return c.page(out,p,"differences");}
         if("resolveDifference".equals(op))return resolve(c,p.get("id"),b);
         if("createExport".equals(op))return createExport(c,b);
         if("reviewExport".equals(op))return reviewExport(c,p.get("id"),b);

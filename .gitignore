@@ -20,3 +20,11 @@
 # Import tooling and private verification checkpoints
 /checkpoints/
 /tools/
+
+# Reproducible release verification outputs
+**/target-with-guard/
+**/.test-build/
+contract/qa/
+release-artifacts/
+
+.venv-contract/

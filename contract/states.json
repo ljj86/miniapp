@@ -1,0 +1,161 @@
+{
+  "AdjustmentStatus": [
+    "REQUESTED",
+    "APPROVED",
+    "REJECTED",
+    "POSTED"
+  ],
+  "AdminRequestStatus": [
+    "REQUESTED",
+    "APPROVED",
+    "REJECTED",
+    "DONE"
+  ],
+  "BusinessDayAction": [
+    "CLOSE",
+    "REOPEN_REVIEW",
+    "RECLOSE"
+  ],
+  "BusinessDayRequestStatus": [
+    "REQUESTED",
+    "APPROVED",
+    "REJECTED",
+    "EXECUTING",
+    "EXECUTED",
+    "FAILED",
+    "EXPIRED"
+  ],
+  "BusinessDayStatus": [
+    "OPEN",
+    "CLOSING",
+    "CLOSED",
+    "REOPENED_REVIEW"
+  ],
+  "DepositStatus": [
+    "NOT_APPLICABLE"
+  ],
+  "DisputeStatus": [
+    "OPEN",
+    "REVIEWING",
+    "RESOLVED",
+    "APPEALED",
+    "CLOSED"
+  ],
+  "ExportStatus": [
+    "REQUESTED",
+    "APPROVED",
+    "RUNNING",
+    "READY",
+    "REJECTED",
+    "EXPIRED"
+  ],
+  "FileStatus": [
+    "QUARANTINED",
+    "READY",
+    "REJECTED",
+    "DELETED"
+  ],
+  "FulfillmentStatus": [
+    "NOT_READY",
+    "READY",
+    "FULFILLED",
+    "VOID"
+  ],
+  "IdempotencyStatus": [
+    "PROCESSING",
+    "COMPLETED",
+    "FAILED"
+  ],
+  "InboxStatus": [
+    "RECEIVED",
+    "APPLIED",
+    "EXCEPTION"
+  ],
+  "MerchantApplicationStatus": [
+    "DRAFT",
+    "SUBMITTED",
+    "NEEDS_INFO",
+    "APPROVED",
+    "REJECTED"
+  ],
+  "MerchantStatus": [
+    "DRAFT",
+    "APPROVED",
+    "SUSPENDED",
+    "EXITING",
+    "EXITED"
+  ],
+  "OfflineReviewStatus": [
+    "SUBMITTED",
+    "VERIFIED",
+    "REJECTED"
+  ],
+  "OrderStatus": [
+    "DRAFT",
+    "PUBLISHED",
+    "CONFIRMED",
+    "FULFILLED",
+    "CANCELLED",
+    "EXPIRED"
+  ],
+  "OutboxStatus": [
+    "PENDING",
+    "SENT",
+    "DEAD"
+  ],
+  "ReceivableStatus": [
+    "OPEN",
+    "PARTIAL",
+    "SETTLED"
+  ],
+  "ReconDifferenceStatus": [
+    "OPEN",
+    "ASSIGNED",
+    "RESOLVED",
+    "CLOSED"
+  ],
+  "ReconciliationStatus": [
+    "CREATED",
+    "RUNNING",
+    "MATCHED",
+    "DIFFERENCE",
+    "RESOLVED",
+    "FAILED"
+  ],
+  "RefundStatus": [
+    "REQUESTED",
+    "APPROVED",
+    "REJECTED",
+    "PROCESSING",
+    "SUCCEEDED",
+    "FAILED",
+    "EXCEPTION"
+  ],
+  "RepaymentStatus": [
+    "CREATED",
+    "PENDING",
+    "CONFIRMED",
+    "FAILED",
+    "CLOSED",
+    "EXCEPTION"
+  ],
+  "ReservationStatus": [
+    "HELD",
+    "CONSUMED",
+    "RELEASED",
+    "EXPIRED"
+  ],
+  "RuleVersionStatus": [
+    "DRAFT",
+    "APPROVED",
+    "RETIRED"
+  ],
+  "SettlementStatus": [
+    "NOT_APPLICABLE"
+  ],
+  "UserStatus": [
+    "ACTIVE",
+    "SUSPENDED",
+    "CLOSED"
+  ]
+}

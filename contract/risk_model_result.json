@@ -1,0 +1,27 @@
+{
+  "warning": "全部参数均为假设，不是真实坏账、存款利率、产品报价或需求基线；不用于真实准入。",
+  "assumptions": {
+    "users": 50,
+    "balance_each": 100,
+    "pd": 0.03,
+    "lgd": 0.8,
+    "merchant_deposit": 300,
+    "correlation": 0.1
+  },
+  "independent": {
+    "total_loss_mean": 119.99999999999984,
+    "merchant_loss_mean": 117.03412974204934,
+    "platform_loss_mean": 2.965870257950494,
+    "probability_exceeding_deposit": 0.06275992773341843
+  },
+  "correlated": {
+    "total_loss_mean": 120.00000000000578,
+    "merchant_loss_mean": 78.37200787549182,
+    "platform_loss_mean": 41.62799212451396,
+    "probability_exceeding_deposit": 0.14425460649872232
+  },
+  "profit_5000_calls": -2766.67,
+  "profit_50000_calls": 383.3300000000004,
+  "break_even_calls": 44524,
+  "zero_defaults_100_upper_95": 0.029513049607039932
+}

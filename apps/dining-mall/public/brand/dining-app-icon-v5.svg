@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">餐饮商城应用图标</title>
+  <desc id="desc">暖橙红圆角方形底色配白色餐碗与时钟标志。</desc>
+  <rect width="256" height="256" rx="58" fill="#FF5839"/>
+  <g transform="translate(16 14) scale(.875)"><g fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 110a64 64 0 0 1 119.426-32"/>
+    <path d="M128 76v34l23-14"/>
+    <path d="M42 142h172c-9 42-41 66-86 66s-77-24-86-66Z"/>
+    <path d="M105 218h46"/>
+  </g>
+  <circle cx="192" cy="110" r="9" fill="#FFFFFF"/></g>
+</svg>

@@ -1,0 +1,72 @@
+[
+  {
+    "file": "public/food/beef-rice.jpg",
+    "title": "Beef rice bowl",
+    "width": 1000,
+    "height": 667,
+    "source_page": "https://unsplash.com/photos/a-plate-of-food-with-rice-and-meat-lbaUoloKooI",
+    "image_url": "https://images.unsplash.com/photo-1682566509547-5961bc5ea394?auto=format&fit=crop&w=1000&q=85",
+    "notes": "Use centered crop",
+    "source": "Unsplash free image search result"
+  },
+  {
+    "file": "public/food/beef-noodles.jpg",
+    "title": "Beef noodle bowl",
+    "width": 1000,
+    "height": 1500,
+    "source_page": "https://unsplash.com/de/fotos/weisse-keramikschale-mit-gruner-gemuseschale-_q4AQcGX28A",
+    "image_url": "https://images.unsplash.com/photo-1615444814488-f0b1952b2f27?auto=format&fit=crop&w=1000&q=85",
+    "notes": "Portrait; use object-position: center 75% for square crop",
+    "source": "Unsplash free image search result"
+  },
+  {
+    "file": "public/food/salad.jpg",
+    "title": "Tomato cucumber avocado salad",
+    "width": 1000,
+    "height": 560,
+    "source_page": "https://unsplash.com/photos/a-glass-bowl-filled-with-vegetables-on-top-of-a-wooden-table-PKl5YIGnAyA",
+    "image_url": "https://images.unsplash.com/photo-1738486511470-471be341a1e3?auto=format&fit=crop&w=1000&q=85",
+    "notes": "Use centered crop",
+    "source": "Unsplash free image search result"
+  },
+  {
+    "file": "public/food/chicken-burger.jpg",
+    "title": "Crispy chicken burger",
+    "width": 1000,
+    "height": 667,
+    "source_page": "https://unsplash.com/photos/a-chicken-sandwich-with-lettuce-and-mayonnaise-on-a-black-background-sxapiJ8zbq0",
+    "image_url": "https://images.unsplash.com/photo-1692737348416-0a4fa4cf1523?auto=format&fit=crop&w=1000&q=85",
+    "notes": "Use centered crop; black background",
+    "source": "Unsplash free image search result"
+  },
+  {
+    "file": "public/food/iced-coffee.jpg",
+    "title": "Iced coffee",
+    "width": 1000,
+    "height": 1508,
+    "source_page": "https://unsplash.com/photos/a-glass-of-iced-coffee-sitting-on-top-of-a-table-z-Y9hWoZy4g",
+    "image_url": "https://images.unsplash.com/photo-1570019254013-368989cf027d?auto=format&fit=crop&w=1000&q=85",
+    "notes": "Portrait; use object-position: center 65%",
+    "source": "Unsplash free image search result"
+  },
+  {
+    "file": "public/food/orange-juice.jpg",
+    "title": "Orange juice",
+    "width": 1000,
+    "height": 750,
+    "source_page": "https://unsplash.com/photos/a-glass-of-orange-juice-sitting-on-a-table-UD_vMY14OUE",
+    "image_url": "https://images.unsplash.com/photo-1650292390827-51240d74eb0a?auto=format&fit=crop&w=1000&q=85",
+    "notes": "Use centered crop",
+    "source": "Unsplash free image search result"
+  },
+  {
+    "file": "public/food/meal-banner-wide.jpg",
+    "title": "Asian restaurant meal spread",
+    "width": 1800,
+    "height": 700,
+    "source_page": "https://unsplash.com/s/photos/korean-food",
+    "image_url": "https://images.unsplash.com/photo-1612179343574-31b219a3915c?auto=format&fit=crop&w=1800&h=700&q=85",
+    "notes": "Wide CDN crop from Korean meal spread; portrait original meal-banner.jpg also retained",
+    "source": "Unsplash free image search result"
+  }
+]

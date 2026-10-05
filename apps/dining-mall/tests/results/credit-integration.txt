@@ -1,0 +1,3 @@
+PASS: customer request → merchant publish → customer confirm/reserve → one-time merchant redemption → shared receivable → customer pending repayment → platform result → same ¥12 remaining / ¥88 available across all three roles
+PASS: replay idempotency, cross-merchant privacy/authorization, immutable financial retail link/amount/ownership, per-tab role isolation, local reload continuity
+PASS: negative/zero/non-finite/fractional-cent prices rejected with no mutation; repricing, unlisting, version edits and deletion after publication reject confirmation with no quota or order-state change

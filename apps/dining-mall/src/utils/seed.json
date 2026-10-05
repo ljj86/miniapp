@@ -1,0 +1,299 @@
+{
+  "goods": [
+    {
+      "id": 700001,
+      "name": "20元体验套餐（示例）",
+      "typeId": 1,
+      "info": "用于完整体验先吃后付流程，不实际配送",
+      "content": "<p>本套餐为业务界面演示资料，符合原代码20元单笔上限。</p><p>商家发布后由顾客确认，门店核销时才生成应收。</p>",
+      "img": "/food/beef-rice.jpg",
+      "imgList": "/food/beef-rice.jpg",
+      "inventory": 999,
+      "price": 20,
+      "unit": "份",
+      "unitId": 1,
+      "date": "2026-10-04",
+      "status": true,
+      "sales": 0,
+      "fixtureOnly": true
+    },
+    {
+      "id": 1,
+      "name": "招牌牛肉饭",
+      "typeId": 1,
+      "info": "牛肉软嫩，米饭粒粒饱满",
+      "content": "<p>牛肉软嫩，米饭粒粒饱满</p><p>餐品资料为界面示例，不会实际配送。</p>",
+      "img": "/food/beef-rice.jpg",
+      "imgList": "/food/beef-rice.jpg",
+      "inventory": 99,
+      "price": 32,
+      "unit": "份",
+      "unitId": 1,
+      "date": "2026-10-04",
+      "status": true,
+      "sales": 268
+    },
+    {
+      "id": 2,
+      "name": "红烧牛肉面",
+      "typeId": 2,
+      "info": "醇香汤底，搭配劲道面条",
+      "content": "<p>醇香汤底，搭配劲道面条</p><p>餐品资料为界面示例，不会实际配送。</p>",
+      "img": "/food/beef-noodles.jpg",
+      "imgList": "/food/beef-noodles.jpg",
+      "inventory": 99,
+      "price": 28,
+      "unit": "份",
+      "unitId": 1,
+      "date": "2026-10-04",
+      "status": true,
+      "sales": 196
+    },
+    {
+      "id": 3,
+      "name": "田园轻食沙拉",
+      "typeId": 3,
+      "info": "新鲜蔬菜，清爽一餐",
+      "content": "<p>新鲜蔬菜，清爽一餐</p><p>餐品资料为界面示例，不会实际配送。</p>",
+      "img": "/food/salad.jpg",
+      "imgList": "/food/salad.jpg",
+      "inventory": 99,
+      "price": 26,
+      "unit": "份",
+      "unitId": 1,
+      "date": "2026-10-04",
+      "status": true,
+      "sales": 138
+    },
+    {
+      "id": 4,
+      "name": "香脆鸡腿汉堡",
+      "typeId": 1,
+      "info": "酥脆鸡肉与新鲜蔬菜",
+      "content": "<p>酥脆鸡肉与新鲜蔬菜</p><p>餐品资料为界面示例，不会实际配送。</p>",
+      "img": "/food/chicken-burger.jpg",
+      "imgList": "/food/chicken-burger.jpg",
+      "inventory": 99,
+      "price": 25,
+      "unit": "份",
+      "unitId": 1,
+      "date": "2026-10-04",
+      "status": true,
+      "sales": 225
+    },
+    {
+      "id": 5,
+      "name": "冰萃拿铁",
+      "typeId": 4,
+      "info": "咖啡与牛奶的温柔相遇",
+      "content": "<p>咖啡与牛奶的温柔相遇</p><p>餐品资料为界面示例，不会实际配送。</p>",
+      "img": "/food/iced-coffee.jpg",
+      "imgList": "/food/iced-coffee.jpg",
+      "inventory": 99,
+      "price": 18,
+      "unit": "份",
+      "unitId": 1,
+      "date": "2026-10-04",
+      "status": true,
+      "sales": 320
+    },
+    {
+      "id": 6,
+      "name": "鲜榨橙汁",
+      "typeId": 4,
+      "info": "清新果香，满杯活力",
+      "content": "<p>清新果香，满杯活力</p><p>餐品资料为界面示例，不会实际配送。</p>",
+      "img": "/food/orange-juice.jpg",
+      "imgList": "/food/orange-juice.jpg",
+      "inventory": 99,
+      "price": 16,
+      "unit": "份",
+      "unitId": 1,
+      "date": "2026-10-04",
+      "status": true,
+      "sales": 183
+    }
+  ],
+  "type": [
+    {
+      "id": 1,
+      "name": "人气主食",
+      "img": "/food/beef-rice.jpg",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "暖心面食",
+      "img": "/food/beef-noodles.jpg",
+      "status": true
+    },
+    {
+      "id": 3,
+      "name": "轻食沙拉",
+      "img": "/food/salad.jpg",
+      "status": true
+    },
+    {
+      "id": 4,
+      "name": "咖啡饮品",
+      "img": "/food/chicken-burger.jpg",
+      "status": true
+    }
+  ],
+  "tag": [
+    {
+      "id": 1,
+      "name": "服务体验优秀",
+      "info": "服务体验优秀"
+    },
+    {
+      "id": 2,
+      "name": "细节处理得当",
+      "info": "细节处理得当"
+    },
+    {
+      "id": 3,
+      "name": "体验超出预期",
+      "info": "体验超出预期"
+    }
+  ],
+  "banner": [
+    {
+      "id": 1,
+      "name": "今天想吃点什么好的？",
+      "info": "每一餐，都值得认真",
+      "img": "/food/banner.jpg",
+      "goodsId": 1
+    }
+  ],
+  "notice": [
+    {
+      "id": 1,
+      "name": "UI 体验版：展示原商城页面；商品资料来自源码，订单和管理数据为本机示例。支付未接入。"
+    }
+  ],
+  "unit": [
+    {
+      "id": 1,
+      "username": "111",
+      "nickname": "鲜食好店 · 示例门店",
+      "avatarUrl": "/food/beef-rice.jpg",
+      "address": "示例门店地址",
+      "phone": "00000000000",
+      "info": "现做餐品 · 仅供界面体验",
+      "tagIds": "1",
+      "role": "ROLE_UNIT"
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "username": "111",
+      "nickname": "体验用户",
+      "avatarUrl": "/avatar.svg",
+      "email": "demo@example.invalid",
+      "phone": "00000000000",
+      "role": "ROLE_USER"
+    }
+  ],
+  "admin": [
+    {
+      "id": 1,
+      "username": "111",
+      "nickname": "体验管理员",
+      "avatarUrl": "/avatar.svg",
+      "email": "demo@example.invalid",
+      "phone": "00000000000",
+      "role": "ROLE_ADMIN"
+    }
+  ],
+  "address": [
+    {
+      "id": 1,
+      "name": "示例收货人",
+      "address": "示例城市 · 体验路 1 号（非配送地址）",
+      "phone": "00000000000",
+      "userId": 1
+    }
+  ],
+  "cart": [],
+  "collect": [],
+  "orders": [
+    {
+      "id": 1,
+      "no": "DEMO-0001",
+      "time": "2026-10-04 10:00:00",
+      "name": "招牌牛肉饭",
+      "img": "/food/beef-rice.jpg",
+      "goodsId": 1,
+      "userId": 1,
+      "unitId": 1,
+      "num": 1,
+      "price": 32,
+      "userName": "示例收货人",
+      "userAddress": "示例地址（非配送）",
+      "userPhone": "00000000000",
+      "rate": 0,
+      "comment": "",
+      "reply": "",
+      "status": "待发货"
+    },
+    {
+      "id": 2,
+      "no": "DEMO-0002",
+      "time": "2026-10-04 10:00:00",
+      "name": "红烧牛肉面",
+      "img": "/food/beef-noodles.jpg",
+      "goodsId": 2,
+      "userId": 1,
+      "unitId": 1,
+      "num": 1,
+      "price": 28,
+      "userName": "示例收货人",
+      "userAddress": "示例地址（非配送）",
+      "userPhone": "00000000000",
+      "rate": 0,
+      "comment": "",
+      "reply": "",
+      "status": "待收货"
+    },
+    {
+      "id": 3,
+      "no": "DEMO-0003",
+      "time": "2026-10-04 10:00:00",
+      "name": "田园轻食沙拉",
+      "img": "/food/salad.jpg",
+      "goodsId": 3,
+      "userId": 1,
+      "unitId": 1,
+      "num": 1,
+      "price": 26,
+      "userName": "示例收货人",
+      "userAddress": "示例地址（非配送）",
+      "userPhone": "00000000000",
+      "rate": 0,
+      "comment": "",
+      "reply": "",
+      "status": "待评价"
+    },
+    {
+      "id": 4,
+      "no": "DEMO-0004",
+      "time": "2026-10-04 10:00:00",
+      "name": "香脆鸡腿汉堡",
+      "img": "/food/chicken-burger.jpg",
+      "goodsId": 4,
+      "userId": 1,
+      "unitId": 1,
+      "num": 1,
+      "price": 25,
+      "userName": "示例收货人",
+      "userAddress": "示例地址（非配送）",
+      "userPhone": "00000000000",
+      "rate": 5,
+      "comment": "<p>示例评价：商品外观展示。</p>",
+      "reply": "",
+      "status": "已完成"
+    }
+  ]
+}

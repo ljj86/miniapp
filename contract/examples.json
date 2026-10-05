@@ -1,0 +1,81 @@
+{
+  "Error": {
+    "code": "LIMIT_UNAVAILABLE",
+    "message": "模拟额度不足，本次未创建预占",
+    "requestId": "cf6f72d2-4c83-4e79-9267-17c2d3edfa10"
+  },
+  "OrderCreate": {
+    "storeId": "11",
+    "items": [
+      {
+        "productId": "21",
+        "quantity": 1,
+        "productVersion": 1
+      }
+    ],
+    "clientReference": "demo-merchant-0001"
+  },
+  "ConfirmOrder": {
+    "version": 2,
+    "credential": "mock-confirm-token-not-a-real-secret",
+    "snapshotHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "agreementVersion": "sim-terms-1",
+    "confirmed": true
+  },
+  "RepaymentCreate": {
+    "merchantUid": "s0000001",
+    "receivableIds": [
+      "101"
+    ],
+    "amountMinor": 800,
+    "method": "MOCK_ONLINE"
+  },
+  "MockResult": {
+    "providerEventId": "mock-event-001",
+    "reference": "mock-payment-001",
+    "eventType": "PAYMENT_CONFIRMED",
+    "amountMinor": 800,
+    "merchantUid": "s0000001",
+    "currency": "CNY",
+    "occurredAt": "2026-09-30T10:00:00+08:00",
+    "environment": "SIMULATION"
+  },
+  "RefundCreate": {
+    "orderId": "31",
+    "requestedMinor": 1500,
+    "reason": "模拟套餐部分退款",
+    "evidenceIds": []
+  },
+  "BusinessDay": {
+    "id": "501",
+    "bookId": "201",
+    "businessDate": "2026-09-29",
+    "status": "CLOSED",
+    "version": 3,
+    "reportRevision": 1,
+    "cutoffAt": "2026-09-29T16:00:00Z",
+    "highWatermark": "900",
+    "snapshotHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "closedAt": "2026-09-29T16:10:00Z",
+    "environment": "SIMULATION"
+  },
+  "BusinessDayRequestCreate": {
+    "expectedDayVersion": 2,
+    "reason": "模拟业务日对账已经完成，申请关闭并保留快照",
+    "evidenceIds": [
+      "301"
+    ],
+    "reconciliationIds": [
+      "401"
+    ],
+    "impactSummary": "无未解决金额差异，原始业务记录与投影一致"
+  },
+  "BusinessDayDecision": {
+    "version": 1,
+    "decision": "APPROVE",
+    "reason": "独立复核模拟报告、差异清单和人员分离",
+    "evidenceIds": [
+      "302"
+    ]
+  }
+}
